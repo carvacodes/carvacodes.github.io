@@ -208,7 +208,7 @@ body {
   background-color: #f0f0f0;
   color: #8a8a8a; }
   .langs-and-apps ul {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto; }
   .langs-and-apps li {
     @font_color ($ctx);
