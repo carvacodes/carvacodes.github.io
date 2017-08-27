@@ -380,7 +380,8 @@ footer {
     margin: 0;
     padding: 0;
     max-width: unset;
-    width: 100%; }
+    width: 100%;
+    min-height: inherit; }
     .work .work-image, .work .work-text {
       float: left; }
     .work:nth-child(2n+1) .work-image, .work:nth-child(2n+1) .work-text {
@@ -395,9 +396,17 @@ footer {
       height: 766px; }
     .work .work-text {
       width: 50%;
-      padding: 0 0 0 28px; }
-      .work .work-text ul li {
-        text-align: left; } }
+      min-height: 766px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; } }
 @media (min-width: 1600px) {
   .splash h1, .page-header-splash h1 {
     font-size: 400%; } }
