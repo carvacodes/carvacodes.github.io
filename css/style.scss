@@ -217,6 +217,9 @@ body {
 .langs-and-apps {
   background-color: colors('light');
   color: colors('medium');
+  ul {
+    max-width: 1600px;
+  }
   li {
     @include button('hollow', 'medium');
     display: inline-block;
