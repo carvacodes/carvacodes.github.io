@@ -219,6 +219,7 @@ body {
   color: colors('medium');
   ul {
     max-width: 1600px;
+    margin: 0 auto;
   }
   li {
     @include button('hollow', 'medium');
