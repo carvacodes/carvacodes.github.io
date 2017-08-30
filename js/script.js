@@ -3,7 +3,7 @@ $(document).ready(function(){
   /* also, collapse the nav if the user clicks anywhere on the page */
   $(window).click(function(e){
     let el = e.target;
-    console.log($("#nav-toggle"));
+    
     let navToggle = document.getElementById('nav-toggle');
     let navToggleI = navToggle.querySelector('i');
     if (el == navToggle || el == navToggleI) {
