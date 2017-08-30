@@ -255,7 +255,7 @@ body {
     font-weight: normal; }
   .work .work-image {
     width: 100%;
-    min-height: 320px;
+    min-height: 480px;
     background-size: cover;
     border-bottom: thin solid #8a8a8a; }
     .work .work-image a {
