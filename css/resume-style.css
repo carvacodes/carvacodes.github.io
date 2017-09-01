@@ -1,93 +1,201 @@
+/*
+main text color: #333;
+highlight text color: rgb(0,153,153)
+standard margin: 23px;
+mobile margin: 12px;
+*/
+
+/*****************/
 /* Global styles */
+/*               */
+/*****************/
+
 * {
 	box-sizing: border-box;
 	position: relative;
 }
 body {
 	font-family: "Montserrat";
-	text-align: center;
-	max-width: 1024px;
 	margin: 0 auto;
 	padding: 0;
 	line-height: 1.65em;
 	background-color: #fafafa;
-	color: #6a6a6a;
+	color: #333;
+	max-width: 11in;
 }
 ul {
 	text-align: left;
 	margin: 0 auto;
-	padding-left: 20px;
+	padding-left: 23px;
 }
 li {
 	padding-bottom: 0.5em;
 }
-h1, h2, h3, h4, h5, p {
+h2, h3, h4, h5, a {
+	color: rgb(0,153,153);
+}
+h1, h2 {
+	margin: 0 auto 23px auto;
+}
+h1 {
+	color: #333;
+	font-size: 3em;
+}
+h3 {
+	margin-bottom: 0;
+}
+p {
 	margin: 0 auto;
+}
+section {
+	padding: 23px 8px;
+}
+section > section {
 	padding: 0;
 }
 a:hover {
 	color: #197FFF;
 }
+
+/*****************/
 /* Header styles */
+/*               */
+/*****************/
+
 header {
-	padding: 2em 0.5em;
+	padding-top: 0.5em;
+	display: flex;
+	width: 100%;
 }
-header h1 {
-	padding-bottom: 1em;
+.primary-info {
+	flex: 1;
+	padding-top: 2.5em;
+}
+.primary-info h2 {
+	font-weight: normal;
+}
+.secondary-info {
+	font-weight: 300;
+	flex: 0;
+	text-align: right;
+	border-left: thin solid #333;
+	padding-left: 5em;
 }
 
-/* Main section styles */
-body > section {
-	padding: 2em 0.5em;
+/***************/
+/* Item Styles */
+/*             */
+/***************/
+
+
+.item-heading, .item-content {
+	margin-bottom: 23px;
 }
-body > section h2 {
-	padding-bottom: 1em;
+.item-content {
+	padding-left: 23px;
+}
+.item-content p::before, .item-content p span {
+	text-decoration: underline;
+	display: inline-block;
+	padding-right: 0.33em;
+}
+.summary p::before {
+	content: "Summary:";
+}
+.additional p::before {
+	content: "Additional highlights:";
 }
 
-/* Experience styles */
-.work-item {
-	padding: 1em 0;
-}
-.item-heading {
-	padding: 2em 0;
-}
-.heading-additional {
-	font-size: 90%;
-	font-style: italic;
-}
-.work-item:nth-of-type(1) .item-heading {
-	/*padding-top: 0;*/
-}
-.work-item-desc-quick {
-	font-size: 85%;
-	font-style: italic;
-	letter-spacing: -0.03px;
-	margin: 8px 0;
-}
-.work-details-pre {
-	margin-top: 1em;
-}
-.work-sub-item, .education-sub-item {
-	padding: 1.25em 0;
-	margin-bottom: 0.5em;
-	background-color: white;
-}
-.work-sub-item ul, .education-sub-item ul {
-	max-width: 600px;
-}
 /* Footer */
+
 footer {
+	width: 100%;
+	text-align: center;
 	padding: 2em 0.5em;
 	font-size: 90%;
 	font-style: italic;
 }
+footer p::before, footer p::after {
+	content: "\2022";
+	padding: 0 0.5em;
+}
+
+/*****************/
+/* Media Queries */
+/*    Print      */
+/*****************/
 
 @media print {
+	/* Change base margin size to 12px in print */
 	html {
 		font-size: 10px;
 	}
 	body {
 		max-width: 8in;
 		font-size: 1em;
+		background-color: white;
+	}
+	ul {
+		text-align: left;
+		margin: 0 auto;
+		padding-left: 12px;
+	}
+	h1, h2 {
+		margin: 0 auto 12px auto;
+	}
+	section {
+		padding: 12px 5px;
+	}
+	.item-heading, .item-content {
+		margin-bottom: 12px;
+	}
+	.item-content {
+		padding-left: 12px;
+	}
+	footer {
+		padding: 1em 0.25em;
+	}
+}
+
+/*****************/
+/* Media Queries */
+/*    Screen     */
+/*****************/
+
+@media screen and (max-width: 801px) {
+	h1, h2, h3, .item-heading, .item-content.links {
+		text-align: center;
+	}
+	.heading-additional .divider {
+		visibility: hidden;
+		display: block;
+		height: 0;
+	}
+}
+@media screen and (max-width: 639px) {
+	header {
+		display: block;
+		padding: 23px 0 12px 0;
+	}
+	.primary-info, .secondary-info {
+		padding: 0;
+	}
+	.secondary-info {
+		text-align: center;
+	}
+	.item-content {
+		padding: 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	 footer p::before, footer p::after {
+	 	display: none;
+	 }
+}
+
+@media screen and (max-width: 420px) {
+	body {
+		font-size: 14px;
 	}
 }
