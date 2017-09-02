@@ -17,11 +17,12 @@ mobile margin: 12px;
 body {
 	font-family: "Montserrat";
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 8px;
 	line-height: 1.65em;
 	background-color: #fafafa;
 	color: #333;
 	max-width: 11in;
+	box-shadow: 2px 3px 8px #ddd;
 }
 ul {
 	text-align: left;
@@ -181,6 +182,7 @@ footer p::before, footer p::after {
 		padding: 0;
 	}
 	.secondary-info {
+		border: none;
 		text-align: center;
 	}
 	.item-content {
