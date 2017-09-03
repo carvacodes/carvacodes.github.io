@@ -1,3 +1,13 @@
+/********************/
+/*                  */
+/*      Mixins      */
+/*                  */
+/********************/
+/********************/
+/*                  */
+/*     Globals      */
+/*                  */
+/********************/
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -43,6 +53,11 @@ img {
   max-width: 100%;
   height: auto; }
 
+/*********************/
+/*                   */
+/*  Global Classes   */
+/*                   */
+/*********************/
 .button {
   color: white;
   background-color: mediumslateblue;
@@ -60,6 +75,23 @@ img {
     padding: 8px;
     margin: 15px; }
 
+.button.bright {
+  color: white;
+  background-color: green;
+  display: inline-block;
+  border: 2px solid green;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 15px; }
+  .button.bright:hover {
+    color: white;
+    background-color: #00b300;
+    display: inline-block;
+    border: 2px solid #00b300;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 15px; }
+
 .alternate-colors {
   color: #f0f0f0; }
   .alternate-colors > *:nth-of-type(2n) {
@@ -70,9 +102,14 @@ img {
   .alternate-colors-light > *:nth-of-type(2n) {
     color: #8a8a8a; }
 
+/*********************/
+/*                   */
+/*    Top Nav Bar    */
+/*                   */
+/*********************/
 .top-nav {
   z-index: 100;
-  width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
   color: #f0f0f0;
@@ -88,8 +125,11 @@ img {
   .top-nav .nav-container {
     display: none; }
 
-/* Splashes */
-/* all splash styles are defined here, vs. near their related content, for ease of access */
+/*********************/
+/*                   */
+/*   Splash Styles   */
+/*                   */
+/*********************/
 .splash {
   width: 100%;
   min-height: 480px;
@@ -105,8 +145,12 @@ img {
     .splash .splash-inner h1 span {
       display: block; }
 
-/* see-more */
-.splash .see-more {
+/*********************/
+/*  Splash seemores  */
+/*    and to tops    */
+/*                   */
+/*********************/
+.splash .see-more, .splash .to-top {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -116,9 +160,9 @@ img {
   text-align: center;
   color: #f0f0f0;
   padding: 20px; }
-  .splash .see-more p {
+  .splash .see-more p, .splash .to-top p {
     margin: 5px auto; }
-    .splash .see-more p i {
+    .splash .see-more p i, .splash .to-top p i {
       text-shadow: 1px 1px 18px rgba(255, 255, 255, 0.6), -1px 1px 18px rgba(255, 255, 255, 0.6), 1px -1px 18px rgba(255, 255, 255, 0.6), -1px -1px 18px rgba(255, 255, 255, 0.6);
       -webkit-animation: 1.66s linear 0s infinite alternate fadeInOut;
               animation: 1.66s linear 0s infinite alternate fadeInOut; }
@@ -132,13 +176,17 @@ img {
     opacity: 1; }
   to {
     opacity: 0.2; } }
+  .splash .see-more a, .splash .to-top a {
+    color: #f0f0f0; }
+
+.splash .to-top {
+  top: 0;
+  display: none; }
+
 .tools-splash {
   background: url("https://images.unsplash.com/photo-1502119176771-c007eb5feb6e") no-repeat center 60%/cover; }
 
 .works-splash {
-  /* alternate bgs 
-  background: url('https://images.unsplash.com/photo-1495467894491-aff044482626') no-repeat center 60%/cover;
-  background: url('https://images.unsplash.com/photo-1495511623436-ba44aaee07cf') no-repeat center 60%/cover;*/
   background: url("https://images.unsplash.com/photo-1466786784937-3e682c802b14") no-repeat center 60%/cover; }
   .works-splash .splash-inner {
     background-color: rgba(0, 0, 0, 0.6); }
@@ -151,11 +199,19 @@ img {
 .contact-splash {
   background: url("https://images.unsplash.com/photo-1446102892025-3900145fd2a7") no-repeat center 60%/cover; }
 
-/* Page sub-containers */
+/*********************/
+/*                   */
+/*  Sub-containers   */
+/*                   */
+/*********************/
 .sub-container {
   padding: 100px 0; }
 
-/* Main page splash */
+/*********************/
+/*                   */
+/*    Main splash    */
+/*                   */
+/*********************/
 .page-header-splash {
   margin-top: 38px;
   min-height: 480px;
@@ -176,9 +232,14 @@ img {
       background-color: rgba(0, 0, 0, 0.6);
       color: #f0f0f0; }
 
-/* Main Nav */
+/********************/
+/*      Center      */
+/*    Navigation    */
+/*                  */
+/********************/
 .main-nav h1 {
-  margin-top: 0; }
+  margin-top: 0;
+  font-size: 2.25em; }
 .main-nav ul {
   max-width: 1400px;
   margin: 0 auto; }
@@ -201,7 +262,11 @@ img {
   padding: 8px;
   margin: 15px; }
 
-/* Tools */
+/********************/
+/*                  */
+/*      Tools       */
+/*                  */
+/********************/
 .langs-and-apps {
   background-color: #f0f0f0;
   color: #8a8a8a; }
@@ -234,7 +299,11 @@ img {
     font-size: 90%;
     width: unset; }
 
-/* Works */
+/********************/
+/*                  */
+/*      Works       */
+/*                  */
+/********************/
 .works {
   padding: 0; }
 
@@ -251,7 +320,8 @@ img {
   .work .work-header .secondary {
     font-style: italic;
     font-weight: normal;
-    margin: 0; }
+    margin: 0;
+    font-size: 80%; }
   .work .work-image {
     width: 100%;
     min-height: 480px;
@@ -270,10 +340,14 @@ img {
       margin-bottom: 1.2em; }
   .work .work-content .summary {
     padding: 0 1em;
-    font-size: 85%; }
+    font-size: 75%; }
 
-/* About */
-.about .sub-container {
+/********************/
+/*                  */
+/*      About       */
+/*                  */
+/********************/
+.about.sub-container {
   padding: 0; }
 
 .about-content {
@@ -305,7 +379,11 @@ img {
       bottom: -15px;
       right: 0; }
 
-/* Contact */
+/********************/
+/*                  */
+/*     Contact      */
+/*                  */
+/********************/
 .contact {
   padding-left: 20px;
   padding-right: 20px; }
@@ -322,7 +400,11 @@ img {
     .contact .contact-text a i {
       font-size: 2em; }
 
-/* Footer */
+/********************/
+/*                  */
+/*      Footer      */
+/*                  */
+/********************/
 footer {
   text-align: left;
   font-size: 65%;
@@ -346,6 +428,11 @@ footer {
   height: 0;
   clear: both; }
 
+/********************/
+/*      Media       */
+/*     Queries      */
+/*                  */
+/********************/
 @media (min-width: 666px) {
   footer .footer-section {
     float: left;
@@ -378,6 +465,9 @@ footer {
       float: right; }
     .top-nav li.logo {
       float: left; }
+
+  .to-top {
+    display: block !important; }
 
   .work {
     margin: 0;
