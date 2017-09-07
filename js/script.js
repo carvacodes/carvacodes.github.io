@@ -18,6 +18,8 @@ $(document).ready(function(){
       }
     }
   })
+
+  // Smooth scrolling to on-page links
   // Select all links with hashes
   $('a[href*="#"]').click(function(event) {
     // On-page links
@@ -50,4 +52,15 @@ $(document).ready(function(){
       }
     }
   });
+
+  // address the viewport height bug affecting iOS 7.x devices
+  let allEls = document.body.querySelector("*");
+  for (let i = 0; i < allEls.length; i++) {
+    if (window.getComputedStyle(allEls[i]).height.slice(0, -2) > window.innerHeight * 3) {
+      allEls[i].style.height = windowHeight + "px";
+      allEls[i].style.maxHeight = windowHeight + "px";
+      allEls[i].style.overflow = "auto";
+      allEls[i].style.backgroundSize = "auto 100%";
+    }
+  }
 });
