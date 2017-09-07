@@ -50,12 +50,12 @@ $(document).ready(function(){
       }
     }
   });
-  let all = $('*');
-  let str = "";
-  for (let i = 0; i < all.length; i++) {
-    if (all[i].scrollHeight > window.innerHeight) {
-      str += all[i].className + ", " + all[i].tagName + "\n\r";
+  // address bug affecting iOS 7.x devices (specifically iPads), where using 100vh plus a background-size of 'cover' results
+  // in elements tens of thousands of px tall
+  let fullHeights = $('.splash, .page-header-splash, .about-content');
+  for (let i = 0; i < fullHeights.length; i++) {
+    if (window.getComputedStyle(fullHeights[i]) > window.innerHeight * 2) {
+      fullHeights[i].style.height = window.innerHeight + 'px';
     }
   }
-  alert(str);
 });
