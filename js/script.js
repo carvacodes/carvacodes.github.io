@@ -2,11 +2,11 @@ $(document).ready(function(){
   // expand or collapse the nav when the user clicks/taps the nav menu
   // also, collapse the nav if the user clicks anywhere on the page
   $(window).click(function(e){
-    let el = e.target;  // the element targeted by the click/tap
+    var el = e.target;  // the element targeted by the click/tap
 
     // elements to watch for nav toggling
-    let navToggle = document.getElementById('nav-toggle');    // the nav bar
-    let navToggleI = navToggle.querySelector('i');            // the hamburger icon
+    var navToggle = document.getElementById('nav-toggle');    // the nav bar
+    var navToggleI = navToggle.querySelector('i');            // the hamburger icon
 
     // used a custom toggle instead of jQuery's built-in, since the nav should only be hidden when the user clicks anywhere on the screen except the nav
     if (el == navToggle || el == navToggleI) {
@@ -54,8 +54,8 @@ $(document).ready(function(){
   });
 
   // address the viewport height bug affecting iOS 7.x devices
-  let allEls = document.body.querySelector("*");
-  for (let i = 0; i < allEls.length; i++) {
+  var allEls = document.body.querySelector("*");
+  for (var i = 0; i < allEls.length; i++) {
     if (window.getComputedStyle(allEls[i]).height.slice(0, -2) > window.innerHeight * 3) {
       allEls[i].style.height = windowHeight + "px";
       allEls[i].style.maxHeight = windowHeight + "px";
