@@ -50,4 +50,12 @@ $(document).ready(function(){
       }
     }
   });
+  let all = $('*');
+  let tested = false;
+  for (let i = 0; i < all.length; i++) {
+    if (window.getComputedStyle(all[i]).height > window.innerHeight * 2) {
+      alert(all[i]);
+    }
+    if (tested === true) { i = all.length; }
+  }
 });
