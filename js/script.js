@@ -50,12 +50,4 @@ $(document).ready(function(){
       }
     }
   });
-  // address bug affecting iOS 7.x devices (specifically iPads), where using 100vh plus a background-size of 'cover' results
-  // in elements tens of thousands of px tall
-  let fullHeights = $('.splash, .page-header-splash, .about-content');
-  for (let i = 0; i < fullHeights.length; i++) {
-    if (window.getComputedStyle(fullHeights[i]) > window.innerHeight * 2) {
-      fullHeights[i].style.height = window.innerHeight + 'px';
-    }
-  }
 });
