@@ -51,11 +51,11 @@ $(document).ready(function(){
     }
   });
   let all = $('*');
-  let tested = false;
+  let str = "";
   for (let i = 0; i < all.length; i++) {
-    if (window.getComputedStyle(all[i]).height > window.innerHeight * 2) {
-      alert(all[i]);
+    if (all[i].scrollHeight > window.innerHeight) {
+      str += all[i].className + ", " + all[i].tagName + "\n\r";
     }
-    if (tested === true) { i = all.length; }
   }
+  alert(str);
 });
