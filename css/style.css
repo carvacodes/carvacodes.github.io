@@ -134,11 +134,11 @@ img {
 .splash {
   width: 100%;
   min-height: 480px;
-  height: 100vh;
   width: 100%;
   color: #f0f0f0;
   display: table; }
   .splash .splash-inner {
+    min-height: inherit;
     background-color: rgba(0, 0, 0, 0.4);
     display: table-cell;
     vertical-align: middle;
@@ -216,7 +216,6 @@ img {
 .page-header-splash {
   margin-top: 38px;
   min-height: 480px;
-  height: 100vh;
   background: url("https://ajcjazz.com/images/splash_contact.jpg") no-repeat center/cover; }
   .page-header-splash h1, .page-header-splash h4 {
     margin: 0;
@@ -225,9 +224,10 @@ img {
     color: #f0f0f0; }
   .page-header-splash .header-item.main-item {
     width: 100%;
-    height: 100%;
+    min-height: inherit;
     display: table; }
     .page-header-splash .header-item.main-item .splash-inner {
+      min-height: inherit;
       display: table-cell;
       vertical-align: middle;
       background-color: rgba(0, 0, 0, 0.6);
@@ -356,7 +356,6 @@ img {
   max-width: 755px;
   margin: 0 auto;
   min-height: 480px;
-  height: 100vh;
   display: table; }
   .about-content .about-text {
     position: relative;
@@ -444,6 +443,9 @@ footer {
     .langs-and-apps li i {
       float: none; } }
 @media (min-width: 980px) {
+  .splash, .page-header-splash, .about-content {
+    min-height: 600px; }
+
   footer .footer-section {
     width: 33%; } }
 @media (min-width: 1024px) {
@@ -502,7 +504,9 @@ footer {
           -ms-flex-pack: center;
               justify-content: center; } }
 @media (min-width: 1600px) {
+  .splash, .page-header-splash, .about-content {
+    min-height: 800px; }
+
   .splash h1, .page-header-splash h1 {
     font-size: 400%; } }
-
 /*# sourceMappingURL=style.css.map */
