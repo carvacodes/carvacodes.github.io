@@ -342,6 +342,14 @@ img {
   .work .work-content .summary {
     padding: 0 1em;
     font-size: 75%; }
+    .work .work-content .summary.summary-details {
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+      border: thin solid #ccc;
+      font-family: 'Calibri', sans-serif;
+      font-size: 75%;
+      letter-spacing: 0.4px; }
 
 /********************/
 /*                  */
@@ -509,4 +517,5 @@ footer {
 
   .splash h1, .page-header-splash h1 {
     font-size: 400%; } }
+
 /*# sourceMappingURL=style.css.map */

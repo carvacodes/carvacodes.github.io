@@ -367,6 +367,16 @@ img {
   .work-content .summary {
     padding: 0 1em;
     font-size: 75%;
+
+    &.summary-details {
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+      border: thin solid #ccc;
+      font-family: 'Calibri', sans-serif;
+      font-size: 75%;
+      letter-spacing: 0.4px;
+    }
   }
 }
 
