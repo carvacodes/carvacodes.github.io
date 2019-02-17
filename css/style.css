@@ -22,11 +22,11 @@ body {
   text-align: center; }
 
 h1, h2, h3, h4, h5, button {
-  font-family: "Montserrat", "Calibri", "Arial", sans-serif;
+  font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif;
   font-weight: 700; }
 
 p, a, li {
-  font-family: "Montserrat", "Calibri", "Arial", sans-serif;
+  font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif;
   font-weight: 300; }
 
 p, li {
@@ -347,7 +347,7 @@ img {
       margin: 0 auto;
       padding: 1rem;
       border: thin solid #ccc;
-      font-family: 'Calibri', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 75%;
       letter-spacing: 0.4px; }
 

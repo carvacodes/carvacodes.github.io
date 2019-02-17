@@ -15,7 +15,7 @@
   @else if $ctx == 'dark' { @return #333; }
 }
 
-@mixin font_family() { font-family: "Montserrat", "Calibri", "Arial", sans-serif; }
+@mixin font_family() { font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
 @mixin display_fonts() { @include font-family(); font-weight: 700; }
 @mixin body_fonts() { @include font-family(); font-weight: 300; }
 @mixin button($type, $ctx) {
@@ -373,7 +373,7 @@ img {
       margin: 0 auto;
       padding: 1rem;
       border: thin solid #ccc;
-      font-family: 'Calibri', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 75%;
       letter-spacing: 0.4px;
     }
