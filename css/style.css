@@ -232,6 +232,8 @@ img {
       vertical-align: middle;
       background-color: rgba(0, 0, 0, 0.6);
       color: #f0f0f0; }
+      .page-header-splash .header-item.main-item .splash-inner h1 {
+        letter-spacing: 2px; }
 
 /********************/
 /*      Center      */
@@ -517,5 +519,4 @@ footer {
 
   .splash h1, .page-header-splash h1 {
     font-size: 400%; } }
-
 /*# sourceMappingURL=style.css.map */

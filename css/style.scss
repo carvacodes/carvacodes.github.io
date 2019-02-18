@@ -250,6 +250,10 @@ img {
       vertical-align: middle;
       background-color: rgba(0,0,0,0.6);
       color: colors('light');
+
+      h1 {
+        letter-spacing: 2px;
+      }
     }
   }
 }
