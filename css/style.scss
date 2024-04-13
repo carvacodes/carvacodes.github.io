@@ -197,7 +197,7 @@ img {
 .tools-splash {
   background: url('https://images.unsplash.com/photo-1502119176771-c007eb5feb6e') no-repeat center 60%/cover;
 }
-.works-splash {
+.projects-splash {
   background: url('https://images.unsplash.com/photo-1466786784937-3e682c802b14') no-repeat center 60%/cover;
   .splash-inner {
     background-color: rgba(0,0,0,0.6);
@@ -323,13 +323,13 @@ img {
 
 /********************/
 /*                  */
-/*      Works       */
+/*     Projects     */
 /*                  */
 /********************/
-.works {
+.projects {
   padding: 0;
 }
-.work {
+.project {
   background-color: colors('light');
   color: colors('medium');
   display: block;
@@ -341,13 +341,13 @@ img {
   &:last-child {
     margin-bottom: 0;
   }
-  .work-header .secondary {
+  .project-header .secondary {
     font-style: italic;
     font-weight: normal;
     margin: 0;
     font-size: 80%;
   }
-  .work-image {
+  .project-image {
     width: 100%;
     min-height: 480px;
     background-size: cover;
@@ -358,7 +358,7 @@ img {
       display: block;
     }
   }
-  .work-text ul {
+  .project-text ul {
     a {
       text-decoration: underline;
     }
@@ -368,7 +368,7 @@ img {
       margin-bottom: 1.2em;
     }
   }
-  .work-content .summary {
+  .project-content .summary {
     padding: 0 1em;
     font-size: 75%;
 

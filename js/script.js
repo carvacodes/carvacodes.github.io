@@ -1,6 +1,10 @@
 $(document).ready(function(){
-  // expand or collapse the nav when the user clicks/taps the nav menu
-  // also, collapse the nav if the user clicks anywhere on the page
+  $('#projectSelect').change(function(e){
+    let projectUrl = './submods/' + this.value + '/' + this.value + '-markup.html'
+    window.open(projectUrl, '_blank', 'popup=yes');
+  });
+
+  // global click operations
   $(window).click(function(e){
     var el = e.target;  // the element targeted by the click/tap
 
@@ -8,6 +12,8 @@ $(document).ready(function(){
     var navToggle = document.getElementById('nav-toggle');    // the nav bar
     var navToggleI = navToggle.querySelector('i');            // the hamburger icon
 
+    // expand or collapse the nav when the user clicks/taps the nav menu
+    // also, collapse the nav if the user clicks anywhere on the page
     // used a custom toggle instead of jQuery's built-in, since the nav should only be hidden when the user clicks anywhere on the screen except the nav
     if (el == navToggle || el == navToggleI) {
       $(".top-nav .nav-container").slideToggle();

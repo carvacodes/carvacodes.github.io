@@ -214,10 +214,10 @@ img {
   background: url("https://images.unsplash.com/photo-1502119176771-c007eb5feb6e") no-repeat center 60%/cover;
 }
 
-.works-splash {
+.projects-splash {
   background: url("https://images.unsplash.com/photo-1466786784937-3e682c802b14") no-repeat center 60%/cover;
 }
-.works-splash .splash-inner {
+.projects-splash .splash-inner {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -353,58 +353,58 @@ img {
 
 /********************/
 /*                  */
-/*      Works       */
+/*     Projects     */
 /*                  */
 /********************/
-.works {
+.projects {
   padding: 0;
 }
 
-.work {
+.project {
   background-color: #f0f0f0;
   color: #8a8a8a;
   display: block;
   min-height: 766px;
   overflow: hidden;
 }
-.work:first-child {
+.project:first-child {
   margin-top: 0;
 }
-.work:last-child {
+.project:last-child {
   margin-bottom: 0;
 }
-.work .work-header .secondary {
+.project .project-header .secondary {
   font-style: italic;
   font-weight: normal;
   margin: 0;
   font-size: 80%;
 }
-.work .work-image {
+.project .project-image {
   width: 100%;
   min-height: 480px;
   background-size: cover;
   border-bottom: thin solid #8a8a8a;
 }
-.work .work-image a {
+.project .project-image a {
   width: 100%;
   height: 100%;
   display: block;
 }
-.work .work-text ul {
+.project .project-text ul {
   padding: 5px;
   font-size: 80%;
 }
-.work .work-text ul a {
+.project .project-text ul a {
   text-decoration: underline;
 }
-.work .work-text ul li {
+.project .project-text ul li {
   margin-bottom: 1.2em;
 }
-.work .work-content .summary {
+.project .project-content .summary {
   padding: 0 1em;
   font-size: 75%;
 }
-.work .work-content .summary.summary-details {
+.project .project-content .summary.summary-details {
   width: 80%;
   margin: 0 auto;
   padding: 1rem;

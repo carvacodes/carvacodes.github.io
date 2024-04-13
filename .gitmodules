@@ -1,0 +1,3 @@
+[submodule "submods/dynamic-lighted-buttons"]
+	path = submods/dynamic-lighted-buttons
+	url = https://github.com/carvacodes/dynamic-lighted-buttons.git
