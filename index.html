@@ -101,17 +101,7 @@
 	</div>
 	<section class="projects sub-container">
 		<a name="projects-section"></a>
-
-		<!-- LEFT OFF -->
-		<!--
-			create a new UI for this section
-			add a "random project" button
-			add a "call to action" to inform the user what to do
-			add a description field (populate from the README.md for the file?)
-			implement tags for filtering projects
-		-->
-
-		<div class="projects-text">
+		<div class="projects-list">
 			<p>Choose a project to preview:</p>
 			<select name="project-select" id="projectSelect">
 				<optgroup label="Games">
@@ -122,11 +112,11 @@
 				</optgroup>
 				<optgroup label="Tests, Proof-of-Concepts, and Educational">
 					<option data-status="active" value="canvas-composite-operations" data-pen-url="https://codepen.io/carvacodes/pen/gpGKxa">Canvas Composite Operations</option>
+					<option data-status="active" value="dynamic-lighted-buttons" data-pen-url="https://codepen.io/carvacodes/pen/LYGmxMX">Dynamic Lighted Buttons</option>
 					<option data-status="inactive" value="canvas-under-elements" data-pen-url="https://codepen.io/carvacodes/pen/pvMjXq">Canvas Under Elements</option>
 					<option data-status="inactive" value="css-colors" data-pen-url="https://codepen.io/carvacodes/details/doRxaE">CSS Colors</option>
 					<option data-status="inactive" value="css-timing-functions" data-pen-url="https://codepen.io/carvacodes/pen/qopoxG">CSS Timing Functions</option>
 					<option data-status="inactive" value="delayed-flip-grid" data-pen-url="https://codepen.io/carvacodes/pen/ZxoVjj">Delayed Flip Grid</option>
-					<option data-status="active" value="dynamic-lighted-buttons" data-pen-url="https://codepen.io/carvacodes/pen/LYGmxMX">Dynamic Lighted Buttons</option>
 					<option data-status="inactive" value="grid-ui-3d" data-pen-url="https://codepen.io/carvacodes/details/eMGBGV">3D Skewed Grid UI</option>
 					<option data-status="inactive" value="split-sliders" data-pen-url="https://codepen.io/carvacodes/pen/yeQgqK">Split Sliders</option>
 				</optgroup>
@@ -143,6 +133,7 @@
 				</optgroup>
 				<optgroup label="Fun, Artsy, and Miscellaneous">
 					<option data-status="active" value="lissajous" selected data-pen-url="">Lissajous</option>
+					<option data-status="active" value="crt-magnet-interference" data-pen-url="https://codepen.io/carvacodes/details/rVMEqo">CRT Magnet Interference</option>
 					<option data-status="inactive" value="empty-mail" data-pen-url="https://codepen.io/carvacodes/pen/vRJywX">Empty Mail</option>
 					<option data-status="inactive" value="flying-with-the-sky-dragon" data-pen-url="https://codepen.io/carvacodes/pen/vrrjma">Flying With The Sky Dragon</option>
 					<option data-status="inactive" value="pixelator" data-pen-url="https://codepen.io/carvacodes/details/aYMNyB">Pixelator</option>
@@ -173,7 +164,6 @@
 					<option data-status="inactive" value="wireframe-cube" data-pen-url="https://codepen.io/carvacodes/pen/rVWXba">Wireframe Cube</option>
 					<option data-status="inactive" value="bezier-leaves" data-pen-url="https://codepen.io/carvacodes/pen/jPVrGG">Bezier Leaves</option>
 					<option data-status="inactive" value="bezier-star" data-pen-url="https://codepen.io/carvacodes/details/eNdqaJ">Bezier Star</option>
-					<option data-status="inactive" value="crt-magnet-interference" data-pen-url="https://codepen.io/carvacodes/details/rVMEqo">CRT Magnet Interference</option>
 					<option data-status="inactive" value="parabolic-curve" data-pen-url="https://codepen.io/carvacodes/pen/oXzRVQ">Parabolic Curve</option>
 					<option data-status="inactive" value="quadratic-curve" data-pen-url="https://codepen.io/carvacodes/pen/aOmMre">Quadratic Curve</option>
 					<option data-status="inactive" value="perfect-dark-letter-scanner" data-pen-url="https://codepen.io/carvacodes/details/WvGLGg">Perfect Dark-Style Letter Scanner</option>
@@ -183,10 +173,13 @@
 					<option data-status="inactive" value="warp-speed" data-pen-url="https://codepen.io/carvacodes/details/GgbgLe">Warp Speed</option>
 				</optgroup>
 			</select>
+			<button id="randomProject">Show a Random Project</button>
 		</div>
-		<div id="projectDescription">
+		<div class="project-description">
 			<h2 id="projectName">Lissajous Curves</h2>
-			<p id="descriptionText" class="small-paragraph">In this demo, an animated grid of lissajous curves are drawn to an HTML canvas using vanilla JavaScript.</p>
+			<p><span id='projectDescriptionText'>In this demo, an animated grid of lissajous curves are drawn to an HTML canvas using vanilla JavaScript.</span></p>
+			<p>GitHub: <span id="projectGitHubUrl"><a href="https://github.com/carvacodes/lissajous" target=_blank>https://github.com/carvacodes/lissajous</a></span></p>
+			<p id="projectTags"></p>
 		</div>
 		<iframe src="./submods/lissajous/markup.html" loading="lazy" allow="fullscreen" height="480" id="projectPreview"></iframe>
 	</section>

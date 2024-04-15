@@ -48,6 +48,11 @@ a:hover {
   transition: 0.1s linear all;
 }
 
+pre, code {
+  display: inline;
+  color: #0069c2;
+}
+
 ul {
   list-style: none;
 }
@@ -371,52 +376,6 @@ img {
   min-height: 766px;
   overflow: hidden;
 }
-.project:first-child {
-  margin-top: 0;
-}
-.project:last-child {
-  margin-bottom: 0;
-}
-.project .project-header .secondary {
-  font-style: italic;
-  font-weight: normal;
-  margin: 0;
-  font-size: 80%;
-}
-.project .project-image {
-  width: 100%;
-  min-height: 480px;
-  background-size: cover;
-  border-bottom: thin solid #8a8a8a;
-}
-.project .project-image a {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.project .project-text ul {
-  padding: 5px;
-  font-size: 80%;
-}
-.project .project-text ul a {
-  text-decoration: underline;
-}
-.project .project-text ul li {
-  margin-bottom: 1.2em;
-}
-.project .project-content .summary {
-  padding: 0 1em;
-  font-size: 75%;
-}
-.project .project-content .summary.summary-details {
-  width: 80%;
-  margin: 0 auto;
-  padding: 1rem;
-  border: thin solid #ccc;
-  font-family: "Open Sans", sans-serif;
-  font-size: 75%;
-  letter-spacing: 0.4px;
-}
 
 #projectPreview {
   display: block;
@@ -424,6 +383,13 @@ img {
   min-height: 66vh;
   border: thin solid gray;
   margin: 30px auto;
+}
+
+.project-description p, .project-description a {
+  font-size: 1rem;
+}
+.project-description a {
+  text-decoration: underline;
 }
 
 /********************/

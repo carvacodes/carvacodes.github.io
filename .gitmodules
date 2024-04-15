@@ -10,3 +10,6 @@
 [submodule "submods/moving-boxes"]
 	path = submods/moving-boxes
 	url = https://github.com/carvacodes/moving-boxes.git
+[submodule "submods/crt-magnet-interference"]
+	path = submods/crt-magnet-interference
+	url = https://github.com/carvacodes/crt-magnet-interference.git
