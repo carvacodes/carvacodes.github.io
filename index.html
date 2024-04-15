@@ -11,7 +11,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+ 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -30,12 +30,12 @@
 	    <a id="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
 	    <ul class="nav-container">
 	      <li class="logo"><a href="#top"><h5>carvacodes</h5></a></li>
-	      <li><a href="#top">home</a></li>
-	      <li><a href="#projects">projects</a></li>
-	      <li><a href="#tools">tools</a></li>
-	      <li><a href="#about">about</a></li>
-	      <li><a href="#contact">contact</a></li>
 	      <li><a href="resume">r&eacute;sum&eacute;</a></li>
+	      <li><a href="#contact">contact</a></li>
+	      <li><a href="#about">about</a></li>
+	      <li><a href="#tools">tools</a></li>
+	      <li><a href="#projects">projects</a></li>
+	      <li><a href="#top">home</a></li>
 	    </ul>
 	  </nav>
 	</header>
@@ -101,80 +101,94 @@
 	</div>
 	<section class="projects sub-container">
 		<a name="projects-section"></a>
-			<div class="projects-text">
-				<p>Choose a project to preview:</p>
-				<select name="project-select" id="projectSelect">
-					<optgroup label="Games">
-						<option value="symyn" data-pen-url="https://codepen.io/carvacodes/details/boBYOZ">Symyn</option>
-						<option value="tic-tac-toe" data-pen-url="https://codepen.io/carvacodes/pen/veYdmo">Tic-Tac-Toe</option>
-						<option value="pong" data-pen-url="https://codepen.io/carvacodes/details/BjwOam">Pong</option>
-						<option value="moving-boxes" data-pen-url="https://codepen.io/carvacodes/pen/ZGBdea">Moving Boxes</option>
-					</optgroup>
-					<optgroup label="Tests, Proof-of-Concepts, and Educational">
-						<option value="css-timing-functions" data-pen-url="https://codepen.io/carvacodes/pen/qopoxG">CSS Timing Functions</option>
-						<option value="canvas-composite-operations" data-pen-url="https://codepen.io/carvacodes/pen/gpGKxa">Canvas Composite Operations</option>
-						<option value="dynamic-lighted-buttons" data-pen-url="https://codepen.io/carvacodes/pen/LYGmxMX">Dynamic Lighted Buttons</option>
-						<option value="delayed-flip-grid" data-pen-url="https://codepen.io/carvacodes/pen/ZxoVjj">Delayed Flip Grid</option>
-						<option value="grid-ui-3d" data-pen-url="https://codepen.io/carvacodes/details/eMGBGV">3D Skewed Grid UI</option>
-						<option value="canvas-under-elements" data-pen-url="https://codepen.io/carvacodes/pen/pvMjXq">Canvas Under Elements</option>
-						<option value="split-sliders" data-pen-url="https://codepen.io/carvacodes/pen/yeQgqK">Split Sliders</option>
-						<option value="css-colors" data-pen-url="https://codepen.io/carvacodes/details/doRxaE">CSS Colors</option>
-					</optgroup>
-					<optgroup label="Spinners">
-						<option value="cuboid-spinner" data-pen-url="https://codepen.io/carvacodes/details/aYMNyB">Cuboid</option>
-						<option value="square-x-spinner" data-pen-url="https://codepen.io/carvacodes/pen/gejvem">Square X</option>
-						<option value="wiggle" data-pen-url="https://codepen.io/carvacodes/details/MVvjzm">Wiggle</option>
-						<option value="css-rotating-wheel-spinner" data-pen-url="https://codepen.io/carvacodes/pen/mPyRzy">Rotating Wheel (CSS Only)</option>
-						<option value="amoeboid" data-pen-url="https://codepen.io/carvacodes/pen/OMrZqz">Amoeboid</option>
-						<option value="canvas-spinner-03" data-pen-url="https://codepen.io/carvacodes/pen/gpwGgy">Canvas Spinner 03</option>
-						<option value="canvas-spinner-02" data-pen-url="https://codepen.io/carvacodes/pen/gpwGOZ">Canvas Spinner 02</option>
-						<option value="canvas-spinner-01" data-pen-url="https://codepen.io/carvacodes/details/pJErRB">Canvas Spinner 01</option>
-						<option value="blue-silhouette-spinner" data-pen-url="https://codepen.io/carvacodes/pen/qdpBMd">Blue Silhouette</option>
-					</optgroup>
-					<optgroup label="Fun, Artsy, and Miscellaneous">
-						<option value="empty-mail" data-pen-url="https://codepen.io/carvacodes/pen/vRJywX">Empty Mail</option>
-						<option value="flying-with-the-sky-dragon" data-pen-url="https://codepen.io/carvacodes/pen/vrrjma">Flying With The Sky Dragon</option>
-						<option value="pixelator" data-pen-url="https://codepen.io/carvacodes/details/aYMNyB">Pixelator</option>
-						<option value="emulating-pixelisa" data-pen-url="https://codepen.io/carvacodes/details/YadWmG">Emulating Pixelisa</option>
-						<option value="minimalist-clock-02" data-pen-url="https://codepen.io/carvacodes/pen/wmqXMG">Minimalist Clock 02</option>
-						<option value="minimalist-clock-01" data-pen-url="https://codepen.io/carvacodes/pen/dzwoNw">Minimalist Clock 01</option>
-						<option value="digital-clock" data-pen-url="https://codepen.io/carvacodes/details/qdmbGB">Digital Clock</option>
-						<option value="pomodoro-clock" data-pen-url="https://codepen.io/carvacodes/details/BwBVWQ">pomodoro Clock</option>
-						<option value="ride" data-pen-url="https://codepen.io/carvacodes/pen/jzyGYo">Ride</option>
-						<option value="crawling-lines" data-pen-url="https://codepen.io/carvacodes/pen/yedmvY">Crawling Lines</option>
-						<option value="star-whirl" data-pen-url="https://codepen.io/carvacodes/pen/ZQPmPe">Star Whirl</option>
-						<option value="css-panda-spinner" data-pen-url="https://codepen.io/carvacodes/details/WwbpvZ">CSS Panda</option>
-						<option value="wink-spinner" data-pen-url="https://codepen.io/carvacodes/pen/EPLwpY">Wink</option>
-						<option value="falling-for-you" data-pen-url="https://codepen.io/carvacodes/details/rxvGyo">Falling For You</option>
-						<option value="down-the-drain" data-pen-url="https://codepen.io/carvacodes/pen/YwEgro">Down the Drain</option>
-						<option value="color-blobs" data-pen-url="https://codepen.io/carvacodes/pen/MKKgrE">Color Blobs</option>
-						<option value="reflective-particles" data-pen-url="https://codepen.io/carvacodes/pen/VLyMgN">Reflective Particles</option>
-						<option value="wind-waker-tower-of-the-gods" data-pen-url="https://codepen.io/carvacodes/pen/xGpxxM">Wind Waker: Tower of the Gods Light Rays</option>
-						<option value="wind-waker-ocean" data-pen-url="https://codepen.io/carvacodes/details/OVgVwQ">Wind Waker: Ocean</option>
-						<option value="magnetic-lines-of-force" data-pen-url="https://codepen.io/carvacodes/pen/jPLgbO">Magnetic Lines of Force</option>
-						<option value="springy-bezier-curves" data-pen-url="https://codepen.io/carvacodes/pen/MwvEzz">Springy Bezier Curves</option>
-						<option value="wireframe-triangles" data-pen-url="https://codepen.io/carvacodes/pen/BNdBMJ">Wireframe Triangles</option>
-						<option value="grayscale-triangles" data-pen-url="https://codepen.io/carvacodes/details/bdrdKa">Grayscale Triangles</option>
-						<option value="sketch-tron-6000" data-pen-url="https://codepen.io/carvacodes/pen/eNWGRw">Sketch-tron 6000</option>
-						<option value="pastel-orbits" data-pen-url="https://codepen.io/carvacodes/details/xGgjGe">Pastel Orbits</option>
-						<option value="bubbles" data-pen-url="https://codepen.io/carvacodes/pen/aOpqpm">Bubbles</option>
-						<option value="particle-cyclone" data-pen-url="https://codepen.io/carvacodes/details/EjZNWN">Particle Cyclone</option>
-						<option value="wireframe-cube" data-pen-url="https://codepen.io/carvacodes/pen/rVWXba">Wireframe Cube</option>
-						<option value="bezier-leaves" data-pen-url="https://codepen.io/carvacodes/pen/jPVrGG">Bezier Leaves</option>
-						<option value="bezier-star" data-pen-url="https://codepen.io/carvacodes/details/eNdqaJ">Bezier Star</option>
-						<option value="crt-magnet-interference" data-pen-url="https://codepen.io/carvacodes/details/rVMEqo">CRT Magnet Interference</option>
-						<option value="parabolic-curve" data-pen-url="https://codepen.io/carvacodes/pen/oXzRVQ">Parabolic Curve</option>
-						<option value="quadratic-curve" data-pen-url="https://codepen.io/carvacodes/pen/aOmMre">Quadratic Curve</option>
-						<option value="perfect-dark-letter-scanner" data-pen-url="https://codepen.io/carvacodes/details/WvGLGg">Perfect Dark-Style Letter Scanner</option>
-						<option value="neon-grid" data-pen-url="https://codepen.io/carvacodes/pen/JdRPzw">Neon Grid</option>
-						<option value="neon-dots" data-pen-url="https://codepen.io/carvacodes/pen/pJbOvB">Neon Dots</option>
-						<option value="after-dark-sim" data-pen-url="https://codepen.io/carvacodes/pen/JoqdZq">After Dark Screen Saver Sim</option>
-						<option value="warp-speed" data-pen-url="https://codepen.io/carvacodes/details/GgbgLe">Warp Speed</option>
-					</optgroup>
-				</select>
-				<div id="projectPreview">
-				</div>
-			</div>
+
+		<!-- LEFT OFF -->
+		<!--
+			create a new UI for this section
+			add a "random project" button
+			add a "call to action" to inform the user what to do
+			add a description field (populate from the README.md for the file?)
+			implement tags for filtering projects
+		-->
+
+		<div class="projects-text">
+			<p>Choose a project to preview:</p>
+			<select name="project-select" id="projectSelect">
+				<optgroup label="Games">
+					<option data-status="active" value="moving-boxes" data-pen-url="https://codepen.io/carvacodes/pen/ZGBdea">Moving Boxes</option>
+					<option data-status="inactive" value="pong" data-pen-url="https://codepen.io/carvacodes/details/BjwOam">Pong</option>
+					<option data-status="inactive" value="symyn" data-pen-url="https://codepen.io/carvacodes/details/boBYOZ">Symyn</option>
+					<option data-status="inactive" value="tic-tac-toe" data-pen-url="https://codepen.io/carvacodes/pen/veYdmo">Tic-Tac-Toe</option>
+				</optgroup>
+				<optgroup label="Tests, Proof-of-Concepts, and Educational">
+					<option data-status="active" value="canvas-composite-operations" data-pen-url="https://codepen.io/carvacodes/pen/gpGKxa">Canvas Composite Operations</option>
+					<option data-status="inactive" value="canvas-under-elements" data-pen-url="https://codepen.io/carvacodes/pen/pvMjXq">Canvas Under Elements</option>
+					<option data-status="inactive" value="css-colors" data-pen-url="https://codepen.io/carvacodes/details/doRxaE">CSS Colors</option>
+					<option data-status="inactive" value="css-timing-functions" data-pen-url="https://codepen.io/carvacodes/pen/qopoxG">CSS Timing Functions</option>
+					<option data-status="inactive" value="delayed-flip-grid" data-pen-url="https://codepen.io/carvacodes/pen/ZxoVjj">Delayed Flip Grid</option>
+					<option data-status="active" value="dynamic-lighted-buttons" data-pen-url="https://codepen.io/carvacodes/pen/LYGmxMX">Dynamic Lighted Buttons</option>
+					<option data-status="inactive" value="grid-ui-3d" data-pen-url="https://codepen.io/carvacodes/details/eMGBGV">3D Skewed Grid UI</option>
+					<option data-status="inactive" value="split-sliders" data-pen-url="https://codepen.io/carvacodes/pen/yeQgqK">Split Sliders</option>
+				</optgroup>
+				<optgroup label="Spinners">
+					<option data-status="inactive" value="amoeboid" data-pen-url="https://codepen.io/carvacodes/pen/OMrZqz">Amoeboid</option>
+					<option data-status="inactive" value="blue-silhouette-spinner" data-pen-url="https://codepen.io/carvacodes/pen/qdpBMd">Blue Silhouette</option>
+					<option data-status="inactive" value="canvas-spinner-03" data-pen-url="https://codepen.io/carvacodes/pen/gpwGgy">Canvas Spinner 03</option>
+					<option data-status="inactive" value="canvas-spinner-02" data-pen-url="https://codepen.io/carvacodes/pen/gpwGOZ">Canvas Spinner 02</option>
+					<option data-status="inactive" value="canvas-spinner-01" data-pen-url="https://codepen.io/carvacodes/details/pJErRB">Canvas Spinner 01</option>
+					<option data-status="inactive" value="css-rotating-wheel-spinner" data-pen-url="https://codepen.io/carvacodes/pen/mPyRzy">Rotating Wheel (CSS Only)</option>
+					<option data-status="inactive" value="cuboid-spinner" data-pen-url="https://codepen.io/carvacodes/details/aYMNyB">Cuboid</option>
+					<option data-status="inactive" value="square-x-spinner" data-pen-url="https://codepen.io/carvacodes/pen/gejvem">Square X</option>
+					<option data-status="inactive" value="wiggle" data-pen-url="https://codepen.io/carvacodes/details/MVvjzm">Wiggle</option>
+				</optgroup>
+				<optgroup label="Fun, Artsy, and Miscellaneous">
+					<option data-status="active" value="lissajous" selected data-pen-url="">Lissajous</option>
+					<option data-status="inactive" value="empty-mail" data-pen-url="https://codepen.io/carvacodes/pen/vRJywX">Empty Mail</option>
+					<option data-status="inactive" value="flying-with-the-sky-dragon" data-pen-url="https://codepen.io/carvacodes/pen/vrrjma">Flying With The Sky Dragon</option>
+					<option data-status="inactive" value="pixelator" data-pen-url="https://codepen.io/carvacodes/details/aYMNyB">Pixelator</option>
+					<option data-status="inactive" value="emulating-pixelisa" data-pen-url="https://codepen.io/carvacodes/details/YadWmG">Emulating Pixelisa</option>
+					<option data-status="inactive" value="minimalist-clock-02" data-pen-url="https://codepen.io/carvacodes/pen/wmqXMG">Minimalist Clock 02</option>
+					<option data-status="inactive" value="minimalist-clock-01" data-pen-url="https://codepen.io/carvacodes/pen/dzwoNw">Minimalist Clock 01</option>
+					<option data-status="inactive" value="digital-clock" data-pen-url="https://codepen.io/carvacodes/details/qdmbGB">Digital Clock</option>
+					<option data-status="inactive" value="pomodoro-clock" data-pen-url="https://codepen.io/carvacodes/details/BwBVWQ">pomodoro Clock</option>
+					<option data-status="inactive" value="ride" data-pen-url="https://codepen.io/carvacodes/pen/jzyGYo">Ride</option>
+					<option data-status="inactive" value="crawling-lines" data-pen-url="https://codepen.io/carvacodes/pen/yedmvY">Crawling Lines</option>
+					<option data-status="inactive" value="star-whirl" data-pen-url="https://codepen.io/carvacodes/pen/ZQPmPe">Star Whirl</option>
+					<option data-status="inactive" value="css-panda-spinner" data-pen-url="https://codepen.io/carvacodes/details/WwbpvZ">CSS Panda</option>
+					<option data-status="inactive" value="wink-spinner" data-pen-url="https://codepen.io/carvacodes/pen/EPLwpY">Wink</option>
+					<option data-status="inactive" value="falling-for-you" data-pen-url="https://codepen.io/carvacodes/details/rxvGyo">Falling For You</option>
+					<option data-status="inactive" value="down-the-drain" data-pen-url="https://codepen.io/carvacodes/pen/YwEgro">Down the Drain</option>
+					<option data-status="inactive" value="color-blobs" data-pen-url="https://codepen.io/carvacodes/pen/MKKgrE">Color Blobs</option>
+					<option data-status="inactive" value="reflective-particles" data-pen-url="https://codepen.io/carvacodes/pen/VLyMgN">Reflective Particles</option>
+					<option data-status="inactive" value="wind-waker-tower-of-the-gods" data-pen-url="https://codepen.io/carvacodes/pen/xGpxxM">Wind Waker: Tower of the Gods Light Rays</option>
+					<option data-status="inactive" value="wind-waker-ocean" data-pen-url="https://codepen.io/carvacodes/details/OVgVwQ">Wind Waker: Ocean</option>
+					<option data-status="inactive" value="magnetic-lines-of-force" data-pen-url="https://codepen.io/carvacodes/pen/jPLgbO">Magnetic Lines of Force</option>
+					<option data-status="inactive" value="springy-bezier-curves" data-pen-url="https://codepen.io/carvacodes/pen/MwvEzz">Springy Bezier Curves</option>
+					<option data-status="inactive" value="wireframe-triangles" data-pen-url="https://codepen.io/carvacodes/pen/BNdBMJ">Wireframe Triangles</option>
+					<option data-status="inactive" value="grayscale-triangles" data-pen-url="https://codepen.io/carvacodes/details/bdrdKa">Grayscale Triangles</option>
+					<option data-status="inactive" value="sketch-tron-6000" data-pen-url="https://codepen.io/carvacodes/pen/eNWGRw">Sketch-tron 6000</option>
+					<option data-status="inactive" value="pastel-orbits" data-pen-url="https://codepen.io/carvacodes/details/xGgjGe">Pastel Orbits</option>
+					<option data-status="inactive" value="bubbles" data-pen-url="https://codepen.io/carvacodes/pen/aOpqpm">Bubbles</option>
+					<option data-status="inactive" value="particle-cyclone" data-pen-url="https://codepen.io/carvacodes/details/EjZNWN">Particle Cyclone</option>
+					<option data-status="inactive" value="wireframe-cube" data-pen-url="https://codepen.io/carvacodes/pen/rVWXba">Wireframe Cube</option>
+					<option data-status="inactive" value="bezier-leaves" data-pen-url="https://codepen.io/carvacodes/pen/jPVrGG">Bezier Leaves</option>
+					<option data-status="inactive" value="bezier-star" data-pen-url="https://codepen.io/carvacodes/details/eNdqaJ">Bezier Star</option>
+					<option data-status="inactive" value="crt-magnet-interference" data-pen-url="https://codepen.io/carvacodes/details/rVMEqo">CRT Magnet Interference</option>
+					<option data-status="inactive" value="parabolic-curve" data-pen-url="https://codepen.io/carvacodes/pen/oXzRVQ">Parabolic Curve</option>
+					<option data-status="inactive" value="quadratic-curve" data-pen-url="https://codepen.io/carvacodes/pen/aOmMre">Quadratic Curve</option>
+					<option data-status="inactive" value="perfect-dark-letter-scanner" data-pen-url="https://codepen.io/carvacodes/details/WvGLGg">Perfect Dark-Style Letter Scanner</option>
+					<option data-status="inactive" value="neon-grid" data-pen-url="https://codepen.io/carvacodes/pen/JdRPzw">Neon Grid</option>
+					<option data-status="inactive" value="neon-dots" data-pen-url="https://codepen.io/carvacodes/pen/pJbOvB">Neon Dots</option>
+					<option data-status="inactive" value="after-dark-sim" data-pen-url="https://codepen.io/carvacodes/pen/JoqdZq">After Dark Screen Saver Sim</option>
+					<option data-status="inactive" value="warp-speed" data-pen-url="https://codepen.io/carvacodes/details/GgbgLe">Warp Speed</option>
+				</optgroup>
+			</select>
+		</div>
+		<div id="projectDescription">
+			<h2 id="projectName">Lissajous Curves</h2>
+			<p id="descriptionText" class="small-paragraph">In this demo, an animated grid of lissajous curves are drawn to an HTML canvas using vanilla JavaScript.</p>
+		</div>
+		<iframe src="./submods/lissajous/markup.html" loading="lazy" allow="fullscreen" height="480" id="projectPreview"></iframe>
 	</section>
 
 	<!--***************************************************************************************************************-->

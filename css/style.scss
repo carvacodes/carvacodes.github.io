@@ -107,6 +107,10 @@ img {
   }
 }
 
+.small-paragraph {
+  font-size: 1rem;
+}
+
 /*********************/
 /*                   */
 /*    Top Nav Bar    */
@@ -382,6 +386,13 @@ img {
       letter-spacing: 0.4px;
     }
   }
+}
+#projectPreview {
+  display: block;
+  width: 100vw;
+  min-height: 66vh;
+  border: thin solid gray;
+  margin: 30px auto;
 }
 
 /********************/

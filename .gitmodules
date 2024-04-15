@@ -1,3 +1,12 @@
 [submodule "submods/dynamic-lighted-buttons"]
 	path = submods/dynamic-lighted-buttons
 	url = https://github.com/carvacodes/dynamic-lighted-buttons.git
+[submodule "submods/lissajous"]
+	path = submods/lissajous
+	url = https://github.com/carvacodes/lissajous.git
+[submodule "canvas-composite-operations"]
+	path = canvas-composite-operations
+	url = https://github.com/carvacodes/canvas-composite-operations.git
+[submodule "submods/moving-boxes"]
+	path = submods/moving-boxes
+	url = https://github.com/carvacodes/moving-boxes.git

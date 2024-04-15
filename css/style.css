@@ -118,6 +118,10 @@ img {
   color: #8a8a8a;
 }
 
+.small-paragraph {
+  font-size: 1rem;
+}
+
 /*********************/
 /*                   */
 /*    Top Nav Bar    */
@@ -412,6 +416,14 @@ img {
   font-family: "Open Sans", sans-serif;
   font-size: 75%;
   letter-spacing: 0.4px;
+}
+
+#projectPreview {
+  display: block;
+  width: 100vw;
+  min-height: 66vh;
+  border: thin solid gray;
+  margin: 30px auto;
 }
 
 /********************/
