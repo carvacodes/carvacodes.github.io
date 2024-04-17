@@ -213,7 +213,7 @@ img {
   }
 }
 .about-splash {
-  background: url('https://ajcjazz.com/portfolio_images/art_pic_large.jpg') no-repeat center 20%/cover;
+  background: url('../images/nathan-dumlao-c2Y16tC3yO8-unsplash.jpg') no-repeat center 50%/cover;
   .splash-inner {
     background-color: rgba(0,0,0,0.6);
   }
@@ -374,14 +374,14 @@ img {
 }
 .about-content {
   width: 100%;
-  max-width: 755px;
+  max-width: 90vw;
   margin: 0 auto;
   min-height: 480px;
-  display: table;
+  display: block;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
   .about-text {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
     font-size: 90%;
     padding: 5px;
     text-align: left;
@@ -402,6 +402,11 @@ img {
       bottom: -15px;
       right: 0;
     }
+  }
+  .about-pic img {
+    max-height: 66vh;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -558,8 +563,18 @@ footer {
       justify-content: center;
     }
   }
+  .about-content {
+    width: 100%;
+    max-width: 85vw;
+    margin: 10px auto;
+    display: flex;
+    .about-pic img {
+      max-width: 360px;
+      vertical-align: middle;
+      margin: 0 auto;
+    }
+  }
 }
-
 
 @media (min-width: 1600px) {
   .splash, .page-header-splash, .about-content {
@@ -567,5 +582,8 @@ footer {
   }
   .splash h1, .page-header-splash h1 {
     font-size: 400%;
+  }
+  .about-content {
+    max-width: 75vw;
   }
 }
