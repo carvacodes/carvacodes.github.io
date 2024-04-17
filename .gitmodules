@@ -13,3 +13,6 @@
 [submodule "submods/crt-magnet-interference"]
 	path = submods/crt-magnet-interference
 	url = https://github.com/carvacodes/crt-magnet-interference.git
+[submodule "submods/symyn"]
+	path = submods/symyn
+	url = https://github.com/carvacodes/symyn.git

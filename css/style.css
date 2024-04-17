@@ -380,7 +380,7 @@ img {
 #projectPreview {
   display: block;
   width: 100vw;
-  min-height: 66vh;
+  min-height: 75vh;
   border: thin solid gray;
   margin: 30px auto;
 }

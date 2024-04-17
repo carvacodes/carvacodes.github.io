@@ -126,6 +126,7 @@ function convertMarkdownToHtml(markdownText) {
 let projectData = {
   'categories': [
     'Games',
+    'UI/UX',
     'Tests, Proof-of-Concepts, and Educational',
     'Spinners',
     'Fun, Artsy, and Miscellaneous'
@@ -150,47 +151,56 @@ let projectData = {
   'projectList': {
     'dynamic-lighted-buttons': {
       'optValue': 'dynamic-lighted-buttons',
-      'category': '1',
+      'category': 'UI/UX',
       'displayName': 'Dynamic Lighted Buttons',
       'descriptionText': "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
       'gitHubUrl': 'https://github.com/carvacodes/dynamic-lighted-buttons',
-      'tags': [8, 2]
+      'tags': ['Vanilla JavaScript', 'Sass/SCSS']
     },
     'canvas-composite-operations':
     {
       'optValue': 'canvas-composite-operations',
-      'category': '1',
+      'category': 'UI/UX',
       'displayName': 'Canvas Composite Operations',
       'descriptionText': "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface.",
       'gitHubUrl': 'https://github.com/carvacodes/canvas-composite-operations',
-      'tags': [5, 8, 9, 10]
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'JavaScript Libraries', 'dat.GUI', 'UI/UX', 'Gradients']
     },
     'lissajous':
     {
       'optValue': 'lissajous',
-      'category': '3',
+      'category': 'Fun, Artsy, and Miscellaneous',
       'displayName': 'Lissajous',
       'descriptionText': "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
       'gitHubUrl': 'https://github.com/carvacodes/lissajous',
-      'tags': [5, 8, 10]
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
     },
     'moving-boxes':
     {
       'optValue': 'moving-boxes',
-      'category': '1',
+      'category': 'UI/UX',
       'displayName': 'Moving Boxes Game',
       'descriptionText': "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
       'gitHubUrl': 'https://github.com/carvacodes/moving-boxes',
-      'tags': [5, 8]
+      'tags': ['HTML Canvas', 'Vanilla JavaScript']
     },
     'crt-magnet-interference':
     {
       'optValue': 'crt-magnet-interference',
-      'category': '3',
+      'category': 'Fun, Artsy, and Miscellaneous',
       'displayName': 'CRT Magnet Interference',
       'descriptionText': "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to freeze.",
       'gitHubUrl': 'https://github.com/carvacodes/crt-magnet-interference',
-      'tags': [5, 8, 10]
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
+    },
+    'symyn':
+    {
+      'optValue': 'symyn',
+      'category': 'Games',
+      'displayName': 'Symyn',
+      'descriptionText': 'A modern clone of the classic "Simon" game, using the HTML5 `AudioContext` API for sound.',
+      'gitHubUrl': 'https://github.com/carvacodes/symyn',
+      'tags': ['Sass/SCSS', 'JavaScript', 'jQuery', 'AudioContext']
     }
   }
 }
