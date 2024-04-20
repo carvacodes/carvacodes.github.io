@@ -35,6 +35,19 @@ $(document).ready(function(){
     projectSelect.trigger('change');
   });
 
+  // update the select list to gray out projects that are not currently available
+  let projectSelectEl = projectSelect[0];
+  let opts = projectSelectEl.getElementsByTagName('OPTION');
+  let optsArray = [].slice.call(opts)
+  optsArray.forEach(el => {
+    if (el.getAttribute('data-status') == 'inactive') {
+      el.disabled = true;
+      el.innerText += ' - Coming Soon!';
+      el.style.fontStyle = 'italic';
+      el.style.color = '#bbb';
+    }
+  });
+
   // global click operations
   $(window).click(function(e){
     let el = e.target;  // the element targeted by the click/tap
@@ -54,20 +67,11 @@ $(document).ready(function(){
         $(".top-nav .nav-container").slideUp();
       }
     }
-  })
 
-  // update the select list to gray out projects that are not currently available
-  let projectSelectEl = projectSelect[0];
-  let opts = projectSelectEl.getElementsByTagName('OPTION');
-  let optsArray = [].slice.call(opts)
-  optsArray.forEach(el => {
-    if (el.getAttribute('data-status') == 'inactive') {
-      el.disabled = true;
-      el.innerText += ' - Coming Soon!';
-      el.style.fontStyle = 'italic';
-      el.style.color = '#bbb';
+    if (el.id.match(/exp_.*/)) {
+      handleExperienceClick(el);
     }
-  });
+  })
 
   // Smooth scrolling to on-page links
   // Select all links with hashes
@@ -114,6 +118,296 @@ $(document).ready(function(){
     }
   }
 });
+
+function handleExperienceClick(el) {
+  if (el.classList.contains('active')) {
+    return;
+  }
+  let elGroup = $(el).siblings('li');
+  let groupName = el.id.match(/exp_(\w*)/)[1];
+
+  // set classes for categories
+  $(elGroup).removeClass('active');
+  $(el).addClass('active');
+
+  // set classes for paragraph parents and organize paragraph groups
+  let paraParent = $('div.achieving');
+  let paraGroup = $('div.achieving > div');
+
+  let utilParent = $('div.utilizing');
+
+  utilParent.slideUp(500, () => { populateUtils(groupName); });
+  
+  paraParent.slideUp(500, ()=>{
+    paraGroup.slideUp(100, () => {
+      let paragraph = $('#ach_' + groupName);
+
+      paragraph.addClass('active');
+      paragraph.slideDown(100, () => {
+        paraParent.slideDown(500, () => {
+          utilParent.slideDown(500);
+        });
+      });
+    });
+  });
+}
+
+function populateUtils(groupName) {
+  // create a list of related <li> elements from the groupName passed in
+  let categories = [
+    /*0*/ 'uiux',
+    /*1*/ 'tools',
+    /*2*/ 'techwriting',
+    /*3*/ 'games',
+    /*4*/ 'graphic',
+    /*5*/ 'automation',
+    /*6*/ 'web',
+    /*7*/ 'selfstudy'
+  ];
+
+  let groupNum = categories.indexOf(groupName);
+
+  // all utilizations will have a display name and a string indicating the categories to be included in
+  let utilLangs = [
+    {
+      name: 'HTML 5',
+      categoryList: '01234567'
+    },
+    {
+      name: 'Haml',
+      categoryList: '07'
+    },
+    {
+      name: 'CSS',
+      categoryList: '03467',
+    },
+    {
+      name: 'Less',
+      categoryList: '03467',
+    },
+    {
+      name: 'Sass/SCSS',
+      categoryList: '03467',
+    },
+    {
+      name: 'JavaScript',
+      categoryList: '0123467'
+    },
+    {
+      name: 'jQuery',
+      categoryList: '03467'
+    },
+    {
+      name: 'CoffeeScript',
+      categoryList: '0167'
+    },
+    {
+      name: 'React',
+      categoryList: '067'
+    },
+    {
+      name: 'ExpressJS',
+      categoryList: '067'
+    },
+    {
+      name: 'KnockoutJS',
+      categoryList: '067'
+    },
+    {
+      name: 'EmberJS',
+      categoryList: '67'
+    },
+    {
+      name: 'Angular',
+      categoryList: '67'
+    },
+    {
+      name: 'Laravel',
+      categoryList: '067'
+    },
+    {
+      name: 'GML (Game Maker Language)',
+      categoryList: '37'
+    },
+    {
+      name: 'C#',
+      categoryList: '01237'
+    },
+    {
+      name: 'AutoHotKey (AHK)',
+      categoryList: '01247'
+    },
+    {
+      name: 'Markdown',
+      categoryList: '012367'
+    },
+    {
+      name: 'C++',
+      categoryList: '7'
+    },
+    {
+      name: 'Ruby',
+      categoryList: '7'
+    },
+    {
+      name: 'Python',
+      categoryList: '7'
+    },
+    {
+      name: 'Bash',
+      categoryList: '012467'
+    },
+    {
+      name: 'Windows Command Line/PowerShell',
+      categoryList: '012467'
+    },
+    {
+      name: 'YAML',
+      categoryList: '0127'
+    },
+    {
+      name: 'TypeScript',
+      categoryList: '7'
+    }
+  ];
+  let utilApps = [
+    {
+      name: 'XAMPP',
+      categoryList: '0267'
+    },
+    {
+      name: 'AMPPS',
+      categoryList: '0267'
+    },
+    {
+      name: 'DocFX',
+      categoryList: '012367'
+    },
+    {
+      name: 'Git',
+      categoryList: '012367'
+    },
+    {
+      name: 'GitHub',
+      categoryList: '0123467'
+    },
+    {
+      name: 'GitHub Actions Workflows',
+      categoryList: '01237'
+    },
+    {
+      name: 'Google Cloud Platform',
+      categoryList: '01237'
+    },
+    {
+      name: 'Unity',
+      categoryList: '012367'
+    },
+    {
+      name: 'Game Maker',
+      categoryList: '347'
+    },
+    {
+      name: 'InkScape',
+      categoryList: '0123467'
+    },
+    {
+      name: 'IrfanView',
+      categoryList: '013467'
+    },
+    {
+      name: 'GIMP',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Adobe Creative Suite',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Microsoft Office Suite',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Visual Studio',
+      categoryList: '01237'
+    },
+    {
+      name: 'Visual Studio Code',
+      categoryList: '0123467'
+    },
+    {
+      name: '.NET 6+',
+      categoryList: '0127'
+    },
+    {
+      name: 'Sublime Text',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Audacity',
+      categoryList: '012367'
+    },
+    {
+      name: 'OBS (Open Broadcast Software)',
+      categoryList: '012367'
+    },
+    {
+      name: 'Procreate',
+      categoryList: '013467'
+    },
+    {
+      name: 'SnagIt',
+      categoryList: '01247'
+    },
+    {
+      name: 'SnagIt',
+      categoryList: '01247'
+    },
+    {
+      name: 'Microsoft Visio',
+      categoryList: '01247'
+    },
+    {
+      name: 'Draw.io',
+      categoryList: '01247'
+    },
+    {
+      name: 'Blender',
+      categoryList: '347'
+    }
+  ];
+
+  let newItemList = [];
+  for (let i = 0; i < utilLangs.length; i++) {
+    let lang = utilLangs[i];
+    if (lang.categoryList.indexOf(groupNum) >= 0) {
+      newItemList.push({itemData: lang, itemType: 'lang'});
+    }
+  }
+  for (let i = 0; i < utilApps.length; i++) {
+    let app = utilApps[i];
+    if (app.categoryList.indexOf(groupNum) >= 0) {
+      newItemList.push({itemData: app, itemType: 'app'});
+    }
+  }
+
+  let util = $('#util');
+  $(util)[0].innerHTML = '';
+
+  for (let i = 0; i < newItemList.length; i++) {
+    let item = newItemList[i];
+    let li = getNewLi(item);
+    $(util).append(li);
+  }
+}
+
+function getNewLi(item) {
+  let li = document.createElement('LI');
+  let i = item;
+  $(li).addClass(i.itemType);
+  li.innerText = i.itemData.name;
+  return li;
+}
 
 function convertMarkdownToHtml(markdownText) {
   let text = markdownText.replace('<', '`');
