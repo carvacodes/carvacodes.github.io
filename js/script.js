@@ -1,13 +1,63 @@
 $(document).ready(function(){
-  // expand or collapse the nav when the user clicks/taps the nav menu
-  // also, collapse the nav if the user clicks anywhere on the page
+  // projects view: reload the iframe and change its src attribute when a new project is selected
+  let projectPreview = $('#projectPreview')[0];
+  let projectSelect = $('#projectSelect');
+
+  // on changing the project selector, swap the iframe src and update the header/description fields
+  projectSelect.change(function(e){
+    let projectName = this.value;
+    let project = projectData.projectList[projectName];
+    let projectMarkupUrl = './submods/' + projectName + '/markup.html'
+    projectPreview.setAttribute('src', projectMarkupUrl);
+
+    let projectElements = {
+      displayName: $('#projectName')[0],
+      descriptionText: $('#projectDescriptionText')[0],
+      gitHubUrl: $('#projectGitHubUrl a')[0],
+      tags: $('#projectTags')[0]
+    }
+
+    projectElements.displayName.innerText = project.displayName;
+    projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
+    projectElements.gitHubUrl.innerText = project.gitHubUrl;
+    projectElements.gitHubUrl.href = project.gitHubUrl;
+  });
+
+  // random project selector button
+  let randomProjectButton = $('#randomProject');
+  randomProjectButton.click((e) => {
+    let projectNameArray = [];
+    for (let proj in projectData.projectList) {
+      if (proj != projectSelect[0].value) { projectNameArray.push(proj); }
+    }
+    let selection = projectNameArray[Math.floor(Math.random() * projectNameArray.length)];
+    projectSelect.val(selection);
+    projectSelect.trigger('change');
+  });
+
+  // update the select list to gray out projects that are not currently available
+  let projectSelectEl = projectSelect[0];
+  let opts = projectSelectEl.getElementsByTagName('OPTION');
+  let optsArray = [].slice.call(opts)
+  optsArray.forEach(el => {
+    if (el.getAttribute('data-status') == 'inactive') {
+      el.disabled = true;
+      el.innerText += ' - Coming Soon!';
+      el.style.fontStyle = 'italic';
+      el.style.color = '#bbb';
+    }
+  });
+
+  // global click operations
   $(window).click(function(e){
-    var el = e.target;  // the element targeted by the click/tap
+    let el = e.target;  // the element targeted by the click/tap
 
     // elements to watch for nav toggling
-    var navToggle = document.getElementById('nav-toggle');    // the nav bar
-    var navToggleI = navToggle.querySelector('i');            // the hamburger icon
+    let navToggle = document.getElementById('nav-toggle');    // the nav bar
+    let navToggleI = navToggle.querySelector('i');            // the hamburger icon
 
+    // expand or collapse the nav when the user clicks/taps the nav menu
+    // also, collapse the nav if the user clicks anywhere on the page
     // used a custom toggle instead of jQuery's built-in, since the nav should only be hidden when the user clicks anywhere on the screen except the nav
     if (el == navToggle || el == navToggleI) {
       $(".top-nav .nav-container").slideToggle();
@@ -16,6 +66,10 @@ $(document).ready(function(){
       if ($(".top-nav .nav-container").css('display') !== 'none') {
         $(".top-nav .nav-container").slideUp();
       }
+    }
+
+    if (el.id.match(/exp_.*/)) {
+      handleExperienceClick(el);
     }
   })
 
@@ -29,7 +83,7 @@ $(document).ready(function(){
       location.hostname == this.hostname
     ) {
       // Figure out element to scroll to
-      var target = $(this.hash);
+      let target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       // Does a scroll target exist?
       if (target.length) {
@@ -40,7 +94,7 @@ $(document).ready(function(){
         }, 1000, function() {
           // Callback after animation
           // Must change focus!
-          var $target = $(target);
+          let $target = $(target);
           $target.focus();
           if ($target.is(":focus")) { // Checking if the target was focused
             return false;
@@ -54,8 +108,8 @@ $(document).ready(function(){
   });
 
   // address the viewport height bug affecting iOS 7.x devices
-  var allEls = document.body.querySelector("*");
-  for (var i = 0; i < allEls.length; i++) {
+  let allEls = document.body.querySelector("*");
+  for (let i = 0; i < allEls.length; i++) {
     if (window.getComputedStyle(allEls[i]).height.slice(0, -2) > window.innerHeight * 3) {
       allEls[i].style.height = windowHeight + "px";
       allEls[i].style.maxHeight = windowHeight + "px";
@@ -64,3 +118,383 @@ $(document).ready(function(){
     }
   }
 });
+
+function handleExperienceClick(el) {
+  if (el.classList.contains('active')) {
+    return;
+  }
+  let elGroup = $(el).siblings('li');
+  let groupName = el.id.match(/exp_(\w*)/)[1];
+
+  // set classes for categories
+  $(elGroup).removeClass('active');
+  $(el).addClass('active');
+
+  // set classes for paragraph parents and organize paragraph groups
+  let paraParent = $('div.achieving');
+  let paraGroup = $('div.achieving > div');
+
+  let utilParent = $('div.utilizing');
+
+  utilParent.slideUp(500, () => { populateUtils(groupName); });
+  
+  paraParent.slideUp(500, ()=>{
+    paraGroup.slideUp(100, () => {
+      let paragraph = $('#ach_' + groupName);
+
+      paragraph.addClass('active');
+      paragraph.slideDown(100, () => {
+        paraParent.slideDown(500, () => {
+          utilParent.slideDown(500);
+        });
+      });
+    });
+  });
+}
+
+function populateUtils(groupName) {
+  // create a list of related <li> elements from the groupName passed in
+  let categories = [
+    /*0*/ 'uiux',
+    /*1*/ 'tools',
+    /*2*/ 'techwriting',
+    /*3*/ 'games',
+    /*4*/ 'graphic',
+    /*5*/ 'automation',
+    /*6*/ 'web',
+    /*7*/ 'selfstudy'
+  ];
+
+  let groupNum = categories.indexOf(groupName);
+
+  // all utilizations will have a display name and a string indicating the categories to be included in
+  let utilLangs = [
+    {
+      name: 'HTML 5',
+      categoryList: '01234567'
+    },
+    {
+      name: 'Haml',
+      categoryList: '07'
+    },
+    {
+      name: 'CSS',
+      categoryList: '03467',
+    },
+    {
+      name: 'Less',
+      categoryList: '03467',
+    },
+    {
+      name: 'Sass/SCSS',
+      categoryList: '03467',
+    },
+    {
+      name: 'JavaScript',
+      categoryList: '0123467'
+    },
+    {
+      name: 'jQuery',
+      categoryList: '03467'
+    },
+    {
+      name: 'CoffeeScript',
+      categoryList: '0167'
+    },
+    {
+      name: 'React',
+      categoryList: '067'
+    },
+    {
+      name: 'ExpressJS',
+      categoryList: '067'
+    },
+    {
+      name: 'KnockoutJS',
+      categoryList: '067'
+    },
+    {
+      name: 'EmberJS',
+      categoryList: '67'
+    },
+    {
+      name: 'Angular',
+      categoryList: '67'
+    },
+    {
+      name: 'Laravel',
+      categoryList: '067'
+    },
+    {
+      name: 'GML (Game Maker Language)',
+      categoryList: '37'
+    },
+    {
+      name: 'C#',
+      categoryList: '01237'
+    },
+    {
+      name: 'AutoHotKey (AHK)',
+      categoryList: '01247'
+    },
+    {
+      name: 'Markdown',
+      categoryList: '012367'
+    },
+    {
+      name: 'C++',
+      categoryList: '7'
+    },
+    {
+      name: 'Ruby',
+      categoryList: '7'
+    },
+    {
+      name: 'Python',
+      categoryList: '7'
+    },
+    {
+      name: 'Bash',
+      categoryList: '012467'
+    },
+    {
+      name: 'Windows Command Line/PowerShell',
+      categoryList: '012467'
+    },
+    {
+      name: 'YAML',
+      categoryList: '0127'
+    },
+    {
+      name: 'TypeScript',
+      categoryList: '7'
+    }
+  ];
+  let utilApps = [
+    {
+      name: 'XAMPP',
+      categoryList: '0267'
+    },
+    {
+      name: 'AMPPS',
+      categoryList: '0267'
+    },
+    {
+      name: 'DocFX',
+      categoryList: '012367'
+    },
+    {
+      name: 'Git',
+      categoryList: '012367'
+    },
+    {
+      name: 'GitHub',
+      categoryList: '0123467'
+    },
+    {
+      name: 'GitHub Actions Workflows',
+      categoryList: '01237'
+    },
+    {
+      name: 'Google Cloud Platform',
+      categoryList: '01237'
+    },
+    {
+      name: 'Unity',
+      categoryList: '012367'
+    },
+    {
+      name: 'Game Maker',
+      categoryList: '347'
+    },
+    {
+      name: 'InkScape',
+      categoryList: '0123467'
+    },
+    {
+      name: 'IrfanView',
+      categoryList: '013467'
+    },
+    {
+      name: 'GIMP',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Adobe Creative Suite',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Microsoft Office Suite',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Visual Studio',
+      categoryList: '01237'
+    },
+    {
+      name: 'Visual Studio Code',
+      categoryList: '0123467'
+    },
+    {
+      name: '.NET 6+',
+      categoryList: '0127'
+    },
+    {
+      name: 'Sublime Text',
+      categoryList: '0123467'
+    },
+    {
+      name: 'Audacity',
+      categoryList: '012367'
+    },
+    {
+      name: 'OBS (Open Broadcast Software)',
+      categoryList: '012367'
+    },
+    {
+      name: 'Procreate',
+      categoryList: '013467'
+    },
+    {
+      name: 'SnagIt',
+      categoryList: '01247'
+    },
+    {
+      name: 'SnagIt',
+      categoryList: '01247'
+    },
+    {
+      name: 'Microsoft Visio',
+      categoryList: '01247'
+    },
+    {
+      name: 'Draw.io',
+      categoryList: '01247'
+    },
+    {
+      name: 'Blender',
+      categoryList: '347'
+    }
+  ];
+
+  let newItemList = [];
+  for (let i = 0; i < utilLangs.length; i++) {
+    let lang = utilLangs[i];
+    if (lang.categoryList.indexOf(groupNum) >= 0) {
+      newItemList.push({itemData: lang, itemType: 'lang'});
+    }
+  }
+  for (let i = 0; i < utilApps.length; i++) {
+    let app = utilApps[i];
+    if (app.categoryList.indexOf(groupNum) >= 0) {
+      newItemList.push({itemData: app, itemType: 'app'});
+    }
+  }
+
+  let util = $('#util');
+  $(util)[0].innerHTML = '';
+
+  for (let i = 0; i < newItemList.length; i++) {
+    let item = newItemList[i];
+    let li = getNewLi(item);
+    $(util).append(li);
+  }
+}
+
+function getNewLi(item) {
+  let li = document.createElement('LI');
+  let i = item;
+  $(li).addClass(i.itemType);
+  li.innerText = i.itemData.name;
+  return li;
+}
+
+function convertMarkdownToHtml(markdownText) {
+  let text = markdownText.replace('<', '`');
+  text = text.replace('>', '`');
+  text = text.replace('`', '<pre><code>');
+  text = text.replace('`', '</code></pre>');
+  return text;
+}
+
+let projectData = {
+  'categories': [
+    'Games',
+    'UI/UX',
+    'Tests, Proof-of-Concepts, and Educational',
+    'Spinners',
+    'Fun, Artsy, and Miscellaneous'
+  ],
+  'tagList': [
+    'CSS',                    // 0
+    'CSS-Only',               // 1
+    'Sass/SCSS',              // 2
+    'HTML-Heavy',             // 3
+    'HTML Libraries',         // 4
+    'HTML Canvas',            // 5
+    'JavaScript',             // 6
+    'JavaScript-Only',        // 7
+    'Vanilla JavaScript',     // 8
+    'JavaScript Libraries',   // 9
+    'Gradients'               // 10
+  ],
+  'ctaList': [
+    'Move the mouse cursor',
+    'Click on the demo'
+  ],
+  'projectList': {
+    'dynamic-lighted-buttons': {
+      'optValue': 'dynamic-lighted-buttons',
+      'category': 'UI/UX',
+      'displayName': 'Dynamic Lighted Buttons',
+      'descriptionText': "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
+      'gitHubUrl': 'https://github.com/carvacodes/dynamic-lighted-buttons',
+      'tags': ['Vanilla JavaScript', 'Sass/SCSS']
+    },
+    'canvas-composite-operations':
+    {
+      'optValue': 'canvas-composite-operations',
+      'category': 'UI/UX',
+      'displayName': 'Canvas Composite Operations',
+      'descriptionText': "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface.",
+      'gitHubUrl': 'https://github.com/carvacodes/canvas-composite-operations',
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'JavaScript Libraries', 'dat.GUI', 'UI/UX', 'Gradients']
+    },
+    'lissajous':
+    {
+      'optValue': 'lissajous',
+      'category': 'Fun, Artsy, and Miscellaneous',
+      'displayName': 'Lissajous',
+      'descriptionText': "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
+      'gitHubUrl': 'https://github.com/carvacodes/lissajous',
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
+    },
+    'moving-boxes':
+    {
+      'optValue': 'moving-boxes',
+      'category': 'UI/UX',
+      'displayName': 'Moving Boxes Game',
+      'descriptionText': "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
+      'gitHubUrl': 'https://github.com/carvacodes/moving-boxes',
+      'tags': ['HTML Canvas', 'Vanilla JavaScript']
+    },
+    'crt-magnet-interference':
+    {
+      'optValue': 'crt-magnet-interference',
+      'category': 'Fun, Artsy, and Miscellaneous',
+      'displayName': 'CRT Magnet Interference',
+      'descriptionText': "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to freeze.",
+      'gitHubUrl': 'https://github.com/carvacodes/crt-magnet-interference',
+      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
+    },
+    'symyn':
+    {
+      'optValue': 'symyn',
+      'category': 'Games',
+      'displayName': 'Symyn',
+      'descriptionText': 'A modern clone of the classic "Simon" game, using the HTML5 `AudioContext` API for sound.',
+      'gitHubUrl': 'https://github.com/carvacodes/symyn',
+      'tags': ['Sass/SCSS', 'JavaScript', 'jQuery', 'AudioContext']
+    }
+  }
+}
