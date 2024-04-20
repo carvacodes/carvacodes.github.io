@@ -4,9 +4,6 @@
 [submodule "submods/lissajous"]
 	path = submods/lissajous
 	url = https://github.com/carvacodes/lissajous.git
-[submodule "canvas-composite-operations"]
-	path = canvas-composite-operations
-	url = https://github.com/carvacodes/canvas-composite-operations.git
 [submodule "submods/moving-boxes"]
 	path = submods/moving-boxes
 	url = https://github.com/carvacodes/moving-boxes.git
@@ -16,6 +13,3 @@
 [submodule "submods/symyn"]
 	path = submods/symyn
 	url = https://github.com/carvacodes/symyn.git
-[submodule "submods/canvas-composite-operations/canvas-composite-operations"]
-	path = submods/canvas-composite-operations/canvas-composite-operations
-	url = https://github.com/carvacodes/canvas-composite-operations.git
