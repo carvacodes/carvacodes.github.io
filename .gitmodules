@@ -16,3 +16,6 @@
 [submodule "submods/symyn"]
 	path = submods/symyn
 	url = https://github.com/carvacodes/symyn.git
+[submodule "submods/canvas-composite-operations/canvas-composite-operations"]
+	path = submods/canvas-composite-operations/canvas-composite-operations
+	url = https://github.com/carvacodes/canvas-composite-operations.git
