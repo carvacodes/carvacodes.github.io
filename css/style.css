@@ -19,8 +19,12 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  overflow-x: hidden;
   text-align: center;
+  min-width: 400px;
+}
+
+section {
+  min-height: 33vh;
 }
 
 h1, h2, h3, h4, h5, button {
@@ -130,7 +134,7 @@ img {
 /*********************/
 .top-nav {
   cursor: pointer;
-  z-index: 100;
+  z-index: 10000;
   width: 100%;
   position: fixed;
   top: 0;
@@ -175,16 +179,6 @@ img {
   display: block;
 }
 
-/*********************/
-/*  Splash seemores  */
-/*    and to tops    */
-/*                   */
-/*********************/
-.splash .to-top {
-  top: 0;
-  display: none;
-}
-
 .experience-splash {
   background: url("https://images.unsplash.com/photo-1502119176771-c007eb5feb6e") no-repeat center 60%/cover;
 }
@@ -213,7 +207,7 @@ img {
 /*                   */
 /*********************/
 .sub-container {
-  padding: 2rem;
+  padding: 8px;
   margin: 0 auto;
 }
 
@@ -255,13 +249,18 @@ img {
 /*    Navigation    */
 /*                  */
 /********************/
+.main-nav {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
 .main-nav h1 {
-  margin-top: 0;
   font-size: 2.25em;
 }
 .main-nav ul {
+  width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
 }
 .main-nav li {
   width: 90%;
@@ -294,9 +293,6 @@ img {
   color: #8a8a8a;
   margin: 0 auto;
 }
-.experience.sub-container {
-  padding: 8px;
-}
 .experience .list-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -306,7 +302,7 @@ img {
   margin-top: 0;
 }
 .experience .achieving {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
   background: white;
   border-radius: 8px;
@@ -332,7 +328,6 @@ img {
   background: unset;
 }
 .experience #ach_selfstudy li {
-  font-size: 1.1rem;
   padding: 10px;
   display: block;
 }
@@ -351,7 +346,6 @@ img {
   text-decoration: underline;
   color: blue;
   cursor: pointer;
-  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 .experience .utilizing {
@@ -436,6 +430,9 @@ img {
 .projects {
   padding: 0;
 }
+.projects button {
+  margin: 0.5rem;
+}
 
 .project {
   background-color: #f0f0f0;
@@ -451,14 +448,14 @@ img {
 
 #projectPreview {
   display: block;
-  width: 100vw;
+  width: 100%;
   min-height: 75vh;
   border: thin solid gray;
   margin: 30px auto;
 }
 
-.project-description p, .project-description a {
-  font-size: 1rem;
+.project-description {
+  padding: 0px 2rem;
 }
 .project-description a {
   text-decoration: underline;
@@ -469,10 +466,6 @@ img {
 /*      About       */
 /*                  */
 /********************/
-.about.sub-container {
-  padding: 0;
-}
-
 .about-content {
   width: 100%;
   max-width: 90vw;
@@ -485,7 +478,6 @@ img {
 }
 .about-content .about-text {
   font-size: 90%;
-  padding: 5px;
   text-align: left;
 }
 .about-content .about-text p:first-child::before, .about-content .about-text p:last-child::after {
@@ -519,6 +511,10 @@ img {
 .contact {
   padding-left: 20px;
   padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .contact .contact-text {
   height: 100%;
@@ -527,8 +523,7 @@ img {
   margin: 1rem;
 }
 .contact .contact-text a {
-  width: 68px;
-  height: 68px;
+  margin: 20px;
   display: inline-block;
   border-radius: 50%;
   text-align: center;
@@ -552,9 +547,6 @@ footer {
   font-size: 65%;
   background-color: #333;
   color: #8a8a8a;
-}
-footer.sub-container {
-  padding: 50px 0;
 }
 footer .footer-section {
   width: 100%;
@@ -596,6 +588,12 @@ footer ul li a {
   }
 }
 @media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+  .sub-container {
+    padding: 2rem 0;
+  }
   .splash h1, .page-header-splash h1 {
     font-size: 300%;
   }
@@ -660,13 +658,19 @@ footer ul li a {
     margin: 10px auto;
     display: flex;
   }
+  .about-content .about-text {
+    padding-right: 2rem;
+  }
   .about-content .about-pic img {
-    max-width: 360px;
+    max-width: 33vw;
     vertical-align: middle;
     margin: 0 auto;
   }
 }
 @media (min-width: 1600px) {
+  body {
+    font-size: 24px;
+  }
   .splash, .page-header-splash, .about-content {
     min-height: 800px;
   }
