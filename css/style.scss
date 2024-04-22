@@ -46,7 +46,7 @@
 }
 
 body {
-  font-size: 24px;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   color: colors('dark');
@@ -112,10 +112,6 @@ img {
   }
 }
 
-.small-paragraph {
-  font-size: 1rem;
-}
-
 /*********************/
 /*                   */
 /*    Top Nav Bar    */
@@ -153,7 +149,7 @@ img {
 /*********************/
 .splash {
   width: 100%;
-  min-height: 480px;
+  height: 33vh;
   width: 100%;
   color: colors('light');
   display: table;
@@ -174,31 +170,6 @@ img {
 /*    and to tops    */
 /*                   */
 /*********************/
-.splash .see-more, .splash .to-top {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: block;
-  z-index: 25;
-  text-align: center;
-  color: colors('light');
-  padding: 20px;
-  p {
-    margin: 5px auto;
-    i {
-      @keyframes fadeInOut { from {opacity: 1} to {opacity: 0.2} }
-      text-shadow: 1px 1px 18px rgba(255,255,255,0.6),
-                   -1px 1px 18px rgba(255,255,255,0.6),
-                   1px -1px 18px rgba(255,255,255,0.6),
-                   -1px -1px 18px rgba(255,255,255,0.6);
-      animation: 1.66s linear 0s infinite alternate fadeInOut;
-    }
-  }
-  a {
-    color: colors('light');
-  }
-}
 .splash .to-top {
   top: 0;
   display: none;
@@ -229,7 +200,7 @@ img {
 /*********************/
 
 .sub-container {
-  padding: 100px 0;
+  padding: 2rem;
   margin: 0 auto;
 }
 
@@ -303,10 +274,14 @@ img {
   color: colors('medium');
   margin: 0 auto;
 
+  &.sub-container {
+    padding: 8px;
+  }
+
   .list-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 1rem 0;
+    padding: 8px 0;
   }
   
   .list-heading {
@@ -319,7 +294,7 @@ img {
     background: white;
     border-radius: 8px;
     display: none;
-    padding: 1rem 0px;
+    padding: 0.5rem 0px;
 
     div {
       display: none;
@@ -400,15 +375,16 @@ img {
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
   li {
     @include button('hollow', 'medium');
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 4px 8px 8px;
-    width: 90%;
+    padding: 8px;
+    width: 42%;
     max-width: 400px;
-    text-align: left;
+    text-align: center;
     &:hover, 
     &.active {
       color: white;
@@ -416,6 +392,7 @@ img {
       cursor: pointer;
     }
   }
+
   .list-container ul li {
     &::before {
       content: '';
@@ -436,7 +413,8 @@ img {
       height: 100%;
     }
     span {
-      margin-right: 0.5rem;
+      width: 100%;
+      margin-right: 1rem;
     }
     i {
       color: white;
@@ -462,6 +440,12 @@ img {
   display: block;
   min-height: 766px;
   overflow: hidden;
+}
+
+.projects-list {
+  select {
+    margin-bottom: 0.5rem;
+  }
 }
 
 #projectPreview {
@@ -521,7 +505,7 @@ img {
     }
   }
   .about-pic img {
-    max-height: 66vh;
+    max-height: 50vh;
     margin-left: 1.5rem;
     margin-bottom: 1rem;
   }
@@ -536,6 +520,10 @@ img {
   padding-left: 20px;
   padding-right: 20px;
   .contact-text {
+    height: 100%;
+    p {
+      margin: 1rem;
+    }
     a {
       width: 68px;
       height: 68px;

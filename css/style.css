@@ -15,7 +15,7 @@
 }
 
 body {
-  font-size: 24px;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   color: #333;
@@ -123,10 +123,6 @@ img {
   color: #8a8a8a;
 }
 
-.small-paragraph {
-  font-size: 1rem;
-}
-
 /*********************/
 /*                   */
 /*    Top Nav Bar    */
@@ -163,7 +159,7 @@ img {
 /*********************/
 .splash {
   width: 100%;
-  min-height: 480px;
+  height: 33vh;
   width: 100%;
   color: #f0f0f0;
   display: table;
@@ -184,36 +180,6 @@ img {
 /*    and to tops    */
 /*                   */
 /*********************/
-.splash .see-more, .splash .to-top {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: block;
-  z-index: 25;
-  text-align: center;
-  color: #f0f0f0;
-  padding: 20px;
-}
-.splash .see-more p, .splash .to-top p {
-  margin: 5px auto;
-}
-.splash .see-more p i, .splash .to-top p i {
-  text-shadow: 1px 1px 18px rgba(255, 255, 255, 0.6), -1px 1px 18px rgba(255, 255, 255, 0.6), 1px -1px 18px rgba(255, 255, 255, 0.6), -1px -1px 18px rgba(255, 255, 255, 0.6);
-  animation: 1.66s linear 0s infinite alternate fadeInOut;
-}
-@keyframes fadeInOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.2;
-  }
-}
-.splash .see-more a, .splash .to-top a {
-  color: #f0f0f0;
-}
-
 .splash .to-top {
   top: 0;
   display: none;
@@ -247,7 +213,7 @@ img {
 /*                   */
 /*********************/
 .sub-container {
-  padding: 100px 0;
+  padding: 2rem;
   margin: 0 auto;
 }
 
@@ -328,10 +294,13 @@ img {
   color: #8a8a8a;
   margin: 0 auto;
 }
+.experience.sub-container {
+  padding: 8px;
+}
 .experience .list-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 8px 0;
 }
 .experience .list-heading {
   margin-top: 0;
@@ -342,7 +311,7 @@ img {
   background: white;
   border-radius: 8px;
   display: none;
-  padding: 1rem 0px;
+  padding: 0.5rem 0px;
 }
 .experience .achieving div {
   display: none;
@@ -421,10 +390,10 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 4px 8px 8px;
-  width: 90%;
+  padding: 8px;
+  width: 42%;
   max-width: 400px;
-  text-align: left;
+  text-align: center;
 }
 .experience li:hover, .experience li.active {
   color: white;
@@ -450,7 +419,8 @@ img {
   height: 100%;
 }
 .experience .list-container ul li span {
-  margin-right: 0.5rem;
+  width: 100%;
+  margin-right: 1rem;
 }
 .experience .list-container ul li i {
   color: white;
@@ -473,6 +443,10 @@ img {
   display: block;
   min-height: 766px;
   overflow: hidden;
+}
+
+.projects-list select {
+  margin-bottom: 0.5rem;
 }
 
 #projectPreview {
@@ -532,7 +506,7 @@ img {
   right: 0;
 }
 .about-content .about-pic img {
-  max-height: 66vh;
+  max-height: 50vh;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -545,6 +519,12 @@ img {
 .contact {
   padding-left: 20px;
   padding-right: 20px;
+}
+.contact .contact-text {
+  height: 100%;
+}
+.contact .contact-text p {
+  margin: 1rem;
 }
 .contact .contact-text a {
   width: 68px;
