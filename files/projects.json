@@ -1,0 +1,50 @@
+{
+  "dynamic-lighted-buttons": {
+    "category": "UI/UX",
+    "displayName": "Dynamic Lighted Buttons",
+    "descriptionText": "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
+    "tags": ["Vanilla JavaScript", "Sass/SCSS", "Buttons", "Interactive"]
+  },
+  "canvas-composite-operations":
+  {
+    "category": "UI/UX",
+    "displayName": "Canvas Composite Operations",
+    "descriptionText": "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface.",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "JavaScript Libraries", "dat.GUI", "UI/UX", "Gradients", "Interactive"]
+  },
+  "lissajous":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Lissajous",
+    "descriptionText": "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "Gradients", "Lines"]
+  },
+  "moving-boxes":
+  {
+    "category": "UI/UX",
+    "displayName": "Moving Boxes Game",
+    "descriptionText": "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+  },
+  "crt-magnet-interference":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "CRT Magnet Interference",
+    "descriptionText": "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to freeze.",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "Gradients", "Interactive"]
+  },
+  "symyn":
+  {
+    "category": "Games",
+    "displayName": "Symyn",
+    "descriptionText": "A modern clone of the classic \"Simon\" game, using the HTML5 `AudioContext` API for sound.",
+    "tags": ["Sass/SCSS", "JavaScript", "jQuery", "AudioContext", "Interactive"]
+  },
+  "magnetic-lines-of-force":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Magnetic Lines of Force",
+    "descriptionText": "A model of magnetic lines of force, as often visualized with iron filings, with a simple two-pole magnet.",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+  }
+}

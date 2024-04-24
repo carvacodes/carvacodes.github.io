@@ -16,3 +16,6 @@
 [submodule "submods/canvas-composite-operations"]
 	path = submods/canvas-composite-operations
 	url = https://github.com/carvacodes/canvas-composite-operations.git
+[submodule "submods/magnetic-lines-of-force"]
+	path = submods/magnetic-lines-of-force
+	url = https://github.com/carvacodes/magnetic-lines-of-force.git

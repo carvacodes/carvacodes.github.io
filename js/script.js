@@ -2,12 +2,19 @@ $(document).ready(function(){
   // projects view: reload the iframe and change its src attribute when a new project is selected
   let projectPreview = $('#projectPreview')[0];
   let projectSelect = $('#projectSelect');
+  let projectList;
+
+  // populate the project list
+  fetch('https://github.com/carvacodes/carvacodes.github.io/files/projects.json')
+    .then((response) => response.json())
+    .then((json) => { projectList = json; });
 
   // on changing the project selector, swap the iframe src and update the header/description fields
   projectSelect.change(function(e){
     let projectName = this.value;
-    let project = projectData.projectList[projectName];
-    let projectMarkupUrl = './submods/' + projectName + '/markup.html'
+    let project = projectList[projectName];
+    let projectMarkupUrl = './submods/' + projectName + '/markup.html';
+    let gitHubUrl = 'https://github.com/carvacodes/' + projectName;
     projectPreview.setAttribute('src', projectMarkupUrl);
 
     let projectElements = {
@@ -19,8 +26,8 @@ $(document).ready(function(){
 
     projectElements.displayName.innerText = project.displayName;
     projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
-    projectElements.gitHubUrl.innerText = project.gitHubUrl;
-    projectElements.gitHubUrl.href = project.gitHubUrl;
+    projectElements.gitHubUrl.innerText = gitHubUrl;
+    projectElements.gitHubUrl.href = gitHubUrl;
   });
 
   // random project selector button
@@ -415,86 +422,4 @@ function convertMarkdownToHtml(markdownText) {
   text = text.replace('`', '<pre><code>');
   text = text.replace('`', '</code></pre>');
   return text;
-}
-
-let projectData = {
-  'categories': [
-    'Games',
-    'UI/UX',
-    'Tests, Proof-of-Concepts, and Educational',
-    'Spinners',
-    'Fun, Artsy, and Miscellaneous'
-  ],
-  'tagList': [
-    'CSS',                    // 0
-    'CSS-Only',               // 1
-    'Sass/SCSS',              // 2
-    'HTML-Heavy',             // 3
-    'HTML Libraries',         // 4
-    'HTML Canvas',            // 5
-    'JavaScript',             // 6
-    'JavaScript-Only',        // 7
-    'Vanilla JavaScript',     // 8
-    'JavaScript Libraries',   // 9
-    'Gradients'               // 10
-  ],
-  'ctaList': [
-    'Move the mouse cursor',
-    'Click on the demo'
-  ],
-  'projectList': {
-    'dynamic-lighted-buttons': {
-      'optValue': 'dynamic-lighted-buttons',
-      'category': 'UI/UX',
-      'displayName': 'Dynamic Lighted Buttons',
-      'descriptionText': "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
-      'gitHubUrl': 'https://github.com/carvacodes/dynamic-lighted-buttons',
-      'tags': ['Vanilla JavaScript', 'Sass/SCSS']
-    },
-    'canvas-composite-operations':
-    {
-      'optValue': 'canvas-composite-operations',
-      'category': 'UI/UX',
-      'displayName': 'Canvas Composite Operations',
-      'descriptionText': "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface.",
-      'gitHubUrl': 'https://github.com/carvacodes/canvas-composite-operations',
-      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'JavaScript Libraries', 'dat.GUI', 'UI/UX', 'Gradients']
-    },
-    'lissajous':
-    {
-      'optValue': 'lissajous',
-      'category': 'Fun, Artsy, and Miscellaneous',
-      'displayName': 'Lissajous',
-      'descriptionText': "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
-      'gitHubUrl': 'https://github.com/carvacodes/lissajous',
-      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
-    },
-    'moving-boxes':
-    {
-      'optValue': 'moving-boxes',
-      'category': 'UI/UX',
-      'displayName': 'Moving Boxes Game',
-      'descriptionText': "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
-      'gitHubUrl': 'https://github.com/carvacodes/moving-boxes',
-      'tags': ['HTML Canvas', 'Vanilla JavaScript']
-    },
-    'crt-magnet-interference':
-    {
-      'optValue': 'crt-magnet-interference',
-      'category': 'Fun, Artsy, and Miscellaneous',
-      'displayName': 'CRT Magnet Interference',
-      'descriptionText': "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to freeze.",
-      'gitHubUrl': 'https://github.com/carvacodes/crt-magnet-interference',
-      'tags': ['HTML Canvas', 'Vanilla JavaScript', 'Gradients']
-    },
-    'symyn':
-    {
-      'optValue': 'symyn',
-      'category': 'Games',
-      'displayName': 'Symyn',
-      'descriptionText': 'A modern clone of the classic "Simon" game, using the HTML5 `AudioContext` API for sound.',
-      'gitHubUrl': 'https://github.com/carvacodes/symyn',
-      'tags': ['Sass/SCSS', 'JavaScript', 'jQuery', 'AudioContext']
-    }
-  }
 }
