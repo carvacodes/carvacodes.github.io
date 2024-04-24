@@ -5,7 +5,7 @@ $(document).ready(function(){
   let projectList;
 
   // populate the project list
-  fetch('https://github.com/carvacodes/carvacodes.github.io/files/projects.json')
+  fetch('../files/projects.json')
     .then((response) => response.json())
     .then((json) => { projectList = json; });
 
