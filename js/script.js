@@ -80,6 +80,9 @@ $(document).ready(function(){
     }
   })
 
+  // event listener hack for touchmove compatibility on iOS devices
+  window.addEventListener('touchstart', {});
+
   // Smooth scrolling to on-page links
   // Select all links with hashes
   $('a[href*="#"]').click(function(event) {
