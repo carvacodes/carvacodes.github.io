@@ -46,5 +46,12 @@
     "displayName": "Magnetic Lines of Force",
     "descriptionText": "A model of magnetic lines of force, as often visualized with iron filings, with a simple two-pole magnet.",
     "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+  },
+  "wireframe-grayscale-triangles":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Wireframe Grayscale Triangles",
+    "descriptionText": "A takeoff on another project I did some time ago depicting a wireframe cube, now with triangles. Move the mouse, drag your finger, or tap/click for a little interaction.",
+    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
   }
 }

@@ -19,3 +19,6 @@
 [submodule "submods/magnetic-lines-of-force"]
 	path = submods/magnetic-lines-of-force
 	url = https://github.com/carvacodes/magnetic-lines-of-force.git
+[submodule "submods/wireframe-grayscale-triangles"]
+	path = submods/wireframe-grayscale-triangles
+	url = https://github.com/carvacodes/wireframe-grayscale-triangles.git

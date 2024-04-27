@@ -93,6 +93,7 @@
 		<div class="projects-list">
 			<p>Choose a project to preview:</p>
 			<select name="project-select" id="projectSelect">
+				<option value="selectProject">Select a Project</option>
 				<optgroup label="Games">
 					<option data-status="active" value="moving-boxes" data-pen-url="https://codepen.io/carvacodes/pen/ZGBdea">Moving Boxes</option>
 					<option data-status="active" value="symyn" data-pen-url="https://codepen.io/carvacodes/details/boBYOZ">Symyn</option>
@@ -123,7 +124,7 @@
 					<option data-status="inactive" value="wiggle" data-pen-url="https://codepen.io/carvacodes/details/MVvjzm">Wiggle</option>
 				</optgroup>
 				<optgroup label="Fun, Artsy, and Miscellaneous">
-					<option data-status="active" value="lissajous" selected data-pen-url="">Lissajous</option>
+					<option data-status="active" value="lissajous" data-pen-url="">Lissajous</option>
 					<option data-status="active" value="crt-magnet-interference" data-pen-url="https://codepen.io/carvacodes/details/rVMEqo">CRT Magnet Interference</option>
 					<option data-status="inactive" value="empty-mail" data-pen-url="https://codepen.io/carvacodes/pen/vRJywX">Empty Mail</option>
 					<option data-status="inactive" value="flying-with-the-sky-dragon" data-pen-url="https://codepen.io/carvacodes/pen/vrrjma">Flying With The Sky Dragon</option>
@@ -146,8 +147,8 @@
 					<option data-status="inactive" value="wind-waker-ocean" data-pen-url="https://codepen.io/carvacodes/details/OVgVwQ">Wind Waker: Ocean</option>
 					<option data-status="active" value="magnetic-lines-of-force" data-pen-url="https://codepen.io/carvacodes/pen/jPLgbO">Magnetic Lines of Force</option>
 					<option data-status="inactive" value="springy-bezier-curves" data-pen-url="https://codepen.io/carvacodes/pen/MwvEzz">Springy Bezier Curves</option>
-					<option data-status="inactive" value="wireframe-triangles" data-pen-url="https://codepen.io/carvacodes/pen/BNdBMJ">Wireframe Triangles</option>
-					<option data-status="inactive" value="grayscale-triangles" data-pen-url="https://codepen.io/carvacodes/details/bdrdKa">Grayscale Triangles</option>
+					<option data-status="active" value="wireframe-grayscale-triangles" data-pen-url="https://codepen.io/carvacodes/pen/BNdBMJ">Wireframe Grayscale Triangles</option>
+					<option data-status="inactive" value="mini-grayscale-triangles" data-pen-url="https://codepen.io/carvacodes/details/bdrdKa">Mini Grayscale Triangles</option>
 					<option data-status="inactive" value="sketch-tron-6000" data-pen-url="https://codepen.io/carvacodes/pen/eNWGRw">Sketch-tron 6000</option>
 					<option data-status="inactive" value="pastel-orbits" data-pen-url="https://codepen.io/carvacodes/details/xGgjGe">Pastel Orbits</option>
 					<option data-status="inactive" value="bubbles" data-pen-url="https://codepen.io/carvacodes/pen/aOpqpm">Bubbles</option>
@@ -167,12 +168,12 @@
 			<button id="randomProject">Show a Random Project</button>
 		</div>
 		<div class="project-description">
-			<h2 id="projectName">Lissajous Curves</h2>
-			<p><span id='projectDescriptionText'>In this demo, an animated grid of lissajous curves are drawn to an HTML canvas using vanilla JavaScript.</span></p>
-			<p>GitHub: <span id="projectGitHubUrl"><a href="https://github.com/carvacodes/lissajous" target=_blank>https://github.com/carvacodes/lissajous</a></span></p>
+			<h2 id="projectName">Select a Project</h2>
+			<p><span id="projectDescriptionText">Explore the dropdown above for various random projects; at least those that are easily loadable in an iframe.</span></p>
+			<p>GitHub: <span id="projectGitHubUrl"><a href="#" target=_blank>Each project's GitHub repo will go here (they're all submoduled in)</a></span></p>
 			<p id="projectTags"></p>
 		</div>
-		<iframe src="./submods/lissajous/markup.html" loading="lazy" allow="fullscreen" id="projectPreview"></iframe>
+		<iframe src="" loading="lazy" allow="fullscreen" id="projectPreview"></iframe>
 	</section>
 
 	<!--***************************************************************************************************************-->

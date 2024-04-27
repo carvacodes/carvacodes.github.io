@@ -1,7 +1,12 @@
 $(document).ready(function(){
+
+  ////////////////////////////
+  //    Project Selector    //
+  ////////////////////////////
+
   // projects view: reload the iframe and change its src attribute when a new project is selected
   let projectPreview = $('#projectPreview')[0];
-  let projectSelect = $('#projectSelect');
+  let projectSelectElement = $('#projectSelect');
   let projectList;
 
   // populate the project list
@@ -10,7 +15,11 @@ $(document).ready(function(){
     .then((json) => { projectList = json; });
 
   // on changing the project selector, swap the iframe src and update the header/description fields
-  projectSelect.change(function(e){
+  projectSelectElement.change(selectProject);
+
+  function selectProject() {
+    if (this.value == "selectProject") { return; }
+
     let projectName = this.value;
     let project = projectList[projectName];
     let projectMarkupUrl = './submods/' + projectName + '/markup.html';
@@ -28,24 +37,27 @@ $(document).ready(function(){
     projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
     projectElements.gitHubUrl.innerText = gitHubUrl;
     projectElements.gitHubUrl.href = gitHubUrl;
-  });
+  }
 
   // random project selector button
   let randomProjectButton = $('#randomProject');
-  randomProjectButton.click((e) => {
+  randomProjectButton.click(selectRandomProject);
+
+  function selectRandomProject() {
     let projectNameArray = [];
-    for (let proj in projectData.projectList) {
-      if (proj != projectSelect[0].value) { projectNameArray.push(proj); }
+    for (let proj in projectList) {
+      if (proj != projectSelectElement[0].value) { projectNameArray.push(proj); }
     }
     let selection = projectNameArray[Math.floor(Math.random() * projectNameArray.length)];
-    projectSelect.val(selection);
-    projectSelect.trigger('change');
-  });
+    projectSelectElement.val(selection);
+    projectSelectElement.trigger('change');
+  }
 
   // update the select list to gray out projects that are not currently available
-  let projectSelectEl = projectSelect[0];
+  let projectSelectEl = projectSelectElement[0];
   let opts = projectSelectEl.getElementsByTagName('OPTION');
   let optsArray = [].slice.call(opts)
+  
   optsArray.forEach(el => {
     if (el.getAttribute('data-status') == 'inactive') {
       el.disabled = true;
@@ -54,6 +66,10 @@ $(document).ready(function(){
       el.style.color = '#bbb';
     }
   });
+
+  ////////////////////////////
+  //     Event Listeners    //
+  ////////////////////////////
 
   // global click operations
   $(window).click(function(e){
@@ -97,7 +113,7 @@ $(document).ready(function(){
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       // Does a scroll target exist?
       if (target.length) {
-        // Only prevent default if animation is actually gonna happen
+        // Only prevent default if animation is actually going to happen
         event.preventDefault();
         $('html, body').animate({
           scrollTop: target.offset().top
@@ -128,6 +144,10 @@ $(document).ready(function(){
     }
   }
 });
+
+////////////////////////////////////
+//  Functions and Event Handlers  //
+////////////////////////////////////
 
 function handleExperienceClick(el) {
   if (el.classList.contains('active')) {
