@@ -86,7 +86,7 @@ $(document).ready(function(){
       $(".top-nav .nav-container").slideToggle();
     }
     else {
-      if ($(".top-nav .nav-container").css('display') !== 'none') {
+      if ($(".top-nav .nav-container").css('display') !== 'none' && (innerWidth < 666 || innerHeight < 400)) {
         $(".top-nav .nav-container").slideUp();
       }
     }
@@ -153,6 +153,7 @@ function handleExperienceClick(el) {
   if (el.classList.contains('active')) {
     return;
   }
+
   let elGroup = $(el).siblings('li');
   let groupName = el.id.match(/exp_(\w*)/)[1];
 
@@ -176,12 +177,13 @@ function handleExperienceClick(el) {
     paraGroup.slideUp(0);
     let paragraph = $('#ach_' + groupName);
     paragraph.addClass('active');
-    paragraph.slideDown(100, () => {
-      $('html').animate({
-        scrollTop: scrollToValue
-      }, 400, null, () => {
-        paraParent.slideDown(400, () => {
-          utilParent.slideDown(400);
+    paragraph.slideDown(0,()=>{
+      paraParent.slideDown(400, ()=>{
+        utilParent.slideDown(400, ()=>{
+          if (innerWidth >= 666 || innerHeight < 400) { return; }
+          $('html').animate({
+            scrollTop: scrollToValue
+          }, 400, null);
         });
       });
     });

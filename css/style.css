@@ -444,6 +444,8 @@ img {
 
 .projects-list select {
   margin-bottom: 0.5rem;
+  max-width: 400px;
+  width: 80%;
 }
 
 #projectPreview {
