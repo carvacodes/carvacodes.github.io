@@ -53,5 +53,12 @@
     "displayName": "Wireframe Grayscale Triangles",
     "descriptionText": "A takeoff on another project I did some time ago depicting a wireframe cube, now with triangles. Move the mouse, drag your finger, or tap/click for a little interaction.",
     "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+  },
+  "amoeboid":
+  {
+    "category": "Spinners and Loaders",
+    "displayName": "Amoeboid",
+    "descriptionText": "A CSS-only spinner utilizing `filter: blur()` and `filter: contrast()`, along with CSS animations, to achieve a morphing blob appearance.",
+    "tags": ["CSS Only", "Animations", "CSS Filter Effects"]    
   }
 }

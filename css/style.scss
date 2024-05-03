@@ -60,7 +60,7 @@ section {
 
 h1, h2, h3, h4, h5, button { @include display_fonts(); }
 
-p, a, li { @include body_fonts(); }
+p, a, li, select, option { @include body_fonts(); }
 
 p, li { line-height: 1.4em; }
 

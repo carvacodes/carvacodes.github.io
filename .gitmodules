@@ -22,3 +22,6 @@
 [submodule "submods/wireframe-grayscale-triangles"]
 	path = submods/wireframe-grayscale-triangles
 	url = https://github.com/carvacodes/wireframe-grayscale-triangles.git
+[submodule "submods/amoeboid"]
+	path = submods/amoeboid
+	url = https://github.com/carvacodes/amoeboid.git

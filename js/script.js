@@ -166,16 +166,22 @@ function handleExperienceClick(el) {
 
   let utilParent = $('div.utilizing');
 
-  utilParent.slideUp(500, () => { populateUtils(groupName); });
-  
-  paraParent.slideUp(500, ()=>{
-    paraGroup.slideUp(100, () => {
-      let paragraph = $('#ach_' + groupName);
+  let achievingList = $('#achieving_list');
+  let listRect = achievingList[0].getBoundingClientRect();
+  let scrollToValue = achievingList.offset().top + Math.abs(listRect.top - listRect.bottom);
 
-      paragraph.addClass('active');
-      paragraph.slideDown(100, () => {
-        paraParent.slideDown(500, () => {
-          utilParent.slideDown(500);
+  // begin animation sequence
+  utilParent.slideUp(400, () => { populateUtils(groupName); });
+  paraParent.slideUp(400, ()=>{
+    paraGroup.slideUp(0);
+    let paragraph = $('#ach_' + groupName);
+    paragraph.addClass('active');
+    paragraph.slideDown(100, () => {
+      $('html').animate({
+        scrollTop: scrollToValue
+      }, 400, null, () => {
+        paraParent.slideDown(400, () => {
+          utilParent.slideDown(400);
         });
       });
     });
@@ -440,9 +446,14 @@ function getNewLi(item) {
 }
 
 function convertMarkdownToHtml(markdownText) {
-  let text = markdownText.replace('<', '`');
-  text = text.replace('>', '`');
-  text = text.replace('`', '<pre><code>');
-  text = text.replace('`', '</code></pre>');
+  // naive replace for angle brackets; greater than/less than symbols will need to be HTML encoded
+  let text = markdownText.replaceAll('<', '`');
+  text = text.replaceAll('>', '`');
+
+  // replace backticks in pairs
+  while (text.indexOf('`') >= 0) {
+    text = text.replace('`', '<pre><code>');
+    text = text.replace('`', '</code></pre>');
+  }
   return text;
 }
