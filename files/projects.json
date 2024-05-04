@@ -60,5 +60,12 @@
     "displayName": "Amoeboid",
     "descriptionText": "A CSS-only spinner utilizing `filter: blur()` and `filter: contrast()`, along with CSS animations, to achieve a morphing blob appearance.",
     "tags": ["CSS Only", "Animations", "CSS Filter Effects"]    
+  },
+  "post-dusk":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Post-Dusk: A Screen Saver Simulation",
+    "descriptionText": "A procedurally generated nighttime city skyline inspired by an old Mac screen saver. Click for a falling star.",
+    "tags": ["HTML Canvas", "Animations", "Procedural Generation", "Screen Saver"]
   }
 }

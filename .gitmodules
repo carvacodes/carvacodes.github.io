@@ -25,3 +25,6 @@
 [submodule "submods/amoeboid"]
 	path = submods/amoeboid
 	url = https://github.com/carvacodes/amoeboid.git
+[submodule "submods/post-dusk"]
+	path = submods/post-dusk
+	url = https://github.com/carvacodes/post-dusk.git
