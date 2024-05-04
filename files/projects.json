@@ -67,5 +67,12 @@
     "displayName": "Post-Dusk: A Screen Saver Simulation",
     "descriptionText": "A procedurally generated nighttime city skyline inspired by an old Mac screen saver. Click for a falling star.",
     "tags": ["HTML Canvas", "Animations", "Procedural Generation", "Screen Saver"]
+  },
+  "tower-of-the-gods":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Wind Waker: Tower of the Gods Beam Effect",
+    "descriptionText": "A piece inspired by one of my favorite games, The Legend of Zelda: The Wind Waker. This beam effect appears in a cinematic section where the Tower of the Gods erupts from the sea.",
+    "tags": ["HTML Canvas", "Animations", "Procedural Generation", "Video Games"]
   }
 }

@@ -28,3 +28,6 @@
 [submodule "submods/post-dusk"]
 	path = submods/post-dusk
 	url = https://github.com/carvacodes/post-dusk.git
+[submodule "submods/tower-of-the-gods"]
+	path = submods/tower-of-the-gods
+	url = https://github.com/carvacodes/tower-of-the-gods.git
