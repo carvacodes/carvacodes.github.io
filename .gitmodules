@@ -31,3 +31,6 @@
 [submodule "submods/tower-of-the-gods"]
 	path = submods/tower-of-the-gods
 	url = https://github.com/carvacodes/tower-of-the-gods.git
+[submodule "submods/emulating-pixelisa"]
+	path = submods/emulating-pixelisa
+	url = https://github.com/carvacodes/emulating-pixelisa.git
