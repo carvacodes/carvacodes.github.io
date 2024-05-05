@@ -33,6 +33,15 @@ $(document).ready(function(){
       tags: $('#projectTags')[0]
     }
 
+    projectElements.tags.innerHTML = '';
+
+    for (let i = 0; i < project.tags.length; i++) {
+      let tagSpan = document.createElement('SPAN');
+      tagSpan.className = 'projectTag';
+      tagSpan.innerText = project.tags[i];
+      projectElements.tags.appendChild(tagSpan);
+    }
+
     projectElements.displayName.innerText = project.displayName;
     projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
     projectElements.gitHubUrl.innerText = gitHubUrl;
