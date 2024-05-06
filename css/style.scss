@@ -18,6 +18,7 @@
 @mixin font_family() { font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
 @mixin display_fonts() { @include font-family(); font-weight: 700; }
 @mixin body_fonts() { @include font-family(); font-weight: 300; }
+@mixin ui_fonts() { font-family: 'Quicksand', 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
 @mixin button($type, $ctx) {
   @if $type == 'solid' {
     color: white;
@@ -32,6 +33,7 @@
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  @include ui_fonts();
 }
  
 /********************/
@@ -58,9 +60,11 @@ section {
   min-height: 33vh;
 }
 
-h1, h2, h3, h4, h5, button { @include display_fonts(); }
+h1, h2, h3, h4, h5 { @include display_fonts(); }
 
-p, a, li, select, option { @include body_fonts(); }
+button, select, option { @include ui_fonts(); }
+
+p, a, li { @include body_fonts(); }
 
 p, li { line-height: 1.4em; }
 
@@ -442,8 +446,9 @@ img {
   select {
     display: block;
     margin: 1rem auto;
-    max-width: 400px;
-    width: 80%;
+    max-width: 500px;
+    width: 90%;
+    padding: 5px;
   }
 }
 

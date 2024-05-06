@@ -27,12 +27,16 @@ section {
   min-height: 33vh;
 }
 
-h1, h2, h3, h4, h5, button {
+h1, h2, h3, h4, h5 {
   font-family: "Montserrat", "Open Sans", "Arial", sans-serif;
   font-weight: 700;
 }
 
-p, a, li, select, option {
+button, select, option {
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
+}
+
+p, a, li {
   font-family: "Montserrat", "Open Sans", "Arial", sans-serif;
   font-weight: 300;
 }
@@ -83,6 +87,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .button:hover {
   color: white;
@@ -92,6 +97,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
 .button.bright {
@@ -102,6 +108,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .button.bright:hover {
   color: white;
@@ -111,6 +118,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
 .alternate-colors {
@@ -272,6 +280,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .main-nav a:hover li {
   color: white;
@@ -281,6 +290,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
 /********************/
@@ -381,6 +391,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -445,8 +456,9 @@ img {
 .projects-list select {
   display: block;
   margin: 1rem auto;
-  max-width: 400px;
-  width: 80%;
+  max-width: 500px;
+  width: 90%;
+  padding: 5px;
 }
 
 .sort-type button {
@@ -459,6 +471,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .sort-type button.active {
   color: white;
@@ -468,6 +481,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .sort-type button:hover {
   color: white;
@@ -477,6 +491,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
   cursor: pointer;
 }
 

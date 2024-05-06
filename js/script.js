@@ -147,9 +147,11 @@ $(document).ready(function(){
     if (this.children[0].innerText == 'Select a Category') {
       projectSelectElement[0].style.display = 'block';
       projectSelectElement[0].innerHTML = categoryListProjectsHTML[groupSelection];
+      projectSelectElement[0].children[0].innerText += ' from the ' + this.value + ' Category';
     } else if (this.children[0].innerText == 'Select a Tag') {
       projectSelectElement[0].style.display = 'block';
       projectSelectElement[0].innerHTML = tagListProjectsHTML[groupSelection];
+      projectSelectElement[0].children[0].innerText += ' with the ' + this.value + ' Tag';
     }
   }
 
