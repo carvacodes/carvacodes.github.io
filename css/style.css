@@ -70,11 +70,11 @@ img {
   height: auto;
 }
 
-/*********************/
-/*                   */
-/*  Global Classes   */
-/*                   */
-/*********************/
+/**********************/
+/*                    */
+/*   Global Classes   */
+/*                    */
+/**********************/
 .button {
   color: white;
   background-color: mediumslateblue;
@@ -443,9 +443,41 @@ img {
 }
 
 .projects-list select {
-  margin-bottom: 0.5rem;
+  display: block;
+  margin: 1rem auto;
   max-width: 400px;
   width: 80%;
+}
+
+.sort-type button {
+  padding: 0.5rem;
+  margin: 5px !important;
+  @font_color ($ctx);
+  background-color: white;
+  display: inline-block;
+  border: 2px solid slategray;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 15px;
+}
+.sort-type button.active {
+  color: white;
+  background-color: #a396f3;
+  display: inline-block;
+  border: 2px solid #a396f3;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 15px;
+}
+.sort-type button:hover {
+  color: white;
+  background-color: slategray;
+  display: inline-block;
+  border: 2px solid slategray;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 15px;
+  cursor: pointer;
 }
 
 #projectPreview {
@@ -458,12 +490,25 @@ img {
 
 .project-description {
   padding: 0px 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 .project-description a {
   text-decoration: underline;
 }
 
-.projectTag {
+.project-tags-container {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#projectTags {
+  margin-left: 0.5rem;
+  display: block;
+}
+
+.project-tag {
   display: inline-block;
   font-size: 0.7rem;
   background-color: #888;
@@ -471,6 +516,10 @@ img {
   border-radius: 4px;
   color: #eee;
   padding: 0 4px;
+}
+.project-tag:hover {
+  background-color: #0069c2;
+  cursor: pointer;
 }
 
 /********************/

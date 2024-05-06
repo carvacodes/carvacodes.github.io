@@ -88,11 +88,11 @@ img {
   height: auto;
 }
 
-/*********************/
-/*                   */
-/*  Global Classes   */
-/*                   */
-/*********************/
+/**********************/
+/*                    */
+/*   Global Classes   */
+/*                    */
+/**********************/
 
 .button {
   @include button('solid', 'main');
@@ -440,9 +440,28 @@ img {
 
 .projects-list {
   select {
-    margin-bottom: 0.5rem;
+    display: block;
+    margin: 1rem auto;
     max-width: 400px;
     width: 80%;
+  }
+}
+
+.sort-type {
+  button {
+    padding: 0.5rem;
+    margin: 5px !important;
+
+    @include button('hollow', 'link');
+
+    &.active {
+      @include button('solid', 'main-light');
+    }
+
+    &:hover {
+      @include button('solid', 'link');
+      cursor: pointer;
+    }
   }
 }
 
@@ -456,12 +475,25 @@ img {
 
 .project-description {
   padding: 0px 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
   a {
     text-decoration: underline;
   }
 }
 
-.projectTag {
+.project-tags-container {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#projectTags {
+  margin-left: 0.5rem;
+  display: block;
+}
+
+.project-tag {
   display: inline-block;
   font-size:0.7rem;
   background-color: #888;
@@ -469,6 +501,10 @@ img {
   border-radius: 4px;
   color: #eee;
   padding: 0 4px;
+  &:hover {
+    background-color:#0069c2;
+    cursor: pointer;
+  }
 }
 
 /********************/

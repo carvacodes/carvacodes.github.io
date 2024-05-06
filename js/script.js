@@ -6,19 +6,158 @@ $(document).ready(function(){
 
   // projects view: reload the iframe and change its src attribute when a new project is selected
   let projectPreview = $('#projectPreview')[0];
+  let projectGroupSelect = $('#projectGroupSelect');
   let projectSelectElement = $('#projectSelect');
   let projectList;
+  let nameList = {};
+  let nameListProjectsHTML = '';
+  let categoryList = {};
+  let categoryListHTML = '';
+  let categoryListProjectsHTML = {};
+  let tagList = {};
+  let tagListHTML = '';
+  let tagListProjectsHTML = {};
 
-  // populate the project list
+  // populate the project list and category lists
   fetch('../files/projects.json')
     .then((response) => response.json())
-    .then((json) => { projectList = json; });
+    .then((json) => {
+      // populate project list objects
+      projectList = json;
+      populateNameObj(projectList);
+      populateCatObj(projectList);
+      populateTagObj(projectList);
+    })
+    .then(() => {
+      // populate project category or group HTML (formerly optgroups)
+      categoryListHTML = listToHTML(categoryList, true, 'Select a Category');
+      tagListHTML = listToHTML(tagList, true, 'Select a Tag');
+    })
+    .then(() => {
+      // populate individual category HTML with each project as a group of opts
+      nameListProjectsHTML = listToHTML(nameList, false);
+      categoryListProjectsHTML = listToHTML(categoryList, false);
+      tagListProjectsHTML = listToHTML(tagList, false);
+    })
+    .then(() => {
+      showAllProjects();
+    });
+
+  // helper function for gathering project names
+  function populateNameObj(projectList) {
+    for (projName in projectList) {
+      nameList[projName] = projName;
+    }
+  }
+
+  // helper function for gathering categories
+  function populateCatObj(projectList) {
+    for (projName in projectList) {
+      let p = projectList[projName];
+      let cat = p.category;
+      if (categoryList[cat] == undefined) {
+        categoryList[cat] = [projName]
+      } else {
+        categoryList[cat].push(projName);
+      }
+    }
+  }
+
+  // helper function for gathering categories; slightly different, since the tags are arrays, where the category is a single item
+  function populateTagObj(projectList) {
+    for (projName in projectList) {
+      let p = projectList[projName];
+      let tags = p.tags;
+      for (let i = 0; i < tags.length; i++) {
+        let tag = tags[i];
+        if (tagList[tag] == undefined) {
+          tagList[tag] = [projName]
+        } else {
+          tagList[tag].push(projName);
+        }
+      }
+    }
+  }
+
+  function listToHTML(list, isCategory = false, defaultOptText = 'Select a Project') {
+    let tempSelect = document.createElement('SELECT');
+
+    // include the default option when requested
+    let defaultOpt = document.createElement('OPTION');  // the "default" option, viewable when the page loads
+    defaultOpt.innerText = defaultOptText;
+    defaultOpt.value = 'defaultSelection';
+    tempSelect.appendChild(defaultOpt);
+
+    // sorting will always happen; do preliminary sorting here
+    let sortedArr = [];
+    if (!list.length) {
+      for (proj in list) {
+        sortedArr.push(proj)
+      }
+    } else {
+      sortedArr = list;
+    }
+    sortedArr.sort();
+
+    if (isCategory) {
+      for (category in sortedArr) {
+        let opt = document.createElement('OPTION');
+        opt.value = sortedArr[category];
+        opt.innerText = sortedArr[category];
+        tempSelect.appendChild(opt);
+      }
+      return tempSelect.innerHTML;
+    } else if (projectList[sortedArr[0]]) {
+      // working with a raw project name;
+      // ok to immediately process projectList items using projectList[sortedArr[itemName]]
+      for (proj in sortedArr) {
+        let opt = document.createElement('OPTION');
+        opt.value = sortedArr[proj];
+        opt.innerText = projectList[sortedArr[proj]].displayName;
+        tempSelect.appendChild(opt);
+      }
+      return tempSelect.innerHTML;
+
+    } else if (categoryList[sortedArr[0]]) {
+      let tempObj = {};
+      // working with a list of categories that contains project names;
+      // recursively call this function passing each sublist (which contains project names a la projectList, and will return the right HTML)
+      for (category in sortedArr) {
+        let projectsInCategory = listToHTML(categoryList[sortedArr[category]], false);
+        tempObj[sortedArr[category]] = projectsInCategory;
+      }
+      return tempObj;
+    } else if (tagList[sortedArr[0]]) {
+      let tempObj = {};
+      // working with a list of tags that contains project names;
+      // recursively call this function passing each sublist (which contains project names a la projectList, and will return the right HTML)
+      for (tag in sortedArr) {
+        let projectsInTag = listToHTML(tagList[sortedArr[tag]], false);
+        tempObj[sortedArr[tag]] = projectsInTag;
+      }
+      return tempObj;
+    }
+  }
+
+  // on changing project group, swap the project selector options
+  projectGroupSelect.change(selectGroup);
+
+  function selectGroup() {
+    let groupSelection = this.value;
+    if (this.children[0].innerText == 'Select a Category') {
+      projectSelectElement[0].style.display = 'block';
+      projectSelectElement[0].innerHTML = categoryListProjectsHTML[groupSelection];
+    } else if (this.children[0].innerText == 'Select a Tag') {
+      projectSelectElement[0].style.display = 'block';
+      projectSelectElement[0].innerHTML = tagListProjectsHTML[groupSelection];
+    }
+  }
 
   // on changing the project selector, swap the iframe src and update the header/description fields
   projectSelectElement.change(selectProject);
 
   function selectProject() {
-    if (this.value == "selectProject") { return; }
+    if (this.value == "defaultSelection") { return; }
 
     let projectName = this.value;
     let project = projectList[projectName];
@@ -37,7 +176,7 @@ $(document).ready(function(){
 
     for (let i = 0; i < project.tags.length; i++) {
       let tagSpan = document.createElement('SPAN');
-      tagSpan.className = 'projectTag';
+      tagSpan.className = 'project-tag';
       tagSpan.innerText = project.tags[i];
       projectElements.tags.appendChild(tagSpan);
     }
@@ -53,6 +192,8 @@ $(document).ready(function(){
   randomProjectButton.click(selectRandomProject);
 
   function selectRandomProject() {
+    showAllProjects();
+
     let projectNameArray = [];
     for (let proj in projectList) {
       if (proj != projectSelectElement[0].value) { projectNameArray.push(proj); }
@@ -62,19 +203,45 @@ $(document).ready(function(){
     projectSelectElement.trigger('change');
   }
 
-  // update the select list to gray out projects that are not currently available
-  let projectSelectEl = projectSelectElement[0];
-  let opts = projectSelectEl.getElementsByTagName('OPTION');
-  let optsArray = [].slice.call(opts)
-  
-  optsArray.forEach(el => {
-    if (el.getAttribute('data-status') == 'inactive') {
-      el.disabled = true;
-      el.innerText += ' - Coming Soon!';
-      el.style.fontStyle = 'italic';
-      el.style.color = '#bbb';
-    }
-  });
+  let sortByCategoryButton = document.getElementById('sortByCategory');
+  sortByCategoryButton.addEventListener('click', sortByCategory);
+  let sortByTagsButton = document.getElementById('sortByTags');
+  sortByTagsButton.addEventListener('click', sortByTags);
+  let showAllProjectsButton = document.getElementById('showAllProjects');
+  showAllProjectsButton.addEventListener('click', showAllProjects);
+
+  function sortByCategory() {
+    sortByCategoryButton.classList.add('active');
+    sortByTagsButton.classList.remove('active');
+    showAllProjectsButton.classList.remove('active');
+
+    projectGroupSelect[0].style.display = 'block';
+    projectGroupSelect[0].innerHTML = categoryListHTML;
+    projectSelectElement[0].innerHTML = '';
+    projectSelectElement[0].style.display = 'none';
+  }
+
+  function sortByTags() {
+    sortByCategoryButton.classList.remove('active');
+    sortByTagsButton.classList.add('active');
+    showAllProjectsButton.classList.remove('active');
+
+    projectGroupSelect[0].style.display = 'block';
+    projectGroupSelect[0].innerHTML = tagListHTML;
+    projectSelectElement[0].innerHTML = '';
+    projectSelectElement[0].style.display = 'none';
+  }
+
+  function showAllProjects() {
+    sortByCategoryButton.classList.remove('active');
+    sortByTagsButton.classList.remove('active');
+    showAllProjectsButton.classList.add('active');
+
+    projectGroupSelect[0].style.display = 'none';
+    projectGroupSelect[0].innerHTML = '';
+    projectSelectElement[0].style.display = 'block';
+    projectSelectElement[0].innerHTML = nameListProjectsHTML;
+  }
 
   ////////////////////////////
   //     Event Listeners    //
@@ -102,6 +269,14 @@ $(document).ready(function(){
 
     if (el.id.match(/exp_.*/)) {
       handleExperienceClick(el);
+    }
+
+    // if the user clicks on a project tag, automatically jump to filtering by tags, select the relevant tag, and show its projects
+    if (el.classList.contains('project-tag')) {
+      sortByTags();
+      let tagSelected = el.innerText;
+      projectGroupSelect[0].value = tagSelected;
+      projectGroupSelect.trigger('change');
     }
   })
 
