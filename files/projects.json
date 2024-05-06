@@ -3,35 +3,35 @@
     "category": "UI/UX",
     "displayName": "Dynamic Lighted Buttons",
     "descriptionText": "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
-    "tags": ["Vanilla JavaScript", "Sass/SCSS", "Buttons", "Interactive", "3D"]
+    "tags": ["Sass/SCSS", "Buttons", "Interactive", "3D"]
   },
   "canvas-composite-operations":
   {
     "category": "Proof-of-Concept and Informative",
     "displayName": "Canvas Composite Operations",
     "descriptionText": "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface. Also utilizes the dat.GUI API for the control dialog.",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "JavaScript Libraries", "Gradients", "Interactive"]
+    "tags": ["HTML Canvas", "JavaScript Libraries", "Gradients", "Interactive", "Animation"]
   },
   "lissajous":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Lissajous",
     "descriptionText": "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "Gradients"]
+    "tags": ["HTML Canvas", "Gradients", "Animation"]
   },
   "moving-boxes":
   {
     "category": "Games",
     "displayName": "Moving Boxes Game",
     "descriptionText": "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+    "tags": ["HTML Canvas", "Interactive"]
   },
   "crt-magnet-interference":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "CRT Magnet Interference",
     "descriptionText": "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to change color palette.",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "Gradients", "Interactive"]
+    "tags": ["HTML Canvas", "Gradients", "Interactive", "Animation"]
   },
   "symyn":
   {
@@ -45,41 +45,48 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Magnetic Lines of Force",
     "descriptionText": "A model of magnetic lines of force, as often visualized with iron filings, with a simple two-pole magnet.",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive"]
+    "tags": ["HTML Canvas", "Interactive", "Animation"]
   },
   "wireframe-grayscale-triangles":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Wireframe Grayscale Triangles",
     "descriptionText": "A takeoff on another project I did some time ago depicting a wireframe cube, now with triangles. Move the mouse, drag your finger, or tap/click for a little interaction.",
-    "tags": ["HTML Canvas", "Vanilla JavaScript", "Interactive", "3D"]
+    "tags": ["HTML Canvas", "Interactive", "3D", "Animation"]
   },
   "amoeboid":
   {
     "category": "Spinners and Loaders",
     "displayName": "Amoeboid",
     "descriptionText": "A CSS-only spinner utilizing `filter: blur()` and `filter: contrast()`, along with CSS animations, to achieve a morphing blob appearance.",
-    "tags": ["CSS Only", "CSS Filter Effects"]    
+    "tags": ["CSS Only", "CSS Filter Effects", "Animation"]    
   },
   "post-dusk":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Post-Dusk: A Screen Saver Simulation",
     "descriptionText": "A procedurally generated nighttime city skyline inspired by an old Mac screen saver. Click for a falling star.",
-    "tags": ["HTML Canvas", "Procedural Generation", "Screen Saver", "Interactive"]
+    "tags": ["HTML Canvas", "Procedural Generation", "Screen Saver", "Interactive", "Animation"]
   },
   "tower-of-the-gods":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Wind Waker: Tower of the Gods Beam Effect",
     "descriptionText": "A piece inspired by one of my favorite games, The Legend of Zelda: The Wind Waker. This beam effect appears in a cinematic section where the Tower of the Gods erupts from the sea.",
-    "tags": ["HTML Canvas", "Procedural Generation", "Video Games", "CSS Filter Effects"]
+    "tags": ["HTML Canvas", "Procedural Generation", "Video Games", "CSS Filter Effects", "Animation"]
   },
   "emulating-pixelisa":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Emulating Pixelisa",
     "descriptionText": "An attempt at digitally reproducing an artwork from Reddit: a pixelized Mona Lisa. Move the picture around to see the full 3D effect, and check the GitHub link below or click the \"Original\" button to see the original post from user Screw7oose.",
-    "tags": ["HTML", "CSS Transform", "3D", "Interactive"]
+    "tags": ["CSS Transform", "3D", "Interactive"]
+  },
+  "neon-grid":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Neon Grid",
+    "descriptionText": "A color-shifting gradient grid animation.",
+    "tags": ["HTML Canvas", "CSS Transform", "Animation"]
   }
 }

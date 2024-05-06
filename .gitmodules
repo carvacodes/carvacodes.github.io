@@ -34,3 +34,6 @@
 [submodule "submods/emulating-pixelisa"]
 	path = submods/emulating-pixelisa
 	url = https://github.com/carvacodes/emulating-pixelisa.git
+[submodule "submods/neon-grid"]
+	path = submods/neon-grid
+	url = https://github.com/carvacodes/neon-grid.git
