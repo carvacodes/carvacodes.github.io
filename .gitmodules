@@ -40,3 +40,6 @@
 [submodule "submods/particle-explosions"]
 	path = submods/particle-explosions
 	url = https://github.com/carvacodes/particle-explosions.git
+[submodule "submods/tic-tac-toe"]
+	path = submods/tic-tac-toe
+	url = https://github.com/carvacodes/tic-tac-toe.git

@@ -95,5 +95,12 @@
     "displayName": "Particle Explosions",
     "descriptionText": "Click/tap to explode, and play around with the buttons (Persist Canvas in particular...)",
     "tags": ["HTML Canvas", "Animation", "Interactive", "3D", "Procedural Generation", "Gradients"]
+  },
+  "tic-tac-toe":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Tic-Tac-Toe",
+    "descriptionText": "Click/tap to explode, and play around with the buttons (Persist Canvas in particular...)",
+    "tags": ["Games", "Interactive", "Sass/SCSS"]
   }
 }
