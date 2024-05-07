@@ -37,3 +37,6 @@
 [submodule "submods/neon-grid"]
 	path = submods/neon-grid
 	url = https://github.com/carvacodes/neon-grid.git
+[submodule "submods/particle-explosions"]
+	path = submods/particle-explosions
+	url = https://github.com/carvacodes/particle-explosions.git

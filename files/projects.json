@@ -22,7 +22,7 @@
   "moving-boxes":
   {
     "category": "Games",
-    "displayName": "Moving Boxes Game",
+    "displayName": "Moving Boxes",
     "descriptionText": "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
     "tags": ["HTML Canvas", "Interactive"]
   },
@@ -88,5 +88,12 @@
     "displayName": "Neon Grid",
     "descriptionText": "A color-shifting gradient grid animation.",
     "tags": ["HTML Canvas", "CSS Transform", "Animation"]
+  },
+  "particle-explosions":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Particle Explosions",
+    "descriptionText": "Click/tap to explode, and play around with the buttons (Persist Canvas in particular...)",
+    "tags": ["HTML Canvas", "Animation", "Interactive", "3D", "Procedural Generation", "Gradients"]
   }
 }
