@@ -100,7 +100,7 @@
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Tic-Tac-Toe",
-    "descriptionText": "Click/tap to explode, and play around with the buttons (Persist Canvas in particular...)",
+    "descriptionText": "The classic paper-and-pencil game. Play against the computer or a friend. Play as x's and o's. Or as \"cats\" and \"dogs\". Or as ฅ^•ﻌ•^ฅ and ʕ•ᴥ•ʔ.",
     "tags": ["Games", "Interactive", "Sass/SCSS"]
   }
 }
