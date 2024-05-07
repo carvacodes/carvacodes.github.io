@@ -24,7 +24,7 @@
     "category": "Games",
     "displayName": "Moving Boxes",
     "descriptionText": "A brief experiment with speeds, click handlers, etc. on the HTML `canvas`. Also a fun little game :)",
-    "tags": ["HTML Canvas", "Interactive"]
+    "tags": ["HTML Canvas", "Interactive", "Games"]
   },
   "crt-magnet-interference":
   {
@@ -38,7 +38,7 @@
     "category": "Games",
     "displayName": "Symyn",
     "descriptionText": "A modern clone of the classic \"Simon\" game, using the HTML5 `AudioContext` API for sound.",
-    "tags": ["Sass/SCSS", "JavaScript", "jQuery", "AudioContext", "Interactive"]
+    "tags": ["Sass/SCSS", "JavaScript", "jQuery", "AudioContext", "Interactive", "Games"]
   },
   "magnetic-lines-of-force":
   {
@@ -98,9 +98,16 @@
   },
   "tic-tac-toe":
   {
-    "category": "Art, Graphics, and Simulations",
+    "category": "Games",
     "displayName": "Tic-Tac-Toe",
     "descriptionText": "The classic paper-and-pencil game. Play against the computer or a friend. Play as x's and o's. Or as \"cats\" and \"dogs\". Or as ฅ^•ﻌ•^ฅ and ʕ•ᴥ•ʔ.",
     "tags": ["Games", "Interactive", "Sass/SCSS"]
+  },
+  "silhouette-spinner":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Silhouette Spinner",
+    "descriptionText": "A spinner animation taking advantage of ellipse pathing and the HTML canvas's `globalCompositeOperations` to achieve a (usually) silhouetted effect.",
+    "tags": ["HTML Canvas", "Interactive", "Animation"]
   }
 }
