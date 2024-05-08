@@ -200,8 +200,17 @@ $(document).ready(function(){
     for (let proj in projectList) {
       if (proj != projectSelectElement[0].value) { projectNameArray.push(proj); }
     }
-    let selection = projectNameArray[Math.floor(Math.random() * projectNameArray.length)];
-    projectSelectElement.val(selection);
+    let selection = Math.floor(Math.random() * projectNameArray.length);
+    let selectedProject = projectNameArray[selection];
+    let currentProj = projectPreview.src.match(/submods\/([\w\-]*)\/markup.html/);
+    if (currentProj) { currentProj = currentProj[1]; }
+
+    while (selectedProject == currentProj) {
+      selection = Math.floor(Math.random() * projectNameArray.length);
+      selectedProject = projectNameArray[selection];
+    }
+
+    projectSelectElement.val(selectedProject);
     projectSelectElement.trigger('change');
   }
 
