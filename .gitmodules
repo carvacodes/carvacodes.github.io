@@ -46,3 +46,6 @@
 [submodule "submods/silhouette-spinner"]
 	path = submods/silhouette-spinner
 	url = https://github.com/carvacodes/silhouette-spinner.git
+[submodule "submods/water-caustics"]
+	path = submods/water-caustics
+	url = https://github.com/carvacodes/water-caustics.git
