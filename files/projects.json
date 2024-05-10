@@ -109,12 +109,5 @@
     "displayName": "Silhouette Spinner",
     "descriptionText": "A spinner animation taking advantage of ellipse pathing and the HTML canvas's `globalCompositeOperations` to achieve a (usually) silhouetted effect.",
     "tags": ["HTML Canvas", "Interactive", "Animation"]
-  },
-  "water-caustics":
-  {
-    "category": "Art, Graphics, and Simulations",
-    "displayName": "Water Caustics",
-    "descriptionText": "A water caustics playaround driven by CSS animations and filters. Click, move, or touch to get some ripple action.",
-    "tags": ["CSS Filter Effects", "CSS Animations", "Animation", "Interactive", "Procedural Generation"]
   }
 }
