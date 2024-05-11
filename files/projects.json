@@ -10,14 +10,14 @@
     "category": "Proof-of-Concept and Informative",
     "displayName": "Canvas Composite Operations",
     "descriptionText": "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface. Also utilizes the dat.GUI API for the control dialog.",
-    "tags": ["HTML Canvas", "JavaScript Libraries", "Gradients", "Interactive", "Animation"]
+    "tags": ["HTML Canvas", "JavaScript Libraries", "Gradients", "Interactive", "JavaScript Animation"]
   },
   "lissajous":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Lissajous",
     "descriptionText": "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
-    "tags": ["HTML Canvas", "Gradients", "Animation"]
+    "tags": ["HTML Canvas", "Gradients", "JavaScript Animation"]
   },
   "moving-boxes":
   {
@@ -31,7 +31,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "CRT Magnet Interference",
     "descriptionText": "A cubic Bezier curve experiment that ended up simulating a kid, a magnet, and an old TV. Move the mouse, click to change color palette.",
-    "tags": ["HTML Canvas", "Gradients", "Interactive", "Animation"]
+    "tags": ["HTML Canvas", "Gradients", "Interactive", "JavaScript Animation"]
   },
   "symyn":
   {
@@ -45,35 +45,35 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Magnetic Lines of Force",
     "descriptionText": "A model of magnetic lines of force, as often visualized with iron filings, with a simple two-pole magnet.",
-    "tags": ["HTML Canvas", "Interactive", "Animation"]
+    "tags": ["HTML Canvas", "Interactive", "JavaScript Animation"]
   },
   "wireframe-grayscale-triangles":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Wireframe Grayscale Triangles",
     "descriptionText": "A takeoff on another project I did some time ago depicting a wireframe cube, now with triangles. Move the mouse, drag your finger, or tap/click for a little interaction.",
-    "tags": ["HTML Canvas", "Interactive", "3D", "Animation"]
+    "tags": ["HTML Canvas", "Interactive", "3D", "JavaScript Animation"]
   },
   "amoeboid":
   {
     "category": "Spinners and Loaders",
     "displayName": "Amoeboid",
     "descriptionText": "A CSS-only spinner utilizing `filter: blur()` and `filter: contrast()`, along with CSS animations, to achieve a morphing blob appearance.",
-    "tags": ["CSS Only", "CSS Filter Effects", "Animation"]    
+    "tags": ["CSS Only", "CSS Filter Effects", "CSS Animation"]    
   },
   "post-dusk":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Post-Dusk: A Screen Saver Simulation",
     "descriptionText": "A procedurally generated nighttime city skyline inspired by an old Mac screen saver. Click for a falling star.",
-    "tags": ["HTML Canvas", "Procedural Generation", "Screen Saver", "Interactive", "Animation"]
+    "tags": ["HTML Canvas", "Procedural Generation", "Screen Saver", "Interactive", "JavaScript Animation"]
   },
   "tower-of-the-gods":
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Wind Waker: Tower of the Gods Beam Effect",
     "descriptionText": "A piece inspired by one of my favorite games, The Legend of Zelda: The Wind Waker. This beam effect appears in a cinematic section where the Tower of the Gods erupts from the sea.",
-    "tags": ["HTML Canvas", "Procedural Generation", "Video Games", "CSS Filter Effects", "Animation"]
+    "tags": ["HTML Canvas", "Procedural Generation", "Video Games", "CSS Filter Effects", "JavaScript Animation"]
   },
   "emulating-pixelisa":
   {
@@ -87,7 +87,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Neon Grid",
     "descriptionText": "A color-shifting gradient grid animation.",
-    "tags": ["HTML Canvas", "CSS Transform", "Animation"]
+    "tags": ["HTML Canvas", "CSS Transform", "JavaScript Animation"]
   },
   "particle-explosions":
   {
@@ -108,6 +108,13 @@
     "category": "Spinners and Loaders",
     "displayName": "Silhouette Spinner",
     "descriptionText": "A spinner animation taking advantage of ellipse pathing and the HTML canvas's `globalCompositeOperations` to achieve a (usually) silhouetted effect.",
-    "tags": ["HTML Canvas", "Interactive", "Animation"]
+    "tags": ["HTML Canvas", "Interactive", "JavaScript Animation"]
+  },
+  "pastel-orbits":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Pastel Orbits",
+    "descriptionText": "An experiment with held button controls (functional on both mouse-hold and tap-hold), as well as with the HTML `canvas`, gradients and trig math.",
+    "tags": ["HTML Canvas", "JavaScript Animation", "Interactive", "Gradients", "CSS Animation"]
   }
 }

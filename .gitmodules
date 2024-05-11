@@ -49,3 +49,6 @@
 [submodule "submods/water-caustics"]
 	path = submods/water-caustics
 	url = https://github.com/carvacodes/water-caustics.git
+[submodule "submods/pastel-orbits"]
+	path = submods/pastel-orbits
+	url = https://github.com/carvacodes/pastel-orbits.git

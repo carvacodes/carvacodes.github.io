@@ -1,3 +1,4 @@
-*.map
+style.css.map
 *.html
 !index.html
+.vscode
