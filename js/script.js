@@ -187,6 +187,8 @@ window.addEventListener('load', function(){
     projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
     projectElements.gitHubUrl.innerText = gitHubUrl;
     projectElements.gitHubUrl.href = gitHubUrl;
+    
+    softScrollTo('#projectName', 0, 400);
   }
 
   // random project selector button
