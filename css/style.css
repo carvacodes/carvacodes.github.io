@@ -227,7 +227,7 @@ img {
 .page-header-splash {
   margin-top: 38px;
   min-height: 360px;
-  background: url("../images/lissajous-background.png") no-repeat bottom/cover;
+  background: url("../images/lissajous-background-1024-screens.png") no-repeat bottom/cover;
 }
 .page-header-splash h1, .page-header-splash h4 {
   margin: 0;
@@ -675,6 +675,7 @@ footer ul li a {
   }
   .page-header-splash {
     margin-top: 0;
+    background: url("../images/lissajous-background-1920-screens.png") no-repeat bottom/cover;
   }
   .top-nav {
     position: relative;
@@ -755,6 +756,11 @@ footer ul li a {
   }
   .about-content {
     max-width: 66vw;
+  }
+}
+@media (min-width: 1920px) {
+  .page-header-splash {
+    background: url("../images/lissajous-background.png") no-repeat bottom/cover;
   }
 }
 @media (min-width: 2400px) {
