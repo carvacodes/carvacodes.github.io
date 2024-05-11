@@ -209,10 +209,12 @@ window.addEventListener('load', function(){
       selection = Math.floor(Math.random() * projectNameArray.length);
       selectedProject = projectNameArray[selection];
     }
-
-    projectSelectElement.val(selectedProject);
-    projectSelectElement.trigger('change');
-    softScrollTo('#projectName', 0, 400);
+    
+    
+    softScrollTo('#projectName', 0, 400, () => {
+      projectSelectElement.val(selectedProject);
+      projectSelectElement.trigger('change');
+    });
   }
 
   let sortByCategoryButton = document.getElementById('sortByCategory');
