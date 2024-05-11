@@ -410,7 +410,7 @@ function softScrollTo(elementSelector, additionalScrollOffset = 0, milliseconds,
   let promise = new Promise((resolve) => {
     // if the element is already scrolled correctly, execute any callback and return immediately; no need to wait for the scroll animation
     if (elementScreenPosition == navBarOffset) {
-      callback();
+      if (callback) { callback(); }
       return resolve();
     } else {
       // if the element is not already scrolled correctly, scroll to it, executing the callback
