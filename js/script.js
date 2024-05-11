@@ -1,4 +1,4 @@
-$(document).ready(function(){
+window.addEventListener('load', function(){
 
   ////////////////////////////
   //    Project Selector    //
@@ -212,6 +212,7 @@ $(document).ready(function(){
 
     projectSelectElement.val(selectedProject);
     projectSelectElement.trigger('change');
+    softScrollTo('#projectName', 0, 400);
   }
 
   let sortByCategoryButton = document.getElementById('sortByCategory');
@@ -287,7 +288,7 @@ $(document).ready(function(){
       sortByTags();
       let tagSelected = el.innerText;
       projectGroupSelect[0].value = tagSelected;
-      projectGroupSelect.trigger('change');
+      softScrollTo($('div.projects-list div.sort-type'), 0, 400, () => {projectGroupSelect.trigger('change');})
     }
   })
 
@@ -364,8 +365,7 @@ function handleExperienceClick(el) {
 
   let achievingList = $('#achieving_list');
   let listRect = achievingList[0].getBoundingClientRect();
-  let scrollToValue = achievingList.offset().top + Math.abs(listRect.top - listRect.bottom);
-
+  
   // begin animation sequence
   utilParent.slideUp(400, () => { populateUtils(groupName); });
   paraParent.slideUp(400, ()=>{
@@ -375,14 +375,52 @@ function handleExperienceClick(el) {
     paragraph.slideDown(0,()=>{
       paraParent.slideDown(400, ()=>{
         utilParent.slideDown(400, ()=>{
-          if (innerWidth >= 666 || innerHeight < 400) { return; }
-          $('html').animate({
-            scrollTop: scrollToValue
-          }, 400, null);
+          if (innerWidth >= 666 && innerHeight > 600) { 
+            softScrollTo('section.experience.sub-container', 0, 400);
+          } else {
+            softScrollTo(achievingList, Math.abs(listRect.top - listRect.bottom), 400);
+          }
         });
       });
     });
   });
+}
+
+// helper function to make scrolling to an individual element easier
+function softScrollTo(elementSelector, additionalScrollOffset = 0, milliseconds, callback = null) {
+  // check if there is a visible nav bar and add an additional offset to compensate if so
+  let navBarOffset = 0;
+  let navBarStyle = window.getComputedStyle($('#nav-toggle')[0]);
+  if (navBarStyle.display == 'block') {
+    navBarOffset = Math.round(Number(navBarStyle.height.slice(0, -2)));
+  }
+
+  // compensate for an element's margin (in whatever form it takes)
+  let elementStyle = window.getComputedStyle($(elementSelector)[0]);
+  let elementMarginOffset = elementStyle.marginTop.slice(0, -2) ||
+                            elementStyle.marginBlockStart.slice(0, -2) ||
+                            elementStyle.margin.slice(0, -2);
+  
+  // get an element's current screen position, rounded
+  let elementScreenPosition = Math.round($(elementSelector)[0].getBoundingClientRect().top);
+
+  // calculate the offset value and scroll to it, executing a provided callback
+  // uses a promise for additional chaining, if needed
+  let scrollToValue = $(elementSelector).offset().top + additionalScrollOffset - navBarOffset - elementMarginOffset;
+  let promise = new Promise((resolve) => {
+    // if the element is already scrolled correctly, execute any callback and return immediately; no need to wait for the scroll animation
+    if (elementScreenPosition == navBarOffset) {
+      callback();
+      return resolve();
+    } else {
+      // if the element is not already scrolled correctly, scroll to it, executing the callback
+      $('html').animate({
+        scrollTop: scrollToValue
+      }, milliseconds, callback);
+      return resolve();
+    }
+  })
+  return promise;
 }
 
 function populateUtils(groupName) {
