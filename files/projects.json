@@ -123,5 +123,12 @@
     "displayName": "Water Caustics",
     "descriptionText": "A water caustics playaround driven by CSS animations and filters. No `canvas` here! Click, move, or touch to get some ripple action.",
     "tags": ["CSS Filter Effects", "Interactive", "CSS Animation"]
+  },
+  "flying-with-the-sky-dragon":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Flying with the Sky Dragon",
+    "descriptionText": "An homage to one of my (and many folks') favorite games, Cave Story. Animations are purely CSS, while the initial generation of the clouds is handled in JS. Click/tap the screen to change the scene (an effect largely driven by transitions, filters, and a single gradient).\nAlso, if you haven't played Cave Story, please go do that!",
+    "tags": ["CSS Filter Effects", "Interactive", "CSS Animation", "Gradients", "Video Games"]
   }
 }

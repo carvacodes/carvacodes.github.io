@@ -52,3 +52,6 @@
 [submodule "submods/pastel-orbits"]
 	path = submods/pastel-orbits
 	url = https://github.com/carvacodes/pastel-orbits.git
+[submodule "submods/flying-with-the-sky-dragon"]
+	path = submods/flying-with-the-sky-dragon
+	url = https://github.com/carvacodes/flying-with-the-sky-dragon.git
