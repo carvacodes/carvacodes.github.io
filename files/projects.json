@@ -116,5 +116,12 @@
     "displayName": "Pastel Orbits",
     "descriptionText": "An experiment with held button controls (functional on both mouse-hold and tap-hold), as well as with the HTML `canvas`, gradients and trig math.",
     "tags": ["HTML Canvas", "JavaScript Animation", "Interactive", "Gradients", "CSS Animation"]
+  },
+  "water-caustics":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Water Caustics",
+    "descriptionText": "A water caustics playaround driven by CSS animations and filters. No `canvas` here! Click, move, or touch to get some ripple action.",
+    "tags": ["CSS Filter Effects", "Interactive", "CSS Animation"]
   }
 }
