@@ -93,7 +93,7 @@
   {
     "category": "Art, Graphics, and Simulations",
     "displayName": "Particle Explosions",
-    "descriptionText": "Click/tap to explode, and play around with the buttons (Persist Strokes in particular...)",
+    "descriptionText": "Click/tap to explode, and play around with the buttons! Try turning off \"Auto Bursts\" for a little more control.",
     "tags": ["HTML Canvas", "Animation", "Interactive", "3D", "Procedural Generation", "Gradients"]
   },
   "tic-tac-toe":
