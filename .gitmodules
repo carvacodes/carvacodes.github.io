@@ -55,3 +55,6 @@
 [submodule "submods/flying-with-the-sky-dragon"]
 	path = submods/flying-with-the-sky-dragon
 	url = https://github.com/carvacodes/flying-with-the-sky-dragon.git
+[submodule "submods/flame"]
+	path = submods/flame
+	url = https://github.com/carvacodes/flame.git

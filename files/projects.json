@@ -130,5 +130,12 @@
     "displayName": "Flying with the Sky Dragon",
     "descriptionText": "An homage to one of my (and many folks') favorite games, Cave Story. Animations are purely CSS, while the initial generation of the clouds is handled in JS. Click/tap the screen to change the scene (an effect largely driven by transitions, filters, and a single gradient).\nAlso, if you haven't played Cave Story, please go do that!",
     "tags": ["CSS Filter Effects", "Interactive", "CSS Animation", "Gradients", "Video Games"]
+  },
+  "flame":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Flame",
+    "descriptionText": "A simulated flame driven by CSS filters and CSS animations with a homemade vanilla JavaScript UI and custom swipe gestures. This project also explored CSS variables (e.g., `--flame-color`) and their usage within CSS's built-in `calc()` function, as well as JavaScript hooks into those variables via a custom `data-css-val` property on `range`-type input elements.",
+    "tags": ["CSS Filter Effects", "CSS Animation", "CSS Variables", "Interactive", "UI/UX", "Gestures"]
   }
 }
