@@ -273,7 +273,7 @@ img {
 .main-nav li {
   width: 90%;
   max-width: 360px;
-  @font_color ($ctx);
+  color: slategray;
   background-color: white;
   display: inline-block;
   border: 2px solid slategray;
@@ -384,7 +384,7 @@ img {
   justify-content: space-around;
 }
 .experience li {
-  @font_color ($ctx);
+  color: #8a8a8a;
   background-color: white;
   display: inline-block;
   border: 2px solid #8a8a8a;
@@ -464,7 +464,7 @@ img {
 .sort-type button {
   padding: 0.5rem;
   margin: 5px !important;
-  @font_color ($ctx);
+  color: slategray;
   background-color: white;
   display: inline-block;
   border: 2px solid slategray;
@@ -501,6 +501,8 @@ img {
   min-height: 75vh;
   border: thin solid gray;
   margin: 30px auto;
+  border-left: none;
+  border-right: none;
 }
 
 .project-description {
