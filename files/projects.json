@@ -5,13 +5,6 @@
     "descriptionText": "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
     "tags": ["Sass/SCSS", "Buttons", "Interactive", "3D"]
   },
-  "canvas-composite-operations":
-  {
-    "category": "Proof-of-Concept and Informative",
-    "displayName": "Canvas Composite Operations",
-    "descriptionText": "A quick look at the various composite operations provided to us by the `CanvasRenderingContext2D` interface. Also utilizes the dat.GUI API for the control dialog.",
-    "tags": ["HTML Canvas", "JavaScript Libraries", "Gradients", "Interactive", "JavaScript Animation"]
-  },
   "lissajous":
   {
     "category": "Art, Graphics, and Simulations",
@@ -102,13 +95,6 @@
     "displayName": "Tic-Tac-Toe",
     "descriptionText": "The classic paper-and-pencil game. Play against the computer or a friend. Play as x's and o's. Or as \"cats\" and \"dogs\". Or as ฅ^•ﻌ•^ฅ and ʕ•ᴥ•ʔ.",
     "tags": ["Games", "Interactive", "Sass/SCSS"]
-  },
-  "silhouette-spinner":
-  {
-    "category": "Spinners and Loaders",
-    "displayName": "Silhouette Spinner",
-    "descriptionText": "A spinner animation taking advantage of ellipse pathing and the HTML canvas's `globalCompositeOperations` to achieve a (usually) silhouetted effect.",
-    "tags": ["HTML Canvas", "Interactive", "JavaScript Animation"]
   },
   "pastel-orbits":
   {
