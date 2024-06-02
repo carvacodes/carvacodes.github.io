@@ -38,7 +38,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Magnetic Lines of Force",
     "descriptionText": "A model of magnetic lines of force, as often visualized with iron filings, with a simple two-pole magnet. Click or tap the screen to switch between a static view of the magnet and filings and a dynamic view showing the direction and strength of the magnetic field.",
-    "tags": ["HTML Canvas", "Interactive", "JavaScript Animation"]
+    "tags": ["HTML Canvas", "Interactive", "JavaScript Animation", "Variable Frame Rate Matching", "Variable DPR Scaling"]
   },
   "wireframe-grayscale-triangles":
   {
