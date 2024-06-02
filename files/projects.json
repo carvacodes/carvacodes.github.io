@@ -10,7 +10,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Lissajous",
     "descriptionText": "In this demo, an animated grid of lissajous curves are drawn to an HTML `canvas` using vanilla JavaScript.",
-    "tags": ["HTML Canvas", "Gradients", "JavaScript Animation"]
+    "tags": ["HTML Canvas", "Gradients", "JavaScript Animation", "Variable Frame Rate Matching", "Variable DPR Scaling"]
   },
   "moving-boxes":
   {
@@ -24,7 +24,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "CRT Magnet Interference",
     "descriptionText": "A cubic Bezier curve experiment that started as a simulation of a kid, a magnet, and an old TV. Touch-drag or move the mouse to move the entire grid, or tap/click to place and remove four Bezier control points. If four points are already placed, click on the grid (not a point) to remove them all. Try adjusting the grid size up or down from the Settings menu, too!",
-    "tags": ["HTML Canvas", "Gradients", "Interactive", "JavaScript Animation"]
+    "tags": ["HTML Canvas", "Gradients", "Interactive", "JavaScript Animation", "Variable Frame Rate Matching", "Variable DPR Scaling"]
   },
   "symyn":
   {
