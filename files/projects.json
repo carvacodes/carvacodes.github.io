@@ -3,7 +3,7 @@
     "category": "UI/UX",
     "displayName": "Dynamic Lighted Buttons",
     "descriptionText": "In this proof of concept, the mouse cursor acts as a light source, causing the page background and several buttons on the page to illuminate and case shadows.",
-    "tags": ["Sass/SCSS", "Buttons", "Interactive", "3D"]
+    "tags": ["Sass/SCSS", "Buttons", "Interactive", "Pseudo-3D"]
   },
   "lissajous":
   {
@@ -45,7 +45,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Wireframe Grayscale Triangles",
     "descriptionText": "A takeoff on another project I did some time ago depicting a wireframe cube, now with triangles. Move the mouse, drag your finger, or tap/click for a little interaction.",
-    "tags": ["HTML Canvas", "Interactive", "3D", "JavaScript Animation"]
+    "tags": ["HTML Canvas", "Interactive", "Pseudo-3D", "JavaScript Animation"]
   },
   "amoeboid":
   {
@@ -87,7 +87,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Particle Explosions",
     "descriptionText": "Click/tap to explode, and play around with the buttons! Try turning off \"Auto Bursts\" for a little more control.",
-    "tags": ["HTML Canvas", "Animation", "Interactive", "3D", "Procedural Generation", "Gradients"]
+    "tags": ["HTML Canvas", "Animation", "Interactive", "Pseudo-3D", "Procedural Generation", "Gradients"]
   },
   "tic-tac-toe":
   {
