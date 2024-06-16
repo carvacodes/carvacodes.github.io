@@ -80,7 +80,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Particle Explosions",
     "descriptionText": "Click/tap to explode, and play around with the buttons! Try turning off \"Auto Bursts\" for a little more control.",
-    "tags": ["HTML Canvas", "Animation", "Interactive", "Pseudo-3D", "Procedural Generation", "Gradients"]
+    "tags": ["HTML Canvas", "Animation", "Interactive", "Pseudo-3D", "Procedural Generation", "Gradients", "Particles"]
   },
   "tic-tac-toe":
   {
@@ -94,7 +94,7 @@
     "category": "Art, Graphics, and Simulations",
     "displayName": "Pastel Orbits",
     "descriptionText": "An experiment with held button controls (functional on both mouse-hold and tap-hold), as well as with the HTML `canvas`, gradients and trig math.",
-    "tags": ["HTML Canvas", "JavaScript Animation", "Interactive", "Gradients", "CSS Animation"]
+    "tags": ["HTML Canvas", "JavaScript Animation", "Interactive", "Gradients", "CSS Animation", "Particles"]
   },
   "water-caustics":
   {
@@ -116,5 +116,12 @@
     "displayName": "Flame",
     "descriptionText": "A simulated flame driven by CSS filters and CSS animations with a homemade vanilla JavaScript UI and custom swipe gestures. This project also explored CSS variables (e.g., `--flame-color`) and their usage within CSS's built-in `calc()` function, as well as JavaScript hooks into those variables via a custom `data-css-val` property on `range`-type input elements.",
     "tags": ["CSS Filter Effects", "CSS Animation", "CSS Variables", "Interactive", "UI/UX", "Gestures"]
+  },
+  "particle-cyclone":
+  {
+    "category": "Art, Graphics, and Simulations",
+    "displayName": "Particle Cyclone",
+    "descriptionText": "A swirl of particles cascading into a singularity. Move/touch/drag to interact.",
+    "tags": ["HTML Canvas", "Animation", "Interactive", "Pseudo-3D", "Procedural Generation", "Particles"]
   }
 }

@@ -58,3 +58,6 @@
 [submodule "submods/flame"]
 	path = submods/flame
 	url = https://github.com/carvacodes/flame.git
+[submodule "submods/particle-cyclone"]
+	path = submods/particle-cyclone
+	url = https://github.com/carvacodes/particle-cyclone.git
