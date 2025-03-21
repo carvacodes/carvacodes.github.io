@@ -434,6 +434,15 @@ img {
   }
 }
 
+.soft-error {
+  background-color: rgb(255, 218, 183);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  padding: 0.33rem 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .project {
   background-color: colors('light');
   color: colors('medium');
