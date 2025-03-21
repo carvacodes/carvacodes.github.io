@@ -39,9 +39,35 @@ window.addEventListener('load', function(){
       categoryListProjectsHTML = listToHTML(categoryList, false);
       tagListProjectsHTML = listToHTML(tagList, false);
     })
-    .then(() => {
-      showAllProjects();
-    });
+    .then(showAllProjects)
+    .then(checkProjectInUrl);
+
+  function checkProjectInUrl() {
+      // If the user navigated here from a URL referencing a specific project,
+      // load the project and scroll to it. Sanitize the query parameter!
+      let projectUrlParamQueryString = window.location.search;
+      let projectUrlParam = new URLSearchParams(projectUrlParamQueryString);
+      let urlNavigatedProject = projectUrlParam.get('project') || '';
+      let sanitizedQuery = encodeURI(urlNavigatedProject);
+      if (sanitizedQuery && nameList[sanitizedQuery]) {
+        hideProjectError();
+        projectSelectElement.val(sanitizedQuery);
+        projectSelectElement.trigger('change');
+      } else {
+        showProjectError(sanitizedQuery);
+      }
+  }
+
+  function hideProjectError() {
+    $('#project-not-found-notification').hide();
+    $('#project-query-attempted').text('');
+  }
+
+  function showProjectError(attemptedProject) {
+    $('#project-not-found-notification').show();
+    $('#project-query-attempted').html(`<pre><code>${attemptedProject}</code></pre>`);
+    softScrollTo('#projects-list-prose', 0, 400);
+  }
 
   // helper function for gathering project names
   function populateNameObj(projectList) {
@@ -63,7 +89,7 @@ window.addEventListener('load', function(){
     }
   }
 
-  // helper function for gathering categories; slightly different, since the tags are arrays, where the category is a single item
+  // helper function for gathering tags; slightly different, since the tags are arrays, where the category is a single item
   function populateTagObj(projectList) {
     for (projName in projectList) {
       let p = projectList[projName];
@@ -187,6 +213,8 @@ window.addEventListener('load', function(){
     projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
     projectElements.gitHubUrl.innerText = gitHubUrl;
     projectElements.gitHubUrl.href = gitHubUrl;
+
+    hideProjectError();
     
     softScrollTo('#projectName', 0, 400);
   }
@@ -343,6 +371,10 @@ window.addEventListener('load', function(){
       allEls[i].style.backgroundSize = "auto 100%";
     }
   }
+  
+  ////////////////////////////////////
+  //          End load event        //
+  ////////////////////////////////////
 });
 
 ////////////////////////////////////
