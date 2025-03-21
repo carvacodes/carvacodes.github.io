@@ -259,6 +259,25 @@ window.addEventListener('load', function(){
     projectSelectElement[0].innerHTML = nameListProjectsHTML;
   }
 
+  let previewContainer = document.getElementById('previewContainer');
+  let toggleFullscreenButton = document.getElementById('toggleFullscreenButton');
+  toggleFullscreenButton.addEventListener('click', toggleFullscreen);
+  let lastPreviewScrollTop = previewContainer.scrollTop;
+
+  function toggleFullscreen() {
+    if (previewContainer.classList.contains('fullscreen-preview')) {
+      lastPreviewScrollTop = previewContainer.scrollTop;
+      previewContainer.classList.remove('fullscreen-preview');
+      projectPreview.location.reload();
+    } else {
+      if (projectPreview.getAttribute('src') != '') {
+        previewContainer.classList.add('fullscreen-preview');
+        projectPreview.location.reload();
+        softScrollTo('#previewContainer', 0, 0);
+      }
+    }
+  }
+
   ////////////////////////////
   //     Event Listeners    //
   ////////////////////////////

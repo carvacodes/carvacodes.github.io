@@ -470,14 +470,32 @@ img {
   }
 }
 
-#projectPreview {
-  display: block;
+.project-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
   width: 100%;
-  min-height: 75vh;
-  border: thin solid gray;
+  min-height: 66vh;
   margin: 30px auto;
   border-left: none;
   border-right: none;
+  background: #888;
+}
+
+.project-preview.fullscreen-preview {
+  min-height: 100vh;
+  margin: 0;
+  z-index: 100000;
+}
+
+#projectPreview {
+  flex-grow: 1;
+
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  border: none;
 }
 
 .project-description {
