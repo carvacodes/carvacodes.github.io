@@ -49,11 +49,11 @@ window.addEventListener('load', function(){
       let projectUrlParam = new URLSearchParams(projectUrlParamQueryString);
       let urlNavigatedProject = projectUrlParam.get('project') || '';
       let sanitizedQuery = encodeURI(urlNavigatedProject);
-      if (sanitizedQuery && nameList[sanitizedQuery]) {
+      if (sanitizedQuery !== '' && nameList[sanitizedQuery]) {
         hideProjectError();
         projectSelectElement.val(sanitizedQuery);
         projectSelectElement.trigger('change');
-      } else {
+      } else if (sanitizedQuery !== '') {
         showProjectError(sanitizedQuery);
       }
   }
