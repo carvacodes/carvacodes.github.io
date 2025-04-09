@@ -15,7 +15,8 @@
   @else if $ctx == 'dark' { @return #333; }
 }
 
-@mixin font_family() { font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
+@mixin font_family() { font-family: 'Tajawal', 'Open Sans', 'Arial', sans-serif; }
+@mixin font_family_special() { font-family: 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
 @mixin display_fonts() { @include font-family(); font-weight: 700; }
 @mixin body_fonts() { @include font-family(); font-weight: 300; }
 @mixin ui_fonts() { font-family: 'Quicksand', 'Montserrat', 'Open Sans', 'Arial', sans-serif; }
@@ -33,6 +34,7 @@
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   @include ui_fonts();
 }
  
@@ -54,6 +56,7 @@ body {
   color: colors('dark');
   text-align: center;
   min-width: 400px;
+  letter-spacing: -0.5px;
 }
 
 section {
@@ -161,17 +164,34 @@ img {
   width: 100%;
   color: colors('light');
   display: table;
+
   .splash-inner {
   	min-height: inherit;
     background-color: rgba(0,0,0,0.4);
     display: table-cell;
     vertical-align: middle;
     overflow: hidden;
-    h1 span {
-      display: block;
+    
+    h1 {
+      letter-spacing: 2.5px;
+      opacity: 1;
+      text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+      transition: letter-spacing 1s, opacity 1s;
+
+      &.not-in-view {
+        letter-spacing: 0px;
+        opacity: 0.5;
+      
+        transition: letter-spacing 1s, opacity 1s;
+      }
+
+      span {
+        display: block;
+      }
     }
   }
 }
+
 .experience-splash {
   background: url('https://images.unsplash.com/photo-1502119176771-c007eb5feb6e') no-repeat center 60%/cover;
 }
@@ -248,7 +268,7 @@ img {
   flex-flow: column;
   align-items: center;
   justify-content: space-around;
-
+  
   h1 {
     font-size: 2.25em;
   }
@@ -257,6 +277,7 @@ img {
     max-width: 1400px;
   }
   li {
+    font-weight: bold;
     width: 90%;
     max-width: 360px;
     @include button('hollow', 'link');
@@ -273,7 +294,7 @@ img {
 /********************/
 .experience {
   background-color: colors('light');
-  color: colors('medium');
+  color: colors('dark');
   margin: 0 auto;
 
   .list-container {
@@ -373,7 +394,7 @@ img {
   }
 
   li {
-    @include button('hollow', 'medium');
+    @include button('hollow', 'dark');
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -381,6 +402,8 @@ img {
     width: 42%;
     max-width: 400px;
     text-align: center;
+    font-weight: bold;
+    font-size: 0.8rem;
     &:hover, 
     &.active {
       color: white;
@@ -407,6 +430,8 @@ img {
       width: 2.2rem;
       background-color: colors('medium');
       height: 100%;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
     }
     span {
       width: 100%;
@@ -465,6 +490,7 @@ img {
 .sort-type {
   button {
     padding: 0.5rem;
+    font-weight: bold;
     margin: 5px !important;
 
     @include button('hollow', 'link');
@@ -539,7 +565,6 @@ img {
   justify-content: space-around;
   align-items: center;
   .about-text {
-    font-size: 90%;
     text-align: left;
     p:first-child::before, p:last-child::after {
       position: absolute;
@@ -608,7 +633,7 @@ img {
 /********************/
 footer {
   text-align: left;
-  font-size: 65%;
+  font-size: 75%;
   background-color: colors('dark');
   color: colors('medium');
   .footer-section {
@@ -651,6 +676,9 @@ footer {
     .footer-section {
       width: 33%;
     }
+  }
+  .experience li {
+    font-size: 1rem;
   }
 }
 
@@ -721,6 +749,9 @@ footer {
       flex-direction: column;
       justify-content: center;
     }
+  }
+  .experience li {
+    font-size: 1.2rem;
   }
   .about-content {
     width: 100%;

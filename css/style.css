@@ -21,6 +21,7 @@ body {
   color: #333;
   text-align: center;
   min-width: 400px;
+  letter-spacing: -0.5px;
 }
 
 section {
@@ -28,7 +29,7 @@ section {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Montserrat", "Open Sans", "Arial", sans-serif;
+  font-family: "Tajawal", "Open Sans", "Arial", sans-serif;
   font-weight: 700;
 }
 
@@ -37,7 +38,7 @@ button, select, option {
 }
 
 p, a, li {
-  font-family: "Montserrat", "Open Sans", "Arial", sans-serif;
+  font-family: "Tajawal", "Open Sans", "Arial", sans-serif;
   font-weight: 300;
 }
 
@@ -87,6 +88,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .button:hover {
@@ -97,6 +99,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
@@ -108,6 +111,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .button.bright:hover {
@@ -118,6 +122,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
@@ -182,6 +187,17 @@ img {
   display: table-cell;
   vertical-align: middle;
   overflow: hidden;
+}
+.splash .splash-inner h1 {
+  letter-spacing: 2.5px;
+  opacity: 1;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: letter-spacing 1s, opacity 1s;
+}
+.splash .splash-inner h1.not-in-view {
+  letter-spacing: 0px;
+  opacity: 0.5;
+  transition: letter-spacing 1s, opacity 1s;
 }
 .splash .splash-inner h1 span {
   display: block;
@@ -271,6 +287,7 @@ img {
   max-width: 1400px;
 }
 .main-nav li {
+  font-weight: bold;
   width: 90%;
   max-width: 360px;
   color: slategray;
@@ -280,6 +297,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .main-nav a:hover li {
@@ -290,6 +308,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 
@@ -300,7 +319,7 @@ img {
 /********************/
 .experience {
   background-color: #f0f0f0;
-  color: #8a8a8a;
+  color: #333;
   margin: 0 auto;
 }
 .experience .list-container {
@@ -384,13 +403,14 @@ img {
   justify-content: space-around;
 }
 .experience li {
-  color: #8a8a8a;
+  color: #333;
   background-color: white;
   display: inline-block;
-  border: 2px solid #8a8a8a;
+  border: 2px solid #333;
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
   display: flex;
   justify-content: space-between;
@@ -399,6 +419,8 @@ img {
   width: 42%;
   max-width: 400px;
   text-align: center;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 .experience li:hover, .experience li.active {
   color: white;
@@ -422,6 +444,8 @@ img {
   width: 2.2rem;
   background-color: #8a8a8a;
   height: 100%;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .experience .list-container ul li span {
   width: 100%;
@@ -473,6 +497,7 @@ img {
 
 .sort-type button {
   padding: 0.5rem;
+  font-weight: bold;
   margin: 5px !important;
   color: slategray;
   background-color: white;
@@ -481,6 +506,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .sort-type button.active {
@@ -491,6 +517,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
 }
 .sort-type button:hover {
@@ -501,6 +528,7 @@ img {
   border-radius: 8px;
   padding: 8px;
   margin: 15px;
+  letter-spacing: 0px;
   font-family: "Quicksand", "Montserrat", "Open Sans", "Arial", sans-serif;
   cursor: pointer;
 }
@@ -565,7 +593,6 @@ img {
   align-items: center;
 }
 .about-content .about-text {
-  font-size: 90%;
   text-align: left;
 }
 .about-content .about-text p:first-child::before, .about-content .about-text p:last-child::after {
@@ -632,7 +659,7 @@ img {
 /********************/
 footer {
   text-align: left;
-  font-size: 65%;
+  font-size: 75%;
   background-color: #333;
   color: #8a8a8a;
 }
@@ -673,6 +700,9 @@ footer ul li a {
   }
   footer .footer-section {
     width: 33%;
+  }
+  .experience li {
+    font-size: 1rem;
   }
 }
 @media (min-width: 1024px) {
@@ -740,6 +770,9 @@ footer ul li a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .experience li {
+    font-size: 1.2rem;
   }
   .about-content {
     width: 100%;

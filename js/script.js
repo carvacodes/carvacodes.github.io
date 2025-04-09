@@ -288,6 +288,32 @@ window.addEventListener('load', function(){
   }
 
   ////////////////////////////
+  //  IntersectionObserver  //
+  ////////////////////////////
+  let intObserverOpts = {
+    threshold: [0.5, 1]
+  }
+
+  let intObserverCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        let el = entry.target;
+        
+        if (entry.intersectionRatio >= intObserverOpts.threshold[1]) {
+          el.classList.remove('not-in-view');
+        } else {
+          el.classList.add('not-in-view');
+        }
+      }
+    });
+  }
+
+  let intObserver = new IntersectionObserver(intObserverCallback, intObserverOpts);
+
+  let intObserverTargets = document.querySelectorAll('.splash h1');
+  intObserverTargets.forEach((el) => { intObserver.observe(el); });
+
+  ////////////////////////////
   //     Event Listeners    //
   ////////////////////////////
 
