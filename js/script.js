@@ -7,7 +7,7 @@ window.addEventListener('load', function(){
   // projects view: reload the iframe and change its src attribute when a new project is selected
   let projectPreview = $('#projectPreview')[0];
   let projectGroupSelect = $('#projectGroupSelect');
-  let projectSelectElement = $('#projectSelect');
+  let projectSelectElement = $('#demoselect');
   let projectList;
   let nameList = {};
   let nameListProjectsHTML = '';
@@ -66,7 +66,7 @@ window.addEventListener('load', function(){
   function showProjectError(attemptedProject) {
     $('#project-not-found-notification').show();
     $('#project-query-attempted').html(`<pre><code>${attemptedProject}</code></pre>`);
-    softScrollTo('#projects-list-prose', 0, 400);
+    softScrollTo('#demos-list-prose', 0, 400);
   }
 
   // helper function for gathering project names
