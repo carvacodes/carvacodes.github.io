@@ -1,0 +1,7 @@
+Upright Piano, Unbranded
+
+This model of an upright piano is not based strictly on any existing instrument, but contains elements in several styles: Kawai and Yamaha (the gentle flare of the outer two pedals, the tapered profile of the music stand) and Steinway (the profile of the side board on either side of the keybed). The heavily-rounded profile of the keyboard's black keys and the rounded-geometric shape of the pedals are unique to this model.
+
+Without a hinged top board (the upper-most lid) or a rear soundboard (the normally-exposed rear wood of a conventional upright), this model mimics a higher-end digital piano more closely than an acoustic upright.
+
+The model features a minimal rig with rotational constraints for the fall board (the lid over the keys) and the music stand inside the fall board.
