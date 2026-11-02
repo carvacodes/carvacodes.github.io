@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-user-clicked="false">
+<head>
+	<title>Arielle Carvajal - JavaScript Demos</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+	<script src="js/script.js" type="text/javascript"></script>
+	<script src="https://kit.fontawesome.com/32faf59e93.js" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 	<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+	<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #212;">
+	<div class="page-container jsdemos">
+		<div class="header">
+			<div class="myname">
+				<p>arielle carvajal</p>
+				<p>
+					<a href="https://bsky.app/profile/pet-the-catt.bsky.social" target="_blank"><i class="fa-brands fa-bluesky"></i></a>
+					<a href="https://codepen.io/carvacodes/" target="_blank"><i class="fa-brands fa-codepen"></i></a>
+					<a href="mailto:arielle.carvajal@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+				</p>
+			</div>
+		</div>
+
+		<div class="view second-view view-js active">
+			<nav>
+				<div class="nav-item nav-home"><a href='./index.html'>&lt; home</a></div>
+				<div class="nav-item"><i class="fa-brands fa-js"></i> demos</div>
+				<div class="nav-item nav-layout">
+					<p>layout</p> <span class="layout-indicator"></span>
+					<ul class="nav-layout-select">
+						<li layout-type="tiles-small" class="layout-select-item active">small tiles <span class="layout-indicator-static"></span></li>
+						<li layout-type="tiles-large" class="layout-select-item">large tiles <span class="layout-indicator-static"></span></li>
+						<li layout-type="list" class="layout-select-item">list <span class="layout-indicator-static"></span></li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="portfolio-view tiles-small">
+			</div>
+			
+			<div class="modal demos">
+				<div class="modal-body bg-semi-trans">
+					<div class="modal-nav">
+						<div class="nav-section upper-nav">
+							<div class="item-name"></div>
+							<div class="bg-style">
+								<img bg-enable="bg-black" src="./assets/black-icon.svg">
+								<img bg-enable="bg-semi-trans" src="./assets/semi-trans-icon.svg" class="active">
+								<img bg-enable="bg-white" src="./assets/white-icon.svg">
+							</div>
+							<div class="modal-close">+</div>
+						</div>
+						<div class="nav-section lower-nav condensed">
+							<div class="item-info">
+								<div class="info-control">
+									<span class="details-control details-condensed">info [+]</span><span class="details-control details-expanded">hide info [-]</span>
+								</div>
+								<div class="info-expanded"></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-contents"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

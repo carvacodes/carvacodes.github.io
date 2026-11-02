@@ -1,756 +1,411 @@
-window.addEventListener('load', function(){
+window.addEventListener('load', (e) => {
+  let l = document.querySelector('.nav-layout-select');
+  let p = document.querySelector('.portfolio-view');
+  let page = window.location.pathname;
+  let smallScreen = window.innerWidth <= 1028 || window.innerHeight < 1024;
 
-  ////////////////////////////
-  //    Project Selector    //
-  ////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // automatically switch to large tiles on small screens
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  // projects view: reload the iframe and change its src attribute when a new project is selected
-  let projectPreview = $('#projectPreview')[0];
-  let projectGroupSelect = $('#projectGroupSelect');
-  let projectSelectElement = $('#projectSelect');
-  let projectList;
-  let nameList = {};
-  let nameListProjectsHTML = '';
-  let categoryList = {};
-  let categoryListHTML = '';
-  let categoryListProjectsHTML = {};
-  let tagList = {};
-  let tagListHTML = '';
-  let tagListProjectsHTML = {};
-
-  // populate the project list and category lists
-  fetch('../files/projects.json')
-    .then((response) => response.json())
-    .then((json) => {
-      // populate project list objects
-      projectList = json;
-      populateNameObj(projectList);
-      populateCatObj(projectList);
-      populateTagObj(projectList);
-    })
-    .then(() => {
-      // populate project category or group HTML (formerly optgroups)
-      categoryListHTML = listToHTML(categoryList, true, 'Select a Category');
-      tagListHTML = listToHTML(tagList, true, 'Select a Tag');
-    })
-    .then(() => {
-      // populate individual category HTML with each project as a group of opts
-      nameListProjectsHTML = listToHTML(nameList, false);
-      categoryListProjectsHTML = listToHTML(categoryList, false);
-      tagListProjectsHTML = listToHTML(tagList, false);
-    })
-    .then(showAllProjects)
-    .then(checkProjectInUrl);
-
-  function checkProjectInUrl() {
-      // If the user navigated here from a URL referencing a specific project,
-      // load the project and scroll to it. Sanitize the query parameter!
-      let projectUrlParamQueryString = window.location.search;
-      let projectUrlParam = new URLSearchParams(projectUrlParamQueryString);
-      let urlNavigatedProject = projectUrlParam.get('project') || '';
-      let sanitizedQuery = encodeURI(urlNavigatedProject);
-      if (sanitizedQuery !== '' && nameList[sanitizedQuery]) {
-        hideProjectError();
-        projectSelectElement.val(sanitizedQuery);
-        projectSelectElement.trigger('change');
-      } else if (sanitizedQuery !== '') {
-        showProjectError(sanitizedQuery);
-      }
-  }
-
-  function hideProjectError() {
-    $('#project-not-found-notification').hide();
-    $('#project-query-attempted').text('');
-  }
-
-  function showProjectError(attemptedProject) {
-    $('#project-not-found-notification').show();
-    $('#project-query-attempted').html(`<pre><code>${attemptedProject}</code></pre>`);
-    softScrollTo('#projects-list-prose', 0, 400);
-  }
-
-  // helper function for gathering project names
-  function populateNameObj(projectList) {
-    for (projName in projectList) {
-      nameList[projName] = projName;
+  if (page.indexOf('models') > -1 || page.indexOf('jsdemos') > -1) {
+    if (smallScreen) {
+      document.querySelector('.layout-select-item.active').classList.remove('active');
+      document.querySelector('.layout-select-item[layout-type="tiles-large"]').classList.add('active');
+      document.querySelector('.portfolio-view.tiles-small').className = 'portfolio-view tiles-large';
     }
   }
 
-  // helper function for gathering categories
-  function populateCatObj(projectList) {
-    for (projName in projectList) {
-      let p = projectList[projName];
-      let cat = p.category;
-      if (categoryList[cat] == undefined) {
-        categoryList[cat] = [projName]
-      } else {
-        categoryList[cat].push(projName);
-      }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // populate the portfolio page
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  if (page.indexOf('models') > -1) {
+    let view = document.querySelector('.portfolio-view');
+
+    for (let model in modelList) {
+      let filePath = `./assets/models/${model}`;
+      let portfolioItem = document.createElement('div');
+      portfolioItem.classList.add('portfolio-item');
+      portfolioItem.setAttribute('model-name', model);
+
+      let itemImg = document.createElement('div');
+      itemImg.classList.add('portfolio-item-img');
+      itemImg.style.backgroundImage = `url('${filePath}/thumbnail.png')`;
+
+      let itemImgWire = document.createElement('div');
+      itemImgWire.classList.add('portfolio-item-img-wire');
+      itemImgWire.style.backgroundImage = `url('${filePath}/thumbnail wireframe.png')`;
+
+      let itemText = document.createElement('div');
+      itemText.classList.add('portfolio-item-text');
+      itemText.innerText = modelList[model].displayName ? modelList[model].displayName : model;
+
+      portfolioItem.appendChild(itemImg);
+      portfolioItem.appendChild(itemImgWire);
+      portfolioItem.appendChild(itemText);
+
+      view.appendChild(portfolioItem);
     }
+  } else if (page.indexOf('jsdemos') > -1) {
+    let view = document.querySelector('.portfolio-view');
+
+    for (let demo in demoList) {
+      let filePath = `./assets/demos/${demo}.png`;
+      let formattedName = demo.replace(/-/g, ' ');
+
+      let portfolioItem = document.createElement('div');
+      portfolioItem.classList.add('portfolio-item');
+      portfolioItem.setAttribute('demo-name', demo);
+
+      let itemImg = document.createElement('div');
+      itemImg.classList.add('portfolio-item-img');
+      itemImg.style.backgroundImage = `url('${filePath}')`;
+
+      let itemText = document.createElement('div');
+      itemText.classList.add('portfolio-item-text');
+      itemText.innerText = formattedName;
+
+      portfolioItem.appendChild(itemImg);
+      portfolioItem.appendChild(itemText);
+
+      view.appendChild(portfolioItem);
+    }
+  } else {
+    // log as needed, but generally not when live
+    // console.log('No portfolio page indicated. Not loading portfolio items.');
   }
 
-  // helper function for gathering tags; slightly different, since the tags are arrays, where the category is a single item
-  function populateTagObj(projectList) {
-    for (projName in projectList) {
-      let p = projectList[projName];
-      let tags = p.tags;
-      for (let i = 0; i < tags.length; i++) {
-        let tag = tags[i];
-        if (tagList[tag] == undefined) {
-          tagList[tag] = [projName]
-        } else {
-          tagList[tag].push(projName);
-        }
-      }
-    }
-  }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // open the correct demo if the user navigated here from a relevant URL
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  function listToHTML(list, isCategory = false, defaultOptText = 'Select a Project') {
-    let tempSelect = document.createElement('SELECT');
-
-    // include the default option when requested
-    let defaultOpt = document.createElement('OPTION');  // the "default" option, viewable when the page loads
-    defaultOpt.innerText = defaultOptText;
-    defaultOpt.value = 'defaultSelection';
-    tempSelect.appendChild(defaultOpt);
-
-    // sorting will always happen; do preliminary sorting here
-    let sortedArr = [];
-    if (!list.length) {
-      for (proj in list) {
-        sortedArr.push(proj)
-      }
-    } else {
-      sortedArr = list;
-    }
-    sortedArr.sort();
-
-    if (isCategory) {
-      for (category in sortedArr) {
-        let opt = document.createElement('OPTION');
-        opt.value = sortedArr[category];
-        opt.innerText = sortedArr[category];
-        tempSelect.appendChild(opt);
-      }
-      return tempSelect.innerHTML;
-    } else if (projectList[sortedArr[0]]) {
-      // working with a raw project name;
-      // ok to immediately process projectList items using projectList[sortedArr[itemName]]
-      for (proj in sortedArr) {
-        let opt = document.createElement('OPTION');
-        opt.value = sortedArr[proj];
-        opt.innerText = projectList[sortedArr[proj]].displayName;
-        tempSelect.appendChild(opt);
-      }
-      return tempSelect.innerHTML;
-
-    } else if (categoryList[sortedArr[0]]) {
-      let tempObj = {};
-      // working with a list of categories that contains project names;
-      // recursively call this function passing each sublist (which contains project names a la projectList, and will return the right HTML)
-      for (category in sortedArr) {
-        let projectsInCategory = listToHTML(categoryList[sortedArr[category]], false);
-        tempObj[sortedArr[category]] = projectsInCategory;
-      }
-      return tempObj;
-    } else if (tagList[sortedArr[0]]) {
-      let tempObj = {};
-      // working with a list of tags that contains project names;
-      // recursively call this function passing each sublist (which contains project names a la projectList, and will return the right HTML)
-      for (tag in sortedArr) {
-        let projectsInTag = listToHTML(tagList[sortedArr[tag]], false);
-        tempObj[sortedArr[tag]] = projectsInTag;
-      }
-      return tempObj;
-    }
-  }
-
-  // on changing project group, swap the project selector options
-  projectGroupSelect.change(selectGroup);
-
-  function selectGroup() {
-    let groupSelection = this.value;
-    if (this.children[0].innerText == 'Select a Category') {
-      projectSelectElement[0].style.display = 'block';
-      projectSelectElement[0].innerHTML = categoryListProjectsHTML[groupSelection];
-      projectSelectElement[0].children[0].innerText += ' from the ' + this.value + ' Category';
-    } else if (this.children[0].innerText == 'Select a Tag') {
-      projectSelectElement[0].style.display = 'block';
-      projectSelectElement[0].innerHTML = tagListProjectsHTML[groupSelection];
-      projectSelectElement[0].children[0].innerText += ' with the ' + this.value + ' Tag';
-    }
-  }
-
-  // on changing the project selector, swap the iframe src and update the header/description fields
-  projectSelectElement.change(selectProject);
-
-  function selectProject() {
-    if (this.value == "defaultSelection") { return; }
-
-    let projectName = this.value;
-    let project = projectList[projectName];
-    let projectMarkupUrl = './submods/' + projectName + '/markup.html';
-    let gitHubUrl = 'https://github.com/carvacodes/' + projectName;
-    projectPreview.setAttribute('src', projectMarkupUrl);
-
-    let projectElements = {
-      displayName: $('#projectName')[0],
-      descriptionText: $('#projectDescriptionText')[0],
-      gitHubUrl: $('#projectGitHubUrl a')[0],
-      tags: $('#projectTags')[0]
-    }
-
-    projectElements.tags.innerHTML = '';
-
-    for (let i = 0; i < project.tags.length; i++) {
-      let tagSpan = document.createElement('SPAN');
-      tagSpan.className = 'project-tag';
-      tagSpan.innerText = project.tags[i];
-      projectElements.tags.appendChild(tagSpan);
-    }
-
-    projectElements.displayName.innerText = project.displayName;
-    projectElements.descriptionText.innerHTML = convertMarkdownToHtml(project.descriptionText);
-    projectElements.gitHubUrl.innerText = gitHubUrl;
-    projectElements.gitHubUrl.href = gitHubUrl;
-
-    hideProjectError();
-    
-    softScrollTo('#projectName', 0, 400);
-  }
-
-  // random project selector button
-  let randomProjectButton = $('#randomProject');
-  randomProjectButton.click(selectRandomProject);
-
-  function selectRandomProject() {
-    showAllProjects();
-
-    let projectNameArray = [];
-    for (let proj in projectList) {
-      if (proj != projectSelectElement[0].value) { projectNameArray.push(proj); }
-    }
-    let selection = Math.floor(Math.random() * projectNameArray.length);
-    let selectedProject = projectNameArray[selection];
-    let currentProj = projectPreview.src.match(/submods\/([\w\-]*)\/markup.html/);
-    if (currentProj) { currentProj = currentProj[1]; }
-
-    while (selectedProject == currentProj) {
-      selection = Math.floor(Math.random() * projectNameArray.length);
-      selectedProject = projectNameArray[selection];
-    }
-    
-    
-    softScrollTo('#projectName', 0, 400, () => {
-      projectSelectElement.val(selectedProject);
-      projectSelectElement.trigger('change');
-    });
-  }
-
-  let sortByCategoryButton = document.getElementById('sortByCategory');
-  sortByCategoryButton.addEventListener('click', sortByCategory);
-  let sortByTagsButton = document.getElementById('sortByTags');
-  sortByTagsButton.addEventListener('click', sortByTags);
-  let showAllProjectsButton = document.getElementById('showAllProjects');
-  showAllProjectsButton.addEventListener('click', showAllProjects);
-
-  function sortByCategory() {
-    sortByCategoryButton.classList.add('active');
-    sortByTagsButton.classList.remove('active');
-    showAllProjectsButton.classList.remove('active');
-
-    projectGroupSelect[0].style.display = 'block';
-    projectGroupSelect[0].innerHTML = categoryListHTML;
-    projectSelectElement[0].innerHTML = '';
-    projectSelectElement[0].style.display = 'none';
-  }
-
-  function sortByTags() {
-    sortByCategoryButton.classList.remove('active');
-    sortByTagsButton.classList.add('active');
-    showAllProjectsButton.classList.remove('active');
-
-    projectGroupSelect[0].style.display = 'block';
-    projectGroupSelect[0].innerHTML = tagListHTML;
-    projectSelectElement[0].innerHTML = '';
-    projectSelectElement[0].style.display = 'none';
-  }
-
-  function showAllProjects() {
-    sortByCategoryButton.classList.remove('active');
-    sortByTagsButton.classList.remove('active');
-    showAllProjectsButton.classList.add('active');
-
-    projectGroupSelect[0].style.display = 'none';
-    projectGroupSelect[0].innerHTML = '';
-    projectSelectElement[0].style.display = 'block';
-    projectSelectElement[0].innerHTML = nameListProjectsHTML;
-  }
-
-  ////////////////////////////
-  //  IntersectionObserver  //
-  ////////////////////////////
-  let intObserverOpts = {
-    threshold: [0.5, 1]
-  }
-
-  let intObserverCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        let el = entry.target;
-        
-        if (entry.intersectionRatio >= intObserverOpts.threshold[1]) {
-          el.classList.remove('not-in-view');
-        } else {
-          el.classList.add('not-in-view');
-        }
-      }
-    });
-  }
-
-  let intObserver = new IntersectionObserver(intObserverCallback, intObserverOpts);
-
-  let intObserverTargets = document.querySelectorAll('.splash h1');
-  intObserverTargets.forEach((el) => { intObserver.observe(el); });
-
-  ////////////////////////////
-  //     Event Listeners    //
-  ////////////////////////////
-
-  // global click operations
-  $(window).click(function(e){
-    let el = e.target;  // the element targeted by the click/tap
-
-    // elements to watch for nav toggling
-    let navToggle = document.getElementById('nav-toggle');    // the nav bar
-    let navToggleI = navToggle.querySelector('i');            // the hamburger icon
-
-    // expand or collapse the nav when the user clicks/taps the nav menu
-    // also, collapse the nav if the user clicks anywhere on the page
-    // used a custom toggle instead of jQuery's built-in, since the nav should only be hidden when the user clicks anywhere on the screen except the nav
-    if (el == navToggle || el == navToggleI) {
-      $(".top-nav .nav-container").slideToggle();
-    }
-    else {
-      if ($(".top-nav .nav-container").css('display') !== 'none' && (innerWidth < 666 || innerHeight < 400)) {
-        $(".top-nav .nav-container").slideUp();
-      }
-    }
-
-    if (el.id.match(/exp_.*/)) {
-      handleExperienceClick(el);
-    }
-
-    // if the user clicks on a project tag, automatically jump to filtering by tags, select the relevant tag, and show its projects
-    if (el.classList.contains('project-tag')) {
-      sortByTags();
-      let tagSelected = el.innerText;
-      projectGroupSelect[0].value = tagSelected;
-      softScrollTo($('div.projects-list div.sort-type'), 0, 400, () => {projectGroupSelect.trigger('change');})
-    }
-  })
-
-  // event listener hack for touchmove compatibility on iOS devices
-  window.addEventListener('touchstart', {});
-
-  // Smooth scrolling to on-page links
-  // Select all links with hashes
-  $('a[href*="#"]').click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      let target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually going to happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          let $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
-      }
-    }
-  });
-
-  // address the viewport height bug affecting iOS 7.x devices
-  let allEls = document.body.querySelector("*");
-  for (let i = 0; i < allEls.length; i++) {
-    if (window.getComputedStyle(allEls[i]).height.slice(0, -2) > window.innerHeight * 3) {
-      allEls[i].style.height = windowHeight + "px";
-      allEls[i].style.maxHeight = windowHeight + "px";
-      allEls[i].style.overflow = "auto";
-      allEls[i].style.backgroundSize = "auto 100%";
+  if (window.location.search) {
+    let searchParams = new URLSearchParams(window.location.search);
+    if (window.location.search.indexOf('demo') > -1) {
+      let d = searchParams.get('demo');
+      setModalContents(document.querySelector('.modal'), d, 'demo')
+    } else if (window.location.search.indexOf('model') > -1) {
+      let m = searchParams.get('model');
+      setModalContents(document.querySelector('.modal'), m, 'model')
     }
   }
   
-  ////////////////////////////////////
-  //          End load event        //
-  ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // click listeners
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  window.addEventListener('click', (e) => {
+    let t = e.target;
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // nav layout selection logic
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (t.classList.contains('nav-layout')) {
+      l.classList.toggle('expanded');
+    }
+
+    if (!t.classList.contains('nav-layout') && l && l.classList.contains('expanded')) {
+      l.classList.remove('expanded');
+    }
+
+    if (t.classList.contains('layout-select-item') && !t.classList.contains('active')) {
+      document.querySelector('.layout-select-item.active').classList.remove('active');
+      t.classList.add('active');
+      p.className = 'portfolio-view ' + t.getAttribute('layout-type');
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // selecting a portfolio item
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    let itemParent = getPortfolioParent(t);
+
+    if (itemParent) {
+      let itemName;
+      let itemType;
+
+      // found an item; open the view with the appropriate contents
+      if (itemParent.hasAttribute('model-name')) {
+        itemName = itemParent.getAttribute('model-name');
+        itemType = 'model';
+      } else if (itemParent.hasAttribute('demo-name')) {
+        itemName = itemParent.getAttribute('demo-name');
+        itemType = 'demo';
+      }
+
+      setModalContents(document.querySelector('.modal'), itemName, itemType)
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // selecting a portfolio item background color
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (t.parentElement.classList.contains('bg-style') && !t.classList.contains('active')) {
+      let m = document.querySelector('.modal-body');
+      m.classList.remove('bg-semi-trans', 'bg-black', 'bg-white');
+      m.classList.add(t.getAttribute('bg-enable'));
+      m.querySelector('img.active').classList.remove('active');
+      t.classList.add('active');
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // downloading an image
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (t.hasAttribute('downloadable')) {
+      // create new blank images and a blank canvas
+      let modelParent = t.parentElement.parentElement;
+      let i = new Image();
+      let a = new Image();
+      let c = document.createElement('canvas');
+      let w = 1920;
+      let h = 1080;
+
+      // set canvas width and height, create context
+      c.width = w;
+      c.height = h;
+      let ctx = c.getContext('2d');
+
+      // paint blank canvas with the user's currently-selected background-color
+      let activeBgColor = modelParent.querySelector('.bg-style img.active').getAttribute('bg-enable');
+      let bgColor = activeBgColor === 'bg-black' ? 'rgb(0,0,0)' : activeBgColor === 'bg-white' ? 'rgb(255,255,255)' : 'rgb(22, 31, 32)';
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, 1920, 1080);
+
+      // set blank image "i" source image
+      i.src = t.src;
+
+      // when i has loaded, draw i onto the canvas, then attach attribution
+      i.onload = ()=>{
+        ctx.drawImage(i, 0, 0, w, h, 0, 0, w, h);
+        a.src = './assets/attribution.png';
+
+        // when a has loaded, draw a onto the canvas
+        a.onload = ()=>{
+          ctx.drawImage(a, 0, 0, w, h, 0, 0, w, h);
+
+          // convert the existing canvas to a blob, then create an empty link, populate it with the relevant data, then simulate a click on it
+          c.toBlob((b) => {
+            let link = document.createElement('a');
+            link.setAttribute('target', '_blank');
+
+            // dynamically create the file name from the item's related data element
+            link.download = `arielle-carvajal-${modelParent.querySelector('.item-name').innerText.replace(/(%20|\s)/g, '-')}-model.png`;
+
+            let url = URL.createObjectURL(b);
+            link.href = url;
+            link.click();
+
+            URL.revokeObjectURL(url)
+          });
+        };
+      };
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // closing the modal
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (t.classList.contains('modal') && t.classList.contains('active')) {
+      unsetModal(t);
+      const url = new URL(location.origin + location.pathname);
+      history.pushState({}, "", url);
+    }
+
+    if (t.classList.contains('modal-close')) {
+      unsetModal(document.querySelector('.modal.active'));
+      const url = new URL(location.origin + location.pathname);
+      history.pushState({}, "", url);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // the user clicked on the "info" button
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (t.classList.contains('details-control')) {
+      let navSection = t.parentElement.parentElement.parentElement;
+
+      if (navSection.classList.contains('condensed')) {
+        navSection.classList.remove('condensed');
+        navSection.classList.add('expanded');
+      } else {
+        navSection.classList.remove('expanded');
+        navSection.classList.add('condensed');
+      }
+    }
+
+  });
 });
 
-////////////////////////////////////
-//  Functions and Event Handlers  //
-////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// recurse up the DOM tree from t until you find a .portfolio-item, otherwise return null
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function handleExperienceClick(el) {
-  if (el.classList.contains('active')) {
+function getPortfolioParent(t) {
+  if (t === document.body) {
+    return null;
+  } else {
+    if (t.classList.contains('portfolio-item')) {
+      return t;
+    } else {
+      return getPortfolioParent(t.parentElement);
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// set the contents of the modal popover based on the item type and its name, populating the modal appropriately
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function setModalContents(modal, itemName, type) {
+  if (type === 'model') {
+    populateModelItem(modal, itemName);
+  } else if (type === 'demo') {
+    populateDemoItem(modal, itemName);
+  } else {
+    if (!itemName) {
+      console.log(`No portfolio item name defined. Not opening modal.`);
+      return;
+    }
+    console.log(`Tried to load portfolio item ${itemName}, but it was not found.`);
     return;
   }
 
-  let elGroup = $(el).siblings('li');
-  let groupName = el.id.match(/exp_(\w*)/)[1];
+  if (type === 'demo') {
+    modal.querySelector('.item-name').innerText = itemName.replace(/-/g, ' ');
+  } else {
+    modal.querySelector('.item-name').innerText = modelList[itemName].displayName ? modelList[itemName].displayName : itemName;
+  }
+  modal.classList.add('active');
+}
 
-  // set classes for categories
-  $(elGroup).removeClass('active');
-  $(el).addClass('active');
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// dismiss the modal and clear its title and contents
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  // set classes for paragraph parents and organize paragraph groups
-  let paraParent = $('div.achieving');
-  let paraGroup = $('div.achieving > div');
+function unsetModal(m) {
+  m.querySelector('.item-info').style.display = 'none';
+  m.classList.remove('active');
+  m.querySelector('.item-name').innerText = '';
+  let mc = m.querySelector('.modal-contents');
 
-  let utilParent = $('div.utilizing');
+  while (mc.firstChild) {
+    mc.removeChild(mc.firstChild);
+  }
+}
 
-  let achievingList = $('#achieving_list');
-  let listRect = achievingList[0].getBoundingClientRect();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// the user clicked on a 3d model portfolio item; create the appropriate modal content for it
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function populateModelItem(modal, itemName) {
+  let modalContents = modal.querySelector('.modal-contents');
+  let model = modelList[itemName];
   
-  // begin animation sequence
-  utilParent.slideUp(400, () => { populateUtils(groupName); });
-  paraParent.slideUp(400, ()=>{
-    paraGroup.slideUp(0);
-    let paragraph = $('#ach_' + groupName);
-    paragraph.addClass('active');
-    paragraph.slideDown(0,()=>{
-      paraParent.slideDown(400, ()=>{
-        utilParent.slideDown(400, ()=>{
-          if (innerWidth >= 666 && innerHeight > 600) { 
-            softScrollTo('section.experience.sub-container', 0, 400);
-          } else {
-            softScrollTo(achievingList, Math.abs(listRect.top - listRect.bottom), 400);
-          }
-        });
+  for (let i = 1; i <= model.imgs; i++) {
+    let filePath = `../assets/models/${itemName}/${i.toString().padStart(2, '0')}.png`;
+    let newImg = document.createElement('img');
+    newImg.setAttribute('src', filePath);
+    newImg.setAttribute('downloadable', 'true');
+    modalContents.appendChild(newImg);
+  }
+
+  if (model.hasInfo) {
+    document.querySelector('.item-info').style.display = 'flex';
+    let req = new Request('../assets/models/' + itemName + '/info.txt');
+
+    fetch(req)
+      .then((response) => {
+        if (response.ok) {
+          let s = response.text();
+          return s;
+        }
+      })
+      .then((s) => {
+        document.querySelector('.info-expanded').innerText = s;
       });
-    });
-  });
-}
-
-// helper function to make scrolling to an individual element easier
-function softScrollTo(elementSelector, additionalScrollOffset = 0, milliseconds, callback = null) {
-  // check if there is a visible nav bar and add an additional offset to compensate if so
-  let navBarOffset = 0;
-  let navBarStyle = window.getComputedStyle($('#nav-toggle')[0]);
-  if (navBarStyle.display == 'block') {
-    navBarOffset = Math.round(Number(navBarStyle.height.slice(0, -2)));
   }
 
-  // compensate for an element's margin (in whatever form it takes)
-  let elementStyle = window.getComputedStyle($(elementSelector)[0]);
-  let elementMarginOffset = elementStyle.marginTop.slice(0, -2) ||
-                            elementStyle.marginBlockStart.slice(0, -2) ||
-                            elementStyle.margin.slice(0, -2);
-  
-  // get an element's current screen position, rounded
-  let elementScreenPosition = Math.round($(elementSelector)[0].getBoundingClientRect().top);
-
-  // calculate the offset value and scroll to it, executing a provided callback
-  // uses a promise for additional chaining, if needed
-  let scrollToValue = $(elementSelector).offset().top + additionalScrollOffset - navBarOffset - elementMarginOffset;
-  let promise = new Promise((resolve) => {
-    // if the element is already scrolled correctly, execute any callback and return immediately; no need to wait for the scroll animation
-    if (elementScreenPosition == navBarOffset) {
-      if (callback) { callback(); }
-      return resolve();
-    } else {
-      // if the element is not already scrolled correctly, scroll to it, executing the callback
-      $('html').animate({
-        scrollTop: scrollToValue
-      }, milliseconds, callback);
-      return resolve();
-    }
-  })
-  return promise;
+  const url = new URL(location);
+  url.searchParams.set("model", itemName.replace(' ', '-'));
+  history.pushState({}, "", url);
 }
 
-function populateUtils(groupName) {
-  // create a list of related <li> elements from the groupName passed in
-  let categories = [
-    /*0*/ 'uiux',
-    /*1*/ 'tools',
-    /*2*/ 'techwriting',
-    /*3*/ 'games',
-    /*4*/ 'graphic',
-    /*5*/ 'automation',
-    /*6*/ 'web',
-    /*7*/ 'selfstudy'
-  ];
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// the user clicked on a js demo portfolio item; create the appropriate modal content for it
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  let groupNum = categories.indexOf(groupName);
+function populateDemoItem(modal, itemName) {
+  let modalContents = modal.querySelector('.modal-contents');
+  let demo = demoList[itemName];
+  let dirPath = `./submods/${itemName}`;
+  let iframe = document.createElement('iframe');
 
-  // all utilizations will have a display name and a string indicating the categories to be included in
-  let utilLangs = [
-    {
-      name: 'HTML 5',
-      categoryList: '01234567'
-    },
-    {
-      name: 'Haml',
-      categoryList: '07'
-    },
-    {
-      name: 'CSS',
-      categoryList: '03467',
-    },
-    {
-      name: 'Less',
-      categoryList: '03467',
-    },
-    {
-      name: 'Sass/SCSS',
-      categoryList: '03467',
-    },
-    {
-      name: 'JavaScript',
-      categoryList: '0123467'
-    },
-    {
-      name: 'jQuery',
-      categoryList: '03467'
-    },
-    {
-      name: 'CoffeeScript',
-      categoryList: '0167'
-    },
-    {
-      name: 'React',
-      categoryList: '067'
-    },
-    {
-      name: 'ExpressJS',
-      categoryList: '067'
-    },
-    {
-      name: 'KnockoutJS',
-      categoryList: '067'
-    },
-    {
-      name: 'EmberJS',
-      categoryList: '67'
-    },
-    {
-      name: 'Angular',
-      categoryList: '67'
-    },
-    {
-      name: 'Laravel',
-      categoryList: '067'
-    },
-    {
-      name: 'GML (Game Maker Language)',
-      categoryList: '37'
-    },
-    {
-      name: 'C#',
-      categoryList: '01237'
-    },
-    {
-      name: 'AutoHotKey (AHK)',
-      categoryList: '01247'
-    },
-    {
-      name: 'Markdown',
-      categoryList: '012367'
-    },
-    {
-      name: 'C++',
-      categoryList: '7'
-    },
-    {
-      name: 'Ruby',
-      categoryList: '7'
-    },
-    {
-      name: 'Python',
-      categoryList: '7'
-    },
-    {
-      name: 'Bash',
-      categoryList: '012467'
-    },
-    {
-      name: 'Windows Command Line/PowerShell',
-      categoryList: '012467'
-    },
-    {
-      name: 'YAML',
-      categoryList: '0127'
-    },
-    {
-      name: 'TypeScript',
-      categoryList: '7'
-    }
-  ];
-  let utilApps = [
-    {
-      name: 'XAMPP',
-      categoryList: '0267'
-    },
-    {
-      name: 'AMPPS',
-      categoryList: '0267'
-    },
-    {
-      name: 'DocFX',
-      categoryList: '012367'
-    },
-    {
-      name: 'Git',
-      categoryList: '012367'
-    },
-    {
-      name: 'GitHub',
-      categoryList: '0123467'
-    },
-    {
-      name: 'GitHub Actions Workflows',
-      categoryList: '01237'
-    },
-    {
-      name: 'Google Cloud Platform',
-      categoryList: '01237'
-    },
-    {
-      name: 'Unity',
-      categoryList: '012367'
-    },
-    {
-      name: 'Game Maker',
-      categoryList: '347'
-    },
-    {
-      name: 'InkScape',
-      categoryList: '0123467'
-    },
-    {
-      name: 'IrfanView',
-      categoryList: '013467'
-    },
-    {
-      name: 'GIMP',
-      categoryList: '0123467'
-    },
-    {
-      name: 'Adobe Creative Suite',
-      categoryList: '0123467'
-    },
-    {
-      name: 'Microsoft Office Suite',
-      categoryList: '0123467'
-    },
-    {
-      name: 'Visual Studio',
-      categoryList: '01237'
-    },
-    {
-      name: 'Visual Studio Code',
-      categoryList: '0123467'
-    },
-    {
-      name: '.NET 6+',
-      categoryList: '0127'
-    },
-    {
-      name: 'Sublime Text',
-      categoryList: '0123467'
-    },
-    {
-      name: 'Audacity',
-      categoryList: '012367'
-    },
-    {
-      name: 'OBS (Open Broadcast Software)',
-      categoryList: '012367'
-    },
-    {
-      name: 'Procreate',
-      categoryList: '013467'
-    },
-    {
-      name: 'SnagIt',
-      categoryList: '01247'
-    },
-    {
-      name: 'SnagIt',
-      categoryList: '01247'
-    },
-    {
-      name: 'Microsoft Visio',
-      categoryList: '01247'
-    },
-    {
-      name: 'Draw.io',
-      categoryList: '01247'
-    },
-    {
-      name: 'Blender',
-      categoryList: '347'
-    }
-  ];
+  iframe.src = `${dirPath}/markup.html`;
+  modalContents.appendChild(iframe);
 
-  let newItemList = [];
-  for (let i = 0; i < utilLangs.length; i++) {
-    let lang = utilLangs[i];
-    if (lang.categoryList.indexOf(groupNum) >= 0) {
-      newItemList.push({itemData: lang, itemType: 'lang'});
-    }
-  }
-  for (let i = 0; i < utilApps.length; i++) {
-    let app = utilApps[i];
-    if (app.categoryList.indexOf(groupNum) >= 0) {
-      newItemList.push({itemData: app, itemType: 'app'});
-    }
+  if (demo.hasInfo) {
+    document.querySelector('.item-info').style.display = 'flex';
+    let req = new Request('../assets/demos/' + itemName + '-info.txt');
+
+    fetch(req)
+      .then((response) => {
+        if (response.ok) {
+          let s = response.text();
+          return s;
+        }
+      })
+      .then((s) => {
+        document.querySelector('.info-expanded').innerText = s;
+      });
   }
 
-  let util = $('#util');
-  $(util)[0].innerHTML = '';
-
-  for (let i = 0; i < newItemList.length; i++) {
-    let item = newItemList[i];
-    let li = getNewLi(item);
-    $(util).append(li);
-  }
+  const url = new URL(location);
+  url.searchParams.set("demo", itemName);
+  history.pushState({}, "", url);
 }
 
-function getNewLi(item) {
-  let li = document.createElement('LI');
-  let i = item;
-  $(li).addClass(i.itemType);
-  li.innerText = i.itemData.name;
-  return li;
-}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// models
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function convertMarkdownToHtml(markdownText) {
-  // naive replace for angle brackets; greater than/less than symbols will need to be HTML encoded
-  let text = markdownText.replaceAll('<', '`');
-  text = text.replaceAll('>', '`');
+let modelList = {
+  'upright-piano': { imgs : 6, displayName: 'upright piano', hasInfo: 'true' },
+  'behringer-u-phoria': { imgs: 6, displayName: 'behringer u-phoria umc22'},
+  'phaser-one': { imgs: 8, displayName: 'phaser one' },
+  'lightsaber-1': { imgs: 7, displayName: 'luke\'s first lightsaber (episode iv)' },
+  'lightsaber-2': { imgs: 7, displayName: 'obi wan\'s lightsaber (episode iv)' },
+  'lightsaber-3': { imgs: 7, displayName: 'vader\'s lightsaber (episode iv)' },
+  'lightsaber-4': { imgs: 7, displayName: 'luke\'s second lightsaber (episode v)' },
+  'commlock': { imgs: 8, displayName: 'commlock' },
+};
 
-  // replace backticks in pairs
-  while (text.indexOf('`') >= 0) {
-    text = text.replace('`', '<pre><code>');
-    text = text.replace('`', '</code></pre>');
-  }
-  return text;
-}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// demos
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let demoList = {
+  'amoeboid': {},
+  'dynamic-lighted-buttons': {},
+  'flying-with-the-sky-dragon': {},
+  'moving-boxes': {},
+  'particle-explosions': {},
+  'tower-of-the-gods': {},
+  'canvas-composite-operations': {},
+  'emulating-pixelisa': {},
+  'lissajous': {},
+  'neon-grid': {},
+  'pastel-orbits': {},
+  'symyn': {},
+  'water-caustics': {},
+  'crt-magnet-interference': {},
+  'flame': {},
+  'magnetic-lines-of-force': {},
+  'particle-cyclone': {},
+  'post-dusk': {},
+  'tic-tac-toe': {},
+  'wireframe-grayscale-triangles': {},
+};
+
+
