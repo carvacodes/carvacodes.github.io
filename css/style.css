@@ -34,6 +34,7 @@ body, .page-container {
   background-color: #312;
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   padding: 0;
   margin: 0;
@@ -193,7 +194,6 @@ a, .nav-layout, .layout-select-item, .clickable {
   transition: 0.5s opacity;
   opacity: 0;
   display: none;
-  padding-bottom: 4rem;
 
   &.active {
     display: flex;
@@ -620,7 +620,7 @@ a, .nav-layout, .layout-select-item, .clickable {
   position: relative;
   background-color: var(--models-color-dark);
   width: 100%;
-  height: calc(100% - 3rem);
+  height: 100%;
   max-width: 1920px;
   max-height: 1440px;
   border-radius: 8px;
