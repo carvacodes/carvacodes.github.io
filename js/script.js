@@ -157,6 +157,7 @@ window.addEventListener('load', (e) => {
       // create new blank images and a blank canvas
       let modelParent = t.parentElement.parentElement;
       let i = new Image();
+      let l = new Image();
       let a = new Image();
       let c = document.createElement('canvas');
       let w = 1920;
@@ -171,34 +172,45 @@ window.addEventListener('load', (e) => {
       let activeBgColor = modelParent.querySelector('.bg-style img.active').getAttribute('bg-enable');
       let bgColor = activeBgColor === 'bg-black' ? 'rgb(0,0,0)' : activeBgColor === 'bg-white' ? 'rgb(255,255,255)' : 'rgb(22, 31, 32)';
       ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, 1920, 1080);
+      ctx.fillRect(0, 0, w, h);
 
-      // set blank image "i" source image
+      // set blank image "i" source image to target's image
       i.src = t.src;
 
       // when i has loaded, draw i onto the canvas, then attach attribution
       i.onload = ()=>{
         ctx.drawImage(i, 0, 0, w, h, 0, 0, w, h);
+
+        // set attribution source image
         a.src = './assets/attribution.png';
 
         // when a has loaded, draw a onto the canvas
         a.onload = ()=>{
           ctx.drawImage(a, 0, 0, w, h, 0, 0, w, h);
 
-          // convert the existing canvas to a blob, then create an empty link, populate it with the relevant data, then simulate a click on it
-          c.toBlob((b) => {
-            let link = document.createElement('a');
-            link.setAttribute('target', '_blank');
+          // set logo source image, draw on load
+          l.src = './assets/rel-logo-32.png';
 
-            // dynamically create the file name from the item's related data element
-            link.download = `arielle-carvajal-${modelParent.querySelector('.item-name').innerText.replace(/(%20|\s)/g, '-')}-model.png`;
+          l.onload = ()=>{
+            ctx.drawImage(l, 0, 0, 32, 32, 4, h - 32 - 4, 32, 32);
 
-            let url = URL.createObjectURL(b);
-            link.href = url;
-            link.click();
+            // convert the existing canvas to a blob, then create an empty link, populate it with the relevant data, then simulate a click on it
+            c.toBlob((b) => {
+              let link = document.createElement('a');
+              link.setAttribute('target', '_blank');
 
-            URL.revokeObjectURL(url)
-          });
+              // dynamically create the file name from the item's related data element
+              link.download = `arielle-carvajal-${modelParent.querySelector('.item-name').innerText.replace(/(%20|\s)/g, '-')}-model.png`;
+
+              let url = URL.createObjectURL(b);
+              link.href = url;
+              window.open(url, '_blank');
+              link.click();
+
+              URL.revokeObjectURL(url)
+            });
+
+          }
         };
       };
     }
