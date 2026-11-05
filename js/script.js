@@ -385,7 +385,7 @@ function populateDemoItem(modal, itemName) {
 let modelList = {
   'upright-piano': { imgs : 6, displayName: 'upright piano', hasInfo: 'true' },
   'behringer-u-phoria': { imgs: 6, displayName: 'behringer u-phoria umc22'},
-  'phaser-one': { imgs: 8, displayName: 'phaser one' },
+  'phaser-one': { imgs: 8, displayName: 'phaser one (mark i), star trek tos', hasInfo: 'true' },
   'lightsaber-1': { imgs: 7, displayName: 'luke\'s first lightsaber (episode iv)' },
   'lightsaber-2': { imgs: 7, displayName: 'obi wan\'s lightsaber (episode iv)' },
   'lightsaber-3': { imgs: 7, displayName: 'vader\'s lightsaber (episode iv)' },
