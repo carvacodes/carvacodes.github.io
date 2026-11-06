@@ -1,13 +1,13 @@
-Phaser One (Mark I), Star Trek TOS
+|b|Phaser One (Mark I), Star Trek TOS|b|
 
-_As specified in_ Weapons and Field Equipment Technical Manual _, by Lora Johnson_
+|i|As specified in |i|Weapons and Field Equipment Technical Manual|i|, by Lora Johnson|i|
 
-The canonical features of the phaser one, also known as the "type-1 phaser", are well-described in various _Star Trek: TOS_ fansites and archives. Though not referred to as the "Mark I", and not indicated as such in Lora's book, a "Mark II" version of the same handheld phaser does exist, making a distinction between the two somewhat useful.
+The canonical features of the phaser one, also known as the "type-1 phaser", are well-described in various |i|Star Trek: TOS|i| fansites and archives. Though not referred to as the "Mark I", and not indicated as such in Lora's book, a "Mark II" version of the same handheld phaser does exist, making a distinction between the two somewhat useful.
 
-The weapon described in Lora Johnson's _Weapons and Field Equipment Technical Manual_ differs from canonical designs in several unique ways:
+The weapon described in Lora Johnson's |i|Weapons and Field Equipment Technical Manual|i| differs from canonical designs in several unique ways:
 
-- The prominent silver-grid plate on top of the device is designated as a "Flip-Open Plate" in Lora's manual, while canonical descriptions call this either a "deflector grid" or an "aiming sight". On-screen depictions and hero prop photos show that this part of the weapon was coupled to the main body with a clear glass (or more likely acrylic, for show props) cylinder, while Lora's model appears to flip open with no connection to the body aside from the plate's forward hinge.
-- The flip-open plate in Lora's design conceals a cavity containing a beam-width adjustment wheel and a recharge plug, while other models place the recharge plug on the bottom of the device. While I was unable to find specific references for the design of these components, I modeled the wheel after the force intensity dial on this device, while the recharge plug was modeled after similar plugs on other TOS-era devices.
-- The clear acrylic "force indicator" display on the top of the device features text that appears unique to this version of the device. Other manuals and prop versions use a simple numerical indicator for this display.
+|-| The prominent silver-grid plate on top of the device is designated as a "Flip-Open Plate" in Lora's manual, while canonical descriptions call this either a "deflector grid" or an "aiming sight". On-screen depictions and hero prop photos show that this part of the weapon was coupled to the main body with a clear glass (or more likely acrylic, for show props) cylinder, while Lora's model appears to flip open with no connection to the body aside from the plate's forward hinge.|-|
+|-| The flip-open plate in Lora's design conceals a cavity containing a beam-width adjustment wheel and a recharge plug, while other models place the recharge plug on the bottom of the device. While I was unable to find specific references for the design of these components, I modeled the wheel after the force intensity dial on this device, while the recharge plug was modeled after similar plugs on other TOS-era devices.|-|
+|-| The clear acrylic "force indicator" display on the top of the device features text that appears unique to this version of the device. Other manuals and prop versions use a simple numerical indicator for this display.|-|
 
 This mid-poly (~20,000 tris) model features procedurally-generated pitting, weathering, and scratches throughout, mostly using various noise textures processed and mixed through various color functions (subtract, multiply, add, etc.). The flip-open plate's diamond grid pattern is similarly generated using a Voronoi texture with light noise texture weathering combined in the final bump map.
