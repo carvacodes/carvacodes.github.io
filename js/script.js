@@ -300,6 +300,8 @@ function unsetModal(m) {
   m.querySelector('.item-info').style.display = 'none';
   m.classList.remove('active');
   m.querySelector('.item-name').innerText = '';
+  m.querySelector('.info-expanded').innerText = '';
+  m.querySelector('.nav-section.lower-nav').className = 'nav-section lower-nav condensed';
   let mc = m.querySelector('.modal-contents');
 
   while (mc.firstChild) {
@@ -335,7 +337,7 @@ function populateModelItem(modal, itemName) {
         }
       })
       .then((s) => {
-        document.querySelector('.info-expanded').innerText = s;
+        document.querySelector('.info-expanded').appendChild(genPm(s));
       });
   }
 
@@ -376,6 +378,57 @@ function populateDemoItem(modal, itemName) {
   const url = new URL(location);
   url.searchParams.set("demo", itemName);
   history.pushState({}, "", url);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// generate PseudoMarkdown from a chunk of text
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function genPm(text) {
+  let p = document.createElement('p');
+
+  // replace all line breaks with <br>s
+  let pText = text.replace(/(\n|"\n")/g, '<br>');
+
+  // replace all |i| with <i>
+  let iLength = pText.split(/\|i\|/g).length - 1;
+
+  for (let i = 0; i < iLength; i++) {
+    if (i % 2 === 0) {
+      pText = pText.replace('|i|', '<i>');
+    } else {
+      pText = pText.replace('|i|', '</i>');
+    }
+  }
+
+  // replace all |b| with <b>
+  let bLength = pText.split(/\|b\|/g).length - 1;
+
+  for (let b = 0; b < bLength; b++) {
+    if (b % 2 === 0) {
+      pText = pText.replace('|b|', '<b>');
+    } else {
+      pText = pText.replace('|b|', '</b>');
+    }
+  }
+
+  // replace |-| with <ul>
+  let bl = pText.split(/\|-\|/g).length - 1;
+
+  for (let b = 0; b < bl; b++) {
+    if (b % 2 === 0) {
+      pText = b === 0 ? pText.replace('|-|', '<ul><li>') : pText.replace('|-|', '<li>');
+    } else {
+      pText = b === bl - 1 ? pText.replace('|-|', '</li></ul>') : pText.replace('|-|', '</li>');
+    }
+  }
+
+  pText = pText.replaceAll(/<\/li>\s<br>/g, '</li>');
+  pText = pText.replace(/<\/li><\/ul>\s<br>/, '</li></ul>');
+
+  // set the innerHTML and return the new element
+  p.innerHTML = pText;
+  return p;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

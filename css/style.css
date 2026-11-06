@@ -710,10 +710,9 @@ a, .nav-layout, .layout-select-item, .clickable {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 0.5rem;
-    padding-bottom: 0.1rem;
     font-size: 1rem;
     background-color: rgb(0,0,0,0.5);
+    padding: 0;
 
     .item-info {
       display: none;
@@ -725,18 +724,33 @@ a, .nav-layout, .layout-select-item, .clickable {
     }
 
     .info-control {
+      display: flex;
+      justify-content: space-between;
       width: 100%;
       flex-shrink: 1;
       color: var(--link-color);
-      text-align: right;
+      background-color: rgb(0,0,0,0.5);
+      padding: 0.1rem 0.25rem;
     }
 
     .info-expanded {
       text-align: left;
-      font-size: 0.9rem;
-      padding-bottom: 0.25rem;
+      font-size: 0.75rem;
+      padding: 0.25rem;
       letter-spacing: 0.1px;
-      line-height: 1.2rem;
+      line-height: 1rem;
+      max-height: 50vh;
+      max-height: 50dvh;
+      overflow-y: auto;
+      box-shadow: inset 0px 0px 6px black;
+
+      ul {
+        margin: 0;
+
+        li {
+          margin-bottom: 0.25rem;
+        }
+      }
     }
 
     span {
