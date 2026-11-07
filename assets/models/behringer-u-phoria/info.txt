@@ -1,0 +1,11 @@
+|b|Behringer U-Phoria UMC22 Audio Interface|b|
+
+This model of the UMC22 features relatively straightforward geometry, with the front XLR input (labeled "Mic/Line 1") requiring the most detail. In addition to the general profile of the three-pin cutout in the center of the input, the front face of this surface required using a Shrinkwrap modifier with a finely-subdivided reference sphere to achieve the gentle round convex profile of the actual device's primary input.
+
+The knurling on the front three control knobs is entirely procedural, with several color-added Brick textures and a relatively strong bump map providing an effective mimicry of the actual geometry at a reduced poly count. A very subtle bump map was also applied to the matte-black metal body of the device.
+
+This model also features several textures created in Inkscape to match the design of the actual UMC22's logo and front and rear panel text. Of particular note are the lightly-edited fonts used for several text accents around the model.
+
+|-|The Behringer logo was created using a lightly-edited Century Gothic font, where the "b", "r", and "n" characters were created using an "o" character modified to include either risers (the vertical component of "b") or right-side terminals (the outward-extending part of "r") more in line with Behringer's highly-geometric typeface. The "e" character also required light editing to minimize the aperture (the right-side part of "e" that does not fully connect with the upper half).|-|
+|-|The "Midas Preamp" and "U-Phoria UMC22" text use the Michroma font. For the "U-Phoria" text, light editing was required for the "2", "P", and em-dash characters to more closely match the original font's profile. The "R" character required manual construction from the letter "P", as the right leg of Michroma's "R" does not match the equipment's real typeface.|-|
+|-|The "M"s in the word "Midas" were constructed using path-joined, upside-down letter "U"s, and small gaps were manually added to the crossbars of the "P", "A", and "R" characters. The letter "S" was also edited to remove the vertical component of the terminals at either end. The completed font was scaled down horizontally to match the tighter kerning of the original typeface.|-|
