@@ -297,7 +297,8 @@ function setModalContents(modal, itemName, type) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function unsetModal(m) {
-  m.querySelector('.item-info').style.display = 'none';
+  m.querySelectorAll('.item-info span').forEach(el => el.style.display = '');
+  
   m.classList.remove('active');
   m.querySelector('.item-name').innerText = '';
   m.querySelector('.info-expanded').innerText = '';
@@ -326,7 +327,6 @@ function populateModelItem(modal, itemName) {
   }
 
   if (model.hasInfo) {
-    document.querySelector('.item-info').style.display = 'flex';
     let req = new Request('../assets/models/' + itemName + '/info.txt');
 
     fetch(req)
@@ -339,6 +339,8 @@ function populateModelItem(modal, itemName) {
       .then((s) => {
         document.querySelector('.info-expanded').appendChild(genPm(s));
       });
+  } else {
+    document.querySelectorAll('.item-info span').forEach(el => el.style.display = 'none');
   }
 
   const url = new URL(location);

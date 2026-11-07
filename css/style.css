@@ -715,7 +715,6 @@ a, .nav-layout, .layout-select-item, .clickable {
     padding: 0;
 
     .item-info {
-      display: none;
       flex-direction: column;
     }
 
