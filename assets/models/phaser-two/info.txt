@@ -1,0 +1,14 @@
+|b|Phaser Two (Mark I), |i|Star Trek: TOS|i||b|
+
+Like the phaser one, the phaser two is not generally referred to with the "mark I" designation. However, Lora's book does contain a "phaser two, mark II", so that distinction is made here for clarity.
+
+As rendered from Lora's technical schematic, this design features several notable departures from show and prop versions of the weapon:
+
+|-|The forward emitter barrel in this version of the device is specifically designated as "silver", while most prop versions of the phaser two feature a semi-transparent plastic for the protruding portion of the barrel.|-|
+|-|The "safety" (the dial on the forward-left of the device body) and the "phaser one lock release" (the small button on the rear-left of the device) are typically silver in prop versions of the weapon, while they are brass Lora's design.|-|
+|-|Where the handgrip/power pack meet the main body of the device, Lora's model specifies there exists a "velcrite pad", which appears as the dark matte areas to the left and right just above the handgrip. While precise show-accurate references to this material have been difficult to find, the general form of the word "velcrite"—and references to the material in places where something might be fastened or affixed—suggests that Velcro is a reasonable proxy.|-|
+|-|The trigger in Lora's device features a pronounced tapered profile, where most other depictions of the device show a purely-cylindrical trigger.|-|
+
+The model features procedural weathering and scratches across the body of the device to match its phaser one counterpart, as well as light weathering on the handgrip where use has worn the matte material down to a higher reflectivity. A procedural texture was also used for the knurling on the "beam width adjustment ring" (the cylindrical silver aft portion of the barrel, near where the barrel meets the body of the device).
+
+The phaser two model is designed such that the existing phaser one, mark I (|a href="https://carvacodes.github.io/models.html?model=phaser-one"|as modeled and rendered on this site|a|) fits precisely in its central cradle, making the two models neatly compatible.
