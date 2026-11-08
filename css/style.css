@@ -12,6 +12,7 @@
   --jsdemos-color-dark: #2f3139;
   --jsdemos-color-dark-opaque: rgb(47,49,57,0.5);
   --link-color: #99e;
+  --callout-text-color: #7b9;
   --text-shadow-color: #558;
   --item-bg-color: #222;
 
@@ -355,6 +356,27 @@ a, .nav-layout, .layout-select-item, .clickable {
   .portfolio-item {
     line-height: initial;
   }
+
+  .category-container {
+    .category-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(0,0,0,0.5);
+      height: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--callout-text-color);
+      margin: 0.8rem 0;
+      padding: 0.15rem 0;
+      box-sizing: content-box;
+    }
+
+    &:first-of-type .category-header {
+      margin-top: 0;
+    }
+  }
 }
 
 .portfolio-view.tiles-small, .portfolio-view.tiles-large {
@@ -397,8 +419,8 @@ a, .nav-layout, .layout-select-item, .clickable {
 
     .portfolio-item-text {
       transition: 0.25s all ease-in-out;
-      bottom: 3px;
-      right: 3px;
+      bottom: 0.1rem;
+      right: 0.3rem;
       position: absolute;
       font-size: 1rem;
       text-align: right;
@@ -548,7 +570,7 @@ a, .nav-layout, .layout-select-item, .clickable {
           background-size: cover;
           background-position: center;
           z-index: -10;
-          filter: blur(10px);
+          filter: blur(10px) brightness(0.75);
         }
       }
     }
@@ -556,7 +578,7 @@ a, .nav-layout, .layout-select-item, .clickable {
 }
 
 .portfolio-item-text {
-  --width: 5px;
+  --width: 0.15rem;
   text-shadow:
     0 0 var(--width) rgb(0,0,0),
     0 0 var(--width) rgb(0,0,0),

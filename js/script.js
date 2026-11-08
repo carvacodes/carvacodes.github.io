@@ -17,40 +17,88 @@ window.addEventListener('load', (e) => {
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // populate the portfolio page
+  // populate the portfolio pages
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   if (page.indexOf('models') > -1) {
     let view = document.querySelector('.portfolio-view');
 
     for (let model in modelList) {
+      // create a category container if it doesn't exist
+      let item = modelList[model]
+      let catContainer;
+
+      if (item.cat !== undefined) {
+        catContainer = document.querySelector(`.category-${item.cat}`);
+        if (!catContainer) {
+          catContainer = document.createElement('div');
+          catContainer.classList.add('category-container');
+          catContainer.classList.add(`category-${item.cat}`)
+
+          let catHeader = document.createElement('div');
+          catHeader.classList.add('category-header');
+          catHeader.innerText = catList[item.cat].displayName;
+          catContainer.appendChild(catHeader);
+          view.appendChild(catContainer);
+        }
+      }
+
+      // create a container for the portfolio item
       let filePath = `./assets/models/${model}`;
       let portfolioItem = document.createElement('div');
       portfolioItem.classList.add('portfolio-item');
       portfolioItem.setAttribute('model-name', model);
 
+      // create a container for the item's image
       let itemImg = document.createElement('div');
       itemImg.classList.add('portfolio-item-img');
       itemImg.style.backgroundImage = `url('${filePath}/thumbnail.png')`;
 
+      // models include a wireframe that briefly appears on hover; create that element and set its bg image
       let itemImgWire = document.createElement('div');
       itemImgWire.classList.add('portfolio-item-img-wire');
       itemImgWire.style.backgroundImage = `url('${filePath}/thumbnail wireframe.png')`;
 
+      // set the item's text
       let itemText = document.createElement('div');
       itemText.classList.add('portfolio-item-text');
       itemText.innerText = modelList[model].displayName ? modelList[model].displayName : model;
 
+      // build up the portfolio item
       portfolioItem.appendChild(itemImg);
       portfolioItem.appendChild(itemImgWire);
       portfolioItem.appendChild(itemText);
 
-      view.appendChild(portfolioItem);
+      // place the portfolio item in a category container, if there is one; otherwise, append to the parent page view container
+      if (catContainer) {
+        catContainer.appendChild(portfolioItem);
+      } else {
+        view.appendChild(portfolioItem);
+      }
     }
   } else if (page.indexOf('jsdemos') > -1) {
     let view = document.querySelector('.portfolio-view');
 
     for (let demo in demoList) {
+      // create a category container if it doesn't exist
+      let item = demoList[demo]
+      let catContainer;
+
+      if (item.cat !== undefined) {
+        catContainer = document.querySelector(`.category-${item.cat}`);
+        if (!catContainer) {
+          catContainer = document.createElement('div');
+          catContainer.classList.add('category-container');
+          catContainer.classList.add(`category-${item.cat}`)
+
+          let catHeader = document.createElement('div');
+          catHeader.classList.add('category-header');
+          catHeader.innerText = catList[item.cat].displayName;
+          catContainer.appendChild(catHeader);
+          view.appendChild(catContainer);
+        }
+      }
+
       let filePath = `./assets/demos/${demo}.png`;
       let formattedName = demo.replace(/-/g, ' ');
 
@@ -69,7 +117,12 @@ window.addEventListener('load', (e) => {
       portfolioItem.appendChild(itemImg);
       portfolioItem.appendChild(itemText);
 
-      view.appendChild(portfolioItem);
+      // place the portfolio item in a category container, if there is one; otherwise, append to the parent page view container
+      if (catContainer) {
+        catContainer.appendChild(portfolioItem);
+      } else {
+        view.appendChild(portfolioItem);
+      }
     }
   } else {
     // log as needed, but generally not when live
@@ -318,6 +371,7 @@ function populateModelItem(modal, itemName) {
   let modalContents = modal.querySelector('.modal-contents');
   let model = modelList[itemName];
   
+  // create new <img> elements for each model image and populate accordingly
   for (let i = 1; i <= model.imgs; i++) {
     let filePath = `../assets/models/${itemName}/${i.toString().padStart(2, '0')}.png`;
     let newImg = document.createElement('img');
@@ -326,6 +380,7 @@ function populateModelItem(modal, itemName) {
     modalContents.appendChild(newImg);
   }
 
+  // populate info if the item has any, otherwise hide the info-showing-and-hiding-related related elements
   if (model.hasInfo) {
     let req = new Request('../assets/models/' + itemName + '/info.txt');
 
@@ -343,6 +398,8 @@ function populateModelItem(modal, itemName) {
     document.querySelectorAll('.item-info span').forEach(el => el.style.display = 'none');
   }
 
+  // update window.history with a new URL so this portfolio item can be accessed from a URL
+  // TO-DO: implement appropriate handling for browser forward/back
   const url = new URL(location);
   url.searchParams.set("model", itemName.replace(' ', '-'));
   history.pushState({}, "", url);
@@ -358,11 +415,12 @@ function populateDemoItem(modal, itemName) {
   let dirPath = `./submods/${itemName}`;
   let iframe = document.createElement('iframe');
 
+  // set the new iframe's src attribute
   iframe.src = `${dirPath}/markup.html`;
   modalContents.appendChild(iframe);
 
+  // populate info if the item has any, otherwise hide the info-showing-and-hiding-related related elements
   if (demo.hasInfo) {
-    document.querySelector('.item-info').style.display = 'flex';
     let req = new Request('../assets/demos/' + itemName + '-info.txt');
 
     fetch(req)
@@ -375,8 +433,12 @@ function populateDemoItem(modal, itemName) {
       .then((s) => {
         document.querySelector('.info-expanded').innerText = s;
       });
+  } else {
+    document.querySelectorAll('.item-info span').forEach(el => el.style.display = 'none');
   }
 
+  // update window.history with a new URL so this portfolio item can be accessed from a URL
+  // TO-DO: implement appropriate handling for browser forward/back
   const url = new URL(location);
   url.searchParams.set("demo", itemName);
   history.pushState({}, "", url);
@@ -443,15 +505,15 @@ function genPm(text) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let modelList = {  
-  'upright-piano': { imgs : 6, displayName: 'upright piano', hasInfo: 'true' },
-  'behringer-u-phoria': { imgs: 6, displayName: 'behringer u-phoria umc22', hasInfo: 'true'},
-  'phaser-one': { imgs: 8, displayName: 'phaser one (mark i), star trek tos', hasInfo: 'true' },
-  'phaser-two': { imgs: 6, displayName: 'phaser two (mark i), star trek tos', hasInfo: 'true' },
-  'lightsaber-1': { imgs: 7, displayName: 'luke\'s first lightsaber (episode iv)' },
-  'lightsaber-2': { imgs: 7, displayName: 'obi wan\'s lightsaber (episode iv)' },
-  'lightsaber-3': { imgs: 7, displayName: 'vader\'s lightsaber (episode iv)' },
-  'lightsaber-4': { imgs: 7, displayName: 'luke\'s second lightsaber (episode v)' },
-  'commlock': { imgs: 8, displayName: 'commlock' },
+  'upright-piano': { cat: 'products', imgs : 6, displayName: 'upright piano', hasInfo: 'true' },
+  'behringer-u-phoria': { cat: 'products', imgs: 6, displayName: 'behringer u-phoria umc22', hasInfo: 'true'},
+  'phaser-one': { cat: 'props', imgs: 8, displayName: 'phaser one (mark i), star trek tos', hasInfo: 'true' },
+  'phaser-two': { cat: 'props', imgs: 6, displayName: 'phaser two (mark i), star trek tos', hasInfo: 'true' },
+  'lightsaber-1': { cat: 'props', imgs: 7, displayName: 'luke\'s first lightsaber (episode iv)' },
+  'lightsaber-2': { cat: 'props', imgs: 7, displayName: 'obi wan\'s lightsaber (episode iv)' },
+  'lightsaber-3': { cat: 'props', imgs: 7, displayName: 'vader\'s lightsaber (episode iv)' },
+  'lightsaber-4': { cat: 'props', imgs: 7, displayName: 'luke\'s second lightsaber (episode v)' },
+  'commlock': { cat: 'props', imgs: 8, displayName: 'commlock' },
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -459,26 +521,37 @@ let modelList = {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let demoList = {
-  'amoeboid': {},
-  'dynamic-lighted-buttons': {},
-  'flying-with-the-sky-dragon': {},
-  'moving-boxes': {},
-  'particle-explosions': {},
-  'tower-of-the-gods': {},
-  'canvas-composite-operations': {},
-  'emulating-pixelisa': {},
-  'lissajous': {},
-  'neon-grid': {},
-  'pastel-orbits': {},
-  'symyn': {},
-  'water-caustics': {},
-  'crt-magnet-interference': {},
-  'flame': {},
-  'magnetic-lines-of-force': {},
-  'particle-cyclone': {},
-  'post-dusk': {},
-  'tic-tac-toe': {},
-  'wireframe-grayscale-triangles': {},
+  'dynamic-lighted-buttons': { cat: 'ints' },
+  'flying-with-the-sky-dragon': { cat: 'scenes' },
+  'moving-boxes': { cat: 'games' },
+  'particle-explosions': { cat: 'ints' },
+  'tower-of-the-gods': { cat: 'scenes' },
+  'canvas-composite-operations': { cat: 'ints' },
+  'emulating-pixelisa': { cat: 'ints' },
+  'amoeboid': { cat: 'non-ints' },
+  'lissajous': { cat: 'non-ints' },
+  'neon-grid': { cat: 'non-ints' },
+  'pastel-orbits': { cat: 'ints' },
+  'symyn': { cat: 'games' },
+  'water-caustics': { cat: 'ints' },
+  'crt-magnet-interference': { cat: 'ints' },
+  'flame': { cat: 'ints' },
+  'magnetic-lines-of-force': { cat: 'ints' },
+  'particle-cyclone': { cat: 'ints' },
+  'post-dusk': { cat: 'scenes' },
+  'tic-tac-toe': { cat: 'games' },
+  'wireframe-grayscale-triangles': { cat: 'ints' },
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// categories
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let catList = {  
+  'products': { displayName: 'products and non-fictional', description: '' },
+  'props': { displayName: 'props, fictional, and sci-fi', description: '' },
+  'non-ints': { displayName: 'spinners and non-interactive demos', description: '' },
+  'ints': { displayName: 'interactive demos and sandboxes', description: '' },
+  'scenes': { displayName: 'composed scenes', description: '' },
+  'games': { displayName: 'games', description: '' },
+};
