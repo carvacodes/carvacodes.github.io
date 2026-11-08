@@ -414,6 +414,11 @@ function genPm(text) {
     }
   }
 
+  // replace all |a| with <a>
+  let aIterator = 0;
+  pText = pText.replaceAll(/\|a (href=".*")\|/g, '<a $1 target="_blank">');
+  pText = pText.replaceAll('|a|', '</a>');
+
   // replace |-| with <ul>
   let bl = pText.split(/\|-\|/g).length - 1;
 
@@ -437,10 +442,11 @@ function genPm(text) {
 // models
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let modelList = {
+let modelList = {  
   'upright-piano': { imgs : 6, displayName: 'upright piano', hasInfo: 'true' },
   'behringer-u-phoria': { imgs: 6, displayName: 'behringer u-phoria umc22', hasInfo: 'true'},
   'phaser-one': { imgs: 8, displayName: 'phaser one (mark i), star trek tos', hasInfo: 'true' },
+  'phaser-two': { imgs: 6, displayName: 'phaser two (mark i), star trek tos', hasInfo: 'true' },
   'lightsaber-1': { imgs: 7, displayName: 'luke\'s first lightsaber (episode iv)' },
   'lightsaber-2': { imgs: 7, displayName: 'obi wan\'s lightsaber (episode iv)' },
   'lightsaber-3': { imgs: 7, displayName: 'vader\'s lightsaber (episode iv)' },
