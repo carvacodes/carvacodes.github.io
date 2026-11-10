@@ -1,6 +1,6 @@
 |b|Phaser Two (Mark I), |i|Star Trek: TOS|i||b|
 
-|i|As specified in |i|Weapons and Field Equipment Technical Manual|i|, by Lora Johnson|i|
+|i|As specified in |i|Weapons and Field Equipment Technical Reference Manual|i|, by Lora Johnson|i|
 
 Like the phaser one, the phaser two is not generally referred to with the "mark I" designation. However, Lora's book does contain a "phaser two, mark II", so that distinction is made here for clarity.
 

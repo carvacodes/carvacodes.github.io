@@ -1,10 +1,10 @@
 |b|Phaser One (Mark I), |i|Star Trek: TOS|i||b|
 
-|i|As specified in |i|Weapons and Field Equipment Technical Manual|i|, by Lora Johnson|i|
+|i|As specified in |i|Weapons and Field Equipment Technical Reference Manual|i|, by Lora Johnson|i|
 
 The canonical features of the phaser one, also known as the "type-1 phaser", are well-described in various |i|Star Trek: TOS|i| fansites and archives. Though not referred to as the "Mark I", and not indicated as such in Lora's book, a "Mark II" version of the same handheld phaser does exist, making a distinction between the two somewhat useful.
 
-The weapon described in Lora Johnson's |i|Weapons and Field Equipment Technical Manual|i| differs from canonical designs in several unique ways:
+The weapon described in Lora Johnson's |i|Weapons and Field Equipment Technical Reference Manual|i| differs from canonical designs in several unique ways:
 
 |-| The prominent silver-grid plate on top of the device is designated as a "Flip-Open Plate" in Lora's manual, while canonical descriptions call this either a "deflector grid" or an "aiming sight". On-screen depictions and hero prop photos show that this part of the weapon was coupled to the main body with a clear glass (or more likely acrylic, for show props) cylinder, while Lora's model appears to flip open with no connection to the body aside from the plate's forward hinge.|-|
 |-| The flip-open plate in Lora's design conceals a cavity containing a beam-width adjustment wheel and a recharge plug, while other models place the recharge plug on the bottom of the device. While I was unable to find specific references for the design of these components, I modeled the wheel after the force intensity dial on this device, while the recharge plug was modeled after similar plugs on other TOS-era devices.|-|
